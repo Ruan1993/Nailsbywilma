@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nails by Wilma | Professional Nail Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+      .gallery-item {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .gallery-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+      .gallery-item img {
+        transition: transform 0.3s ease;
+      }
+      .hero-image {
+        height: 100%;
+        object-fit: cover;
+      }
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox-content {
+        max-width: 90%;
+        max-height: 90%;
+        position: relative;
+      }
+      .lightbox img {
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+      }
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+      }
+      .lightbox-nav button {
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        color: white;
+        font-size: 2rem;
+        padding: 1rem;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .lightbox-nav button:hover {
+        background: rgba(255, 255, 255, 0.5);
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+      .hero-pattern {
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.1) 1px,
+          transparent 1px
+        );
+        background-size: 20px 20px;
+      }
+      .hovered-element:hover {
+        color: #ec4899 !important;
+      }
+    </style>
+  </head>
+  <body class="bg-pink-100 font-sans" style="background-color: #ffd6e7">
+    <!-- Navigation -->
+    <nav
+      class="bg-gray-800 shadow-lg sticky top-0 z-50"
+      style="background-color: #1a1a2e"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center space-x-4">
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/Nails_by_Wilma_Logo.png"
+              alt="Nails by Wilma Logo"
+              class="h-10 w-auto"
+            />
+            <h1 class="text-2xl font-bold text-white">Nails by Wilma</h1>
+          </div>
+          <div class="hidden md:flex items-center space-x-8 hovered-element">
+            <a
+              href="#home"
+              class="text-white hover:text-pink-400 transition-all duration-300 px-4 py-2 rounded-lg hovered-element"
+              >Home</a
+            >
+            <a
+              href="#gallery"
+              class="text-white hover:text-pink-400 transition-all duration-300 px-4 py-2 rounded-lg hovered-element"
+              >Gallery</a
+            >
+            <a
+              href="#services"
+              class="text-white hover:text-pink-400 transition-all duration-300 px-4 py-2 rounded-lg hovered-element"
+              >Services</a
+            >
+            <a
+              href="#contact"
+              class="text-white hover:text-pink-400 transition-all duration-300 px-4 py-2 rounded-lg hovered-element"
+              >Contact</a
+            >
+          </div>
+          <div class="md:hidden">
+            <button class="mobile-menu-button">
+              <i data-feather="menu" class="text-white"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div class="mobile-menu hidden md:hidden bg-black pb-4 px-4">
+        <a href="#home" class="block py-2 text-white hover:text-pink-400"
+          >Home</a
+        >
+        <a href="#gallery" class="block py-2 text-white hover:text-pink-400"
+          >Gallery</a
+        >
+        <a href="#services" class="block py-2 text-white hover:text-pink-400"
+          >Services</a
+        >
+        <a href="#contact" class="block py-2 text-white hover:text-pink-400"
+          >Contact</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="hero-pattern py-20 md:py-32 relative overflow-hidden"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center"
+      >
+        <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            Beautiful Nails <span class="text-pink-500">by Wilma</span>
+          </h1>
+          <p class="text-lg text-gray-600 mb-6">
+            Professional nail care services with a personal touch. Book your
+            appointment today!
+          </p>
+          <div class="flex space-x-4">
+            <a
+              href="#contact"
+              class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-full font-medium transition shadow-lg"
+              >Book Now</a
+            >
+            <a
+              href="#gallery"
+              class="border border-pink-500 text-pink-500 hover:bg-pink-50 px-6 py-3 rounded-full font-medium transition"
+              >View Gallery</a
+            >
+          </div>
+        </div>
+        <div class="md:w-1/2" data-aos="fade-left">
+          <div class="relative">
+            <div
+              class="absolute -top-6 -left-6 w-64 h-64 bg-pink-200 rounded-full opacity-50"
+            ></div>
+            <div
+              class="absolute -bottom-6 -right-6 w-64 h-64 bg-pink-100 rounded-full opacity-50"
+            ></div>
+            <div
+              class="relative z-10 rounded-lg shadow-2xl w-full max-w-md mx-auto overflow-hidden"
+            >
+              <img
+                src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(6).webp"
+                alt="Nail art"
+                class="w-full h-full object-cover rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20" style="background-color: #ffd6e7">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl font-bold text-pink-600 mb-4">Our Work</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Explore our gallery of stunning nail designs, crafted with care and
+            precision for delighted clients
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 gallery-container"
+        >
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(6).webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(5).webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-16.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-04.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-09.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-27.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(4).webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-14.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(3).webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-01.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-11.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(2).webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(1).webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-24.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-04.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-03.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-04.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-lg overflow-hidden shadow-md"
+            data-aos="zoom-in"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-29.webp"
+              alt="Nail design"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20" style="background-color: #ffd6e7">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl font-bold text-pink-600 mb-4">Our Services</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Professional nail care services tailored to your needs.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition"
+            data-aos="fade-up"
+          >
+            <div
+              class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-4"
+            >
+              <i data-feather="scissors" class="text-pink-500"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Manicures</h3>
+            <p class="text-gray-600">
+              Classic, gel, or spa manicures to keep your hands looking
+              beautiful and well-groomed.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-4"
+            >
+              <i data-feather="activity" class="text-pink-500"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Pedicures</h3>
+            <p class="text-gray-600">
+              Relaxing pedicures with various treatments to pamper your feet and
+              toes.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div
+              class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-4"
+            >
+              <i data-feather="pen-tool" class="text-pink-500"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Nail Art</h3>
+            <p class="text-gray-600">
+              Custom nail designs to express your personal style with precision
+              and creativity.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition"
+            data-aos="fade-up"
+          >
+            <div
+              class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-4"
+            >
+              <i data-feather="eye" class="text-pink-500"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">
+              Eyebrow Tinting
+            </h3>
+            <p class="text-gray-600">
+              Expert eyebrow tinting to enhance your natural beauty and frame
+              your face perfectly.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-4"
+            >
+              <i data-feather="zap" class="text-pink-500"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Eyebrow Waxing</h3>
+            <p class="text-gray-600">
+              Say goodbye to stray hairs and hello to perfectly shaped brows.
+              Waxed with care and finesse.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20" style="background-color: #ffd6e7">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl font-bold text-pink-600 mb-4">Get In Touch</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Please book in advance as we may be fully booked at times. We'll do
+            our best to accommodate you as quickly as possible.
+          </p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-12">
+          <div class="md:w-1/2" data-aos="fade-right">
+            <div
+              class="bg-white p-8 rounded-lg shadow-md"
+              style="background-color: #ffffff"
+            >
+              <h3 class="text-xl font-bold text-pink-600 mb-6">
+                Contact Information
+              </h3>
+
+              <div class="flex items-start mb-6">
+                <div
+                  class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center mr-4"
+                >
+                  <i data-feather="map-pin" class="text-pink-500"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">Location</h4>
+                  <p class="text-gray-600">
+                    27 Prinsloo Drive, Still Bay, Still Bay West
+                  </p>
+                  <a
+                    href="https://maps.google.com"
+                    target="_blank"
+                    class="text-pink-500 hover:underline mt-1 inline-block"
+                    >View on Google Maps</a
+                  >
+                </div>
+              </div>
+
+              <div class="flex items-start mb-6">
+                <div
+                  class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center mr-4"
+                >
+                  <i data-feather="mail" class="text-pink-500"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">Email</h4>
+                  <a
+                    href="mailto:wilmajprinsloo@gmail.com"
+                    class="text-pink-500 hover:underline"
+                    >wilmajprinsloo@gmail.com</a
+                  >
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center mr-4"
+                >
+                  <i data-feather="phone" class="text-pink-500"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-800">Phone</h4>
+                  <a
+                    href="tel:+27635978505"
+                    class="text-pink-500 hover:underline"
+                    >063 597 8505</a
+                  >
+                </div>
+              </div>
+              <div class="mt-8">
+                <img
+                  src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/Nails_by_Wilma_Location.webp"
+                  alt="Nails by Wilma Location"
+                  class="rounded-lg shadow-md w-full"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="md:w-1/2" data-aos="fade-left">
+            <form
+              class="bg-white p-8 rounded-lg shadow-md"
+              style="background-color: #ffffff"
+              action="https://formspree.io/f/mdkwnpqw"
+              method="POST"
+            >
+              <div class="mb-4">
+                <label for="name" class="block text-gray-700 mb-2"
+                  >Your Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  placeholder="Please enter your name and surname"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label for="email" class="block text-gray-700 mb-2"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  placeholder="Please enter your email address (optional)"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="phone" class="block text-gray-700 mb-2"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  placeholder="Please add your phone number"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label for="service" class="block text-gray-700 mb-2"
+                  >Service Interested In</label
+                >
+                <select
+                  id="service"
+                  name="service"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                >
+                  <option value="">Select a service</option>
+                  <option value="manicure">Manicure</option>
+                  <option value="pedicure">Pedicure</option>
+                  <option value="nail-art">Nail Art</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="mb-6">
+                <label for="message" class="block text-gray-700 mb-2"
+                  >Your Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  placeholder="Please write to us for bookings or any other services or queries"
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-pink-500 hover:bg-pink-600 text-white py-3 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 hover:scale-105"
+                id="submit-button"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="bg-gray-800 text-white py-12"
+      style="background-color: #1a1a2e"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold text-pink-600 mb-4">Nails by Wilma</h3>
+            <p class="text-gray-400">
+              Professional nail care services with a personal touch.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-pink-600 mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-white transition-colors duration-300 hover:underline"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#gallery"
+                  class="text-gray-400 hover:text-white transition-colors duration-300 hover:underline"
+                  >Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition-colors duration-300 hover:underline"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition-colors duration-300 hover:underline"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-pink-600 mb-4">
+              Connect With Us
+            </h3>
+            <div class="flex space-x-4">
+              <a
+                href="mailto:wilmajprinsloo@gmail.com"
+                class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 relative group"
+              >
+                <i data-feather="mail"></i>
+                <span
+                  class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity"
+                  >Email Us</span
+                >
+              </a>
+              <a
+                href="tel:+27635978505"
+                class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 relative group"
+              >
+                <i data-feather="phone"></i>
+                <span
+                  class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity"
+                  >Call Us</span
+                >
+              </a>
+              <a
+                href="https://share.google/kaFdDYDDujwMbwz3w"
+                target="_blank"
+                class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 relative group"
+              >
+                <i data-feather="map-pin"></i>
+                <span
+                  class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity"
+                  >Find us on Google Maps</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>
+            &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            Nails by Wilma. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+      class="fixed bottom-6 right-6 bg-white bg-opacity-20 hover:bg-opacity-30 text-pink-600 font-medium py-2 px-4 rounded-full shadow-lg transition-all duration-300 border border-pink-200 hover:shadow-xl transform hover:-translate-y-1"
+    >
+      Back to top
+    </button>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+      <button class="lightbox-close">&times;</button>
+      <div class="lightbox-content">
+        <img src="" alt="Gallery image" />
+        <div class="lightbox-nav">
+          <button class="lightbox-prev">&larr;</button>
+          <button class="lightbox-next">&rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Form submission handling
+      const form = document.querySelector("form");
+      const submitButton = document.getElementById("submit-button");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Change button text to loading state
+        submitButton.innerHTML = "Sending...";
+        submitButton.disabled = true;
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: {
+              Accept: "application/json",
+            },
+          });
+
+          if (response.ok) {
+            submitButton.innerHTML = "Message Sent!";
+            form.reset();
+            setTimeout(() => {
+              submitButton.innerHTML = "Send Message";
+              submitButton.disabled = false;
+            }, 3000);
+          } else {
+            throw new Error("Form submission failed");
+          }
+        } catch (error) {
+          submitButton.innerHTML = "Error, try again";
+          setTimeout(() => {
+            submitButton.innerHTML = "Send Message";
+            submitButton.disabled = false;
+          }, 3000);
+        }
+      });
+
+      // Mobile menu toggle
+      document
+        .querySelector(".mobile-menu-button")
+        .addEventListener("click", function () {
+          document.querySelector(".mobile-menu").classList.toggle("hidden");
+        });
+
+      // Initialize AOS and Feather Icons
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+      });
+      feather.replace();
+
+      // Lightbox functionality
+      const galleryItems = document.querySelectorAll(".gallery-item img");
+      const lightbox = document.querySelector(".lightbox");
+      const lightboxImg = lightbox.querySelector("img");
+      const lightboxClose = lightbox.querySelector(".lightbox-close");
+      const lightboxPrev = lightbox.querySelector(".lightbox-prev");
+      const lightboxNext = lightbox.querySelector(".lightbox-next");
+      let currentIndex = 0;
+
+      // Open lightbox with clicked image
+      galleryItems.forEach((item, index) => {
+        item.addEventListener("click", () => {
+          currentIndex = index;
+          lightboxImg.src = item.src;
+          lightbox.style.display = "flex";
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      // Close lightbox
+      lightboxClose.addEventListener("click", () => {
+        lightbox.style.display = "none";
+        document.body.style.overflow = "auto";
+      });
+
+      // Navigate between images
+      lightboxPrev.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentIndex =
+          (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        lightboxImg.src = galleryItems[currentIndex].src;
+      });
+
+      lightboxNext.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % galleryItems.length;
+        lightboxImg.src = galleryItems[currentIndex].src;
+      });
+
+      // Close when clicking outside image
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          lightbox.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      });
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (lightbox.style.display === "flex") {
+          if (e.key === "Escape") {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "auto";
+          } else if (e.key === "ArrowLeft") {
+            currentIndex =
+              (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+            lightboxImg.src = galleryItems[currentIndex].src;
+          } else if (e.key === "ArrowRight") {
+            currentIndex = (currentIndex + 1) % galleryItems.length;
+            lightboxImg.src = galleryItems[currentIndex].src;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
