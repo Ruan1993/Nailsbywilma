@@ -4,137 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nails by Wilma | Professional Nail Services & Art</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    
-    <style>
-      /* Base colors */
-      :root {
-        --color-primary: #ec4899; /* Pink-500 */
-        --color-secondary: #1a1a2e; /* Dark Blue/Black */
-        --color-background: #ffd6e7; /* Light Pink Background */
-      }
 
-      /* Custom Styles for Polish */
-      .gallery-item {
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-      }
-      .gallery-item:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-      }
-      .gallery-item:hover img {
-        transform: scale(1.05);
-      }
-      .gallery-item img {
-        transition: transform 0.4s ease;
-        object-fit: cover;
-        width: 100%;
-        height: 100%; /* Ensure full height for better control in grid */
-      }
-      
-      /* Navigation Hover for clarity */
-      .nav-link:hover {
-        color: var(--color-primary) !important;
-        background-color: rgba(255, 255, 255, 0.1);
-      }
-
-      /* Hero Section Background Pattern */
-      .hero-pattern {
-        background-color: var(--color-background);
-        background-image: radial-gradient(
-          rgba(0, 0, 0, 0.05) 1px,
-          transparent 1px
-        );
-        background-size: 20px 20px;
-      }
-
-      /* Lightbox Styling */
-      .lightbox {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.95); /* Deeper overlay */
-        z-index: 1000;
-        align-items: center;
-        justify-content: center;
-        backdrop-filter: blur(5px);
-      }
-      .lightbox-content {
-        max-width: 90%;
-        max-height: 90%;
-        position: relative;
-      }
-      .lightbox-image {
-        max-width: 90vw;
-        max-height: 80vh;
-        object-fit: contain;
-        box-shadow: 0 0 50px rgba(255, 255, 255, 0.2); /* Soft white glow effect */
-        border-radius: 1rem;
-      }
-      .lightbox-nav button {
-        background: rgba(255, 255, 255, 0.15);
-        border: none;
-        color: white;
-        font-size: 2.5rem;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        transition: background 0.3s, transform 0.2s;
-        border-radius: 50%;
-        line-height: 1; /* Fix vertical alignment */
-      }
-      .lightbox-nav button:hover {
-        background: var(--color-primary);
-        transform: scale(1.05);
-      }
-      .lightbox-close {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: var(--color-primary);
-        border: none;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-        padding: 0.5rem;
-        border-radius: 50%;
-        transition: background 0.3s, transform 0.2s;
-        z-index: 1010;
-      }
-      .lightbox-close:hover {
-        background: #d946ef; /* a bit darker pink/purple for hover */
-        transform: rotate(90deg);
-      }
-
-      /* Fix for Hero image when using object-cover */
-      .hero-image-wrapper {
-        position: relative;
-        padding-top: 100%; /* Creates a square aspect ratio for the parent */
-      }
-      .hero-image-wrapper img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="font-sans text-gray-800" style="background-color: var(--color-background); font-family: 'Inter', sans-serif;">
-    
-    <nav class="shadow-xl sticky top-0 z-50 text-white" style="background-color: var(--color-secondary);">
+  <body
+    class="font-sans text-gray-800"
+    style="
+      background-color: var(--color-background);
+      font-family: 'Inter', sans-serif;
+    "
+  >
+    <nav
+      class="shadow-xl sticky top-0 z-50 text-white"
+      style="background-color: var(--color-secondary)"
+    >
       <div class="max-w-6xl mx-auto px-4">
         <div class="flex justify-between items-center py-4">
           <div class="flex items-center space-x-3">
@@ -143,33 +36,79 @@
               alt="Nails by Wilma Logo"
               class="h-12 w-auto animate-pulse"
             />
-            <h1 class="text-3xl font-bold text-white transition-colors duration-300" style="font-family: 'Playfair Display', serif;">Nails by <span class="text-pink-500">Wilma</span></h1>
+            <h1
+              class="text-3xl font-bold text-white transition-colors duration-300"
+              style="font-family: 'Playfair Display', serif"
+            >
+              Nails by <span class="text-pink-500">Wilma</span>
+            </h1>
           </div>
           <div class="hidden md:flex items-center space-x-2">
-            <a href="#home" class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg">Home</a>
-            <a href="#gallery" class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg">Gallery</a>
-            <a href="#services" class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg">Services</a>
-            <a href="#contact" class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg">Contact</a>
+            <a
+              href="#home"
+              class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg"
+              >Home</a
+            >
+            <a
+              href="#gallery"
+              class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg"
+              >Gallery</a
+            >
+            <a
+              href="#services"
+              class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg"
+              >Services</a
+            >
+            <a
+              href="#contact"
+              class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg"
+              >Contact</a
+            >
             <a
               href="#contact"
               class="bg-pink-600 hover:bg-pink-700 text-white px-5 py-2.5 ml-4 rounded-full font-medium transition shadow-lg transform hover:scale-105"
-            >Book Now</a>
+              >Book Now</a
+            >
           </div>
           <div class="md:hidden">
-            <button class="mobile-menu-button p-2 rounded-md hover:bg-pink-500 transition-colors">
+            <button
+              class="mobile-menu-button p-2 rounded-md hover:bg-pink-500 transition-colors"
+            >
               <i data-feather="menu" class="text-white w-7 h-7"></i>
             </button>
           </div>
         </div>
       </div>
-      <div class="mobile-menu hidden md:hidden bg-pink-900/90 pb-4 px-4 shadow-inner">
-        <a href="#home" class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800" onclick="document.querySelector('.mobile-menu').classList.add('hidden')">Home</a>
-        <a href="#gallery" class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800" onclick="document.querySelector('.mobile-menu').classList.add('hidden')">Gallery</a>
-        <a href="#services" class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800" onclick="document.querySelector('.mobile-menu').classList.add('hidden')">Services</a>
-        <a href="#contact" class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200" onclick="document.querySelector('.mobile-menu').classList.add('hidden')">Contact</a>
+      <div
+        class="mobile-menu hidden md:hidden bg-pink-900/90 pb-4 px-4 shadow-inner"
+      >
+        <a
+          href="#home"
+          class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800"
+          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          >Home</a
+        >
+        <a
+          href="#gallery"
+          class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800"
+          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          >Gallery</a
+        >
+        <a
+          href="#services"
+          class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800"
+          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          >Services</a
+        >
+        <a
+          href="#contact"
+          class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200"
+          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          >Contact</a
+        >
       </div>
     </nav>
-    
+
     <section
       id="home"
       class="hero-pattern py-20 md:py-32 relative overflow-hidden"
@@ -177,31 +116,51 @@
       <div
         class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center"
       >
-        <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
-          <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight" style="font-family: 'Playfair Display', serif;">
-            Elevate Your Style with <span class="text-pink-600">Wilma's Art</span>
+        <div
+          class="md:w-1/2 mb-10 md:mb-0"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+        >
+          <h1
+            class="text-5xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight"
+            style="font-family: 'Playfair Display', serif"
+          >
+            Elevate Your Style with
+            <span class="text-pink-600">Wilma's Art</span>
           </h1>
           <p class="text-xl text-gray-600 mb-8">
-            Experience professional nail care services and bespoke nail art crafted with passion and precision. Your perfect nails are just an appointment away!
+            Experience **professional nail care services** and bespoke nail art
+            crafted with passion and precision. Your perfect nails are just an
+            appointment away!
           </p>
           <div class="flex space-x-4">
             <a
               href="#contact"
               class="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-full font-semibold text-lg transition shadow-xl transform hover:-translate-y-1 hover:scale-105"
-            >Book Your Appointment</a
+              >Book Your Appointment</a
             >
             <a
               href="#gallery"
               class="border-2 border-pink-600 text-pink-600 hover:bg-pink-100 px-8 py-3 rounded-full font-semibold text-lg transition shadow-md"
-            >View Our Gallery</a
+              >View Our Gallery</a
             >
           </div>
         </div>
-        <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
+        <div
+          class="md:w-1/2 flex justify-center"
+          data-aos="fade-left"
+          data-aos-duration="1000"
+        >
           <div class="relative w-full max-w-sm mx-auto">
-            <div class="absolute -top-8 -left-8 w-40 h-40 bg-pink-300 rounded-full opacity-30 blur-xl"></div>
-            <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-pink-400 rounded-full opacity-30 blur-xl"></div>
-            <div class="relative z-10 rounded-[3rem] shadow-2xl overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-500 bg-white p-2">
+            <div
+              class="absolute -top-8 -left-8 w-40 h-40 bg-pink-300 rounded-full opacity-30 blur-xl"
+            ></div>
+            <div
+              class="absolute -bottom-8 -right-8 w-40 h-40 bg-pink-400 rounded-full opacity-30 blur-xl"
+            ></div>
+            <div
+              class="relative z-10 rounded-[3rem] shadow-2xl overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-500 bg-white p-2"
+            >
               <div class="hero-image-wrapper rounded-[2.8rem] overflow-hidden">
                 <img
                   src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(6).webp"
@@ -218,14 +177,27 @@
     <section class="py-20 bg-white">
       <div class="max-w-6xl mx-auto px-4">
         <div class="text-center mb-16" data-aos="fade-up">
-          <h2 class="text-sm font-semibold uppercase tracking-widest text-pink-500 mb-2">Word of Mouth</h2>
-          <h3 class="text-4xl font-bold text-pink-700" style="font-family: 'Playfair Display', serif;">Client Love & Reviews</h3>
+          <h2
+            class="text-sm font-semibold uppercase tracking-widest text-pink-500 mb-2"
+          >
+            Word of Mouth
+          </h2>
+          <h3
+            class="text-4xl font-bold text-pink-700"
+            style="font-family: 'Playfair Display', serif"
+          >
+            Client Love & Reviews
+          </h3>
           <p class="text-gray-600 max-w-2xl mx-auto mt-4">
-            Don't just take our word for it—read what our amazing clients have to say!
+            Don't just take our word for it—read what our amazing clients have
+            to say!
           </p>
         </div>
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up">
+          <div
+            class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500 transition-all duration-300 hover:shadow-2xl"
+            data-aos="fade-up"
+          >
             <div class="flex mb-4 text-yellow-500">
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
@@ -233,10 +205,17 @@
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
             </div>
-            <p class="text-gray-700 mb-4 text-lg italic">"Wilma is a true artist! My nails lasted for weeks and the art was flawless. I recommend her to everyone!"</p>
+            <p class="text-gray-700 mb-4 text-lg italic">
+              "Wilma is a true artist! My nails lasted for weeks and the art was
+              flawless. I recommend her to everyone!"
+            </p>
             <p class="font-bold text-pink-600">- Sarah K.</p>
           </div>
-          <div class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="150">
+          <div
+            class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500 transition-all duration-300 hover:shadow-2xl"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
             <div class="flex mb-4 text-yellow-500">
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
@@ -244,10 +223,17 @@
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
             </div>
-            <p class="text-gray-700 mb-4 text-lg italic">"The most relaxing manicure I've ever had. Wilma's attention to detail is truly amazing. A wonderful experience."</p>
+            <p class="text-gray-700 mb-4 text-lg italic">
+              "The most relaxing manicure I've ever had. Wilma's attention to
+              detail is truly amazing. A wonderful experience."
+            </p>
             <p class="font-bold text-pink-600">- Jessica M.</p>
           </div>
-          <div class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="300">
+          <div
+            class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500 transition-all duration-300 hover:shadow-2xl"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             <div class="flex mb-4 text-yellow-500">
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
@@ -255,12 +241,18 @@
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
             </div>
-            <p class="text-gray-700 mb-4 text-lg italic">"Life isn't perfect but my nails always are. Done @Nails by Wilma! 🔥💯"</p>
+            <p class="text-gray-700 mb-4 text-lg italic">
+              "Life isn't perfect but my nails always are. Done @Nails by Wilma!
+              🔥💯"
+            </p>
             <p class="font-bold text-pink-600">- Chantelle C.</p>
           </div>
         </div>
         <div class="grid md:grid-cols-3 gap-8 mt-8">
-          <div class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up">
+          <div
+            class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500 transition-all duration-300 hover:shadow-2xl"
+            data-aos="fade-up"
+          >
             <div class="flex mb-4 text-yellow-500">
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
@@ -268,10 +260,17 @@
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
             </div>
-            <p class="text-gray-700 mb-4 text-lg italic">"She did my nails beautifully – even better than my matric farewell nails! Highly recommend!"</p>
+            <p class="text-gray-700 mb-4 text-lg italic">
+              "She did my nails beautifully – even better than my matric
+              farewell nails! Highly recommend!"
+            </p>
             <p class="font-bold text-pink-600">- Jane F.</p>
           </div>
-          <div class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="150">
+          <div
+            class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500 transition-all duration-300 hover:shadow-2xl"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
             <div class="flex mb-4 text-yellow-500">
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
@@ -279,119 +278,349 @@
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
               <i data-feather="star" class="w-5 h-5 fill-current"></i>
             </div>
-            <p class="text-gray-700 mb-4 text-lg italic">"I get compliments on my nails everywhere I go. Wilma's designs are stunning! She never disappoints."</p>
+            <p class="text-gray-700 mb-4 text-lg italic">
+              "I get compliments on my nails everywhere I go. Wilma's designs
+              are stunning! She never disappoints."
+            </p>
             <p class="font-bold text-pink-600">- Danielle W.</p>
           </div>
-</div>
+        </div>
       </div>
     </section>
 
-    <section id="gallery" class="py-20" style="background-color: var(--color-background);">
+    <section
+      id="gallery"
+      class="py-20"
+      style="background-color: var(--color-background)"
+    >
       <div class="max-w-6xl mx-auto px-4">
         <div class="text-center mb-16" data-aos="fade-up">
-          <h2 class="text-sm font-semibold uppercase tracking-widest text-pink-500 mb-2">Our Masterpieces</h2>
-          <h3 class="text-4xl font-bold text-pink-700" style="font-family: 'Playfair Display', serif;">The Wilma Nail Gallery</h3>
+          <h2
+            class="text-sm font-semibold uppercase tracking-widest text-pink-500 mb-2"
+          >
+            Our Masterpieces
+          </h2>
+          <h3
+            class="text-4xl font-bold text-pink-700"
+            style="font-family: 'Playfair Display', serif"
+          >
+            The Wilma Nail Gallery
+          </h3>
           <p class="text-gray-600 max-w-2xl mx-auto mt-4">
             Browse our portfolio of stunning nail designs, crafted with care and
-            precision for delighted clients. Click an image to view it full-screen!
+            precision for delighted clients. Click an image to view it
+            full-screen!
           </p>
         </div>
         <div
           class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 gallery-container"
         >
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(6).webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(6).webp" alt="Pink and white marble almond shape nail design" class="w-full h-full object-cover aspect-square" loading="lazy"/>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(6).webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(6).webp"
+              alt="Pink and white marble almond shape nail design"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(5).webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(5).webp"
+              alt="Elegant square tip French manicure with a modern twist"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-16.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-16.webp"
+              alt="Long acrylic nails with mixed pastel colors and glitter accents"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-04.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-04.webp"
+              alt="Close-up of a vibrant, intricate hand-painted floral nail art design"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-09.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-09.webp"
+              alt="Short, neat gel nails in a deep burgundy color perfect for autumn"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-27.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-27.webp"
+              alt="Minimalist nail design with a clear base and small metallic foil details"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(4).webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(4).webp"
+              alt="Soft pink ombre nails with a subtle shimmer finish, long coffin shape"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-14.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-14.webp"
+              alt="Fun, colorful abstract splatter nail art on a short round nail shape"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(3).webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(3).webp"
+              alt="Matte black nails with glossy French tips, very chic and sophisticated"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-01.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-01.webp"
+              alt="Vivid neon pink and orange striped nail art for a summer holiday look"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-11.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-11.webp"
+              alt="Simple white and gold glitter gradient on oval shaped nails"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(2).webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(2).webp"
+              alt="Delicate baby blue nails with tiny white clouds painted on each nail"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(1).webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(1).webp"
+              alt="Deep red glossy nails with a single accent nail featuring diamond rhinestones"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22.webp"
+              alt="Pastel yellow and mint green mismatched nails with a high-shine top coat"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-24.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-24.webp"
+              alt="Natural nude gel polish with a delicate chrome effect on the tips"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-04.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-04.webp"
+              alt="Geometric nail art using black lines and negative space on natural nails"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-29.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-29.webp"
+              alt="Soft pink and white marble almond shape nail design"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-03.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-03.webp"
+              alt="Elegant square tip French manicure with a modern twist"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-04.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-04.webp"
+              alt="Long acrylic nails with mixed pastel colors and glitter accents"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-26.webp"
+          >
+            <img
+              src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-26.webp"
+              alt="Vibrant, intricate hand-painted floral nail art design"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
         </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="100" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(5).webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(5).webp" alt="Elegant square tip French manicure with a modern twist" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="200" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-16.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-16.webp" alt="Long acrylic nails with mixed pastel colors and glitter accents" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="300" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-04.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-04.webp" alt="Close-up of a vibrant, intricate hand-painted floral nail art design" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-09.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-09.webp" alt="Short, neat gel nails in a deep burgundy color perfect for autumn" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="100" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-27.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-27.webp" alt="Minimalist nail design with a clear base and small metallic foil details" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="200" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(4).webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(4).webp" alt="Soft pink ombre nails with a subtle shimmer finish, long coffin shape" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="300" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-14.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-14.webp" alt="Fun, colorful abstract splatter nail art on a short round nail shape" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(3).webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(3).webp" alt="Matte black nails with glossy French tips, very chic and sophisticated" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="100" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-01.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-01.webp" alt="Vivid neon pink and orange striped nail art for a summer holiday look" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="200" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-11.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-11.webp" alt="Simple white and gold glitter gradient on oval shaped nails" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="300" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(2).webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(2).webp" alt="Delicate baby blue nails with tiny white clouds painted on each nail" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(1).webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22%20(1).webp" alt="Deep red glossy nails with a single accent nail featuring diamond rhinestones" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="100" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-05-22.webp" alt="Pastel yellow and mint green mismatched nails with a high-shine top coat" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="200" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-24.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-24.webp" alt="Natural nude gel polish with a delicate chrome effect on the tips" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="300" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-04.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-04.webp" alt="Geometric nail art using black lines and negative space on natural nails" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-29.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-29.webp" alt="Soft pink and white marble almond shape nail design" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="100" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-03.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-07-03.webp" alt="Elegant square tip French manicure with a modern twist" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="200" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-04.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-08-04.webp" alt="Long acrylic nails with mixed pastel colors and glitter accents" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        <div class="gallery-item rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="300" data-src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-26.webp">
-          <img src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/2025-09-26.webp" alt="Vibrant, intricate hand-painted floral nail art design" class="w-full h-full object-cover aspect-square" loading="lazy"/>
-        </div>
-        </div>
-    </div>
-  </section>
-  
-  <div id="lightbox" class="lightbox">
-    <button id="lightbox-close" class="lightbox-close" aria-label="Close Lightbox">
-      <i data-feather="x"></i>
-    </button>
-    <div class="lightbox-content">
-      <img id="lightbox-image" class="lightbox-image rounded-xl" src="" alt="Full-screen nail art preview" />
-    </div>
-    <div class="lightbox-nav absolute w-full px-4 md:px-12">
-      <button id="lightbox-prev" aria-label="Previous Image">
-        <i data-feather="chevron-left"></i>
+      </div>
+    </section>
+
+    <div id="lightbox" class="lightbox">
+      <button
+        id="lightbox-close"
+        class="lightbox-close"
+        aria-label="Close Lightbox"
+      >
+        <i data-feather="x"></i>
       </button>
-      <button id="lightbox-next" aria-label="Next Image">
-        <i data-feather="chevron-right"></i>
-      </button>
+      <div class="lightbox-content">
+        <img
+          id="lightbox-image"
+          class="lightbox-image rounded-xl"
+          src=""
+          alt="Full-screen nail art preview"
+        />
+      </div>
+      <div class="lightbox-nav absolute w-full px-4 md:px-12">
+        <button id="lightbox-prev" aria-label="Previous Image">
+          <i data-feather="chevron-left"></i>
+        </button>
+        <button id="lightbox-next" aria-label="Next Image">
+          <i data-feather="chevron-right"></i>
+        </button>
+      </div>
     </div>
-  </div>
 
     <section id="services" class="py-20 bg-white">
       <div class="max-w-6xl mx-auto px-4">
         <div class="text-center mb-16" data-aos="fade-up">
-          <h2 class="text-sm font-semibold uppercase tracking-widest text-pink-500 mb-2">Our Offerings</h2>
-          <h3 class="text-4xl font-bold text-pink-700" style="font-family: 'Playfair Display', serif;">Expert Services Menu</h3>
+          <h2
+            class="text-sm font-semibold uppercase tracking-widest text-pink-500 mb-2"
+          >
+            Our Offerings
+          </h2>
+          <h3
+            class="text-4xl font-bold text-pink-700"
+            style="font-family: 'Playfair Display', serif"
+          >
+            Expert Services Menu
+          </h3>
           <p class="text-gray-600 max-w-2xl mx-auto mt-4">
-            Professional nail care and beauty services tailored to leave you feeling pampered and polished.
+            Professional nail care and beauty services tailored to leave you
+            feeling pampered and polished.
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
           <div
             class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
             data-aos="fade-up"
@@ -400,15 +629,21 @@
               class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
               aria-label="Manicure service"
             >
-              <i data-feather="chevrons-right" class="text-pink-600 w-6 h-6" aria-hidden="true"></i>
+              <i
+                data-feather="chevrons-right"
+                class="text-pink-600 w-6 h-6"
+                aria-hidden="true"
+              ></i>
             </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Manicures (Classic & Gel)</h4>
+            <h4 class="text-xl font-bold text-gray-800 mb-2">
+              Manicures (Classic & Gel)
+            </h4>
             <p class="text-gray-600">
-              Classic, gel, or luxurious spa manicures to keep your hands looking
-              beautiful, healthy, and perfectly groomed.
+              Classic, gel, or luxurious spa manicures to keep your hands
+              looking beautiful, healthy, and perfectly groomed.
             </p>
           </div>
-          
+
           <div
             class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
             data-aos="fade-up"
@@ -418,15 +653,21 @@
               class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
               aria-label="Pedicure service"
             >
-              <i data-feather="sun" class="text-pink-600 w-6 h-6" aria-hidden="true"></i>
+              <i
+                data-feather="sun"
+                class="text-pink-600 w-6 h-6"
+                aria-hidden="true"
+              ></i>
             </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Pedicures (Relaxation & Repair)</h4>
+            <h4 class="text-xl font-bold text-gray-800 mb-2">
+              Pedicures (Relaxation & Repair)
+            </h4>
             <p class="text-gray-600">
-              Relaxing foot treatments and pedicures with various options to pamper your feet and
-              leave your toes vibrant.
+              Relaxing foot treatments and pedicures with various options to
+              pamper your feet and leave your toes vibrant.
             </p>
           </div>
-          
+
           <div
             class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
             data-aos="fade-up"
@@ -436,15 +677,21 @@
               class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
               aria-label="Nail art service"
             >
-              <i data-feather="feather" class="text-pink-600 w-6 h-6" aria-hidden="true"></i>
+              <i
+                data-feather="feather"
+                class="text-pink-600 w-6 h-6"
+                aria-hidden="true"
+              ></i>
             </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Custom Nail Art & Design</h4>
+            <h4 class="text-xl font-bold text-gray-800 mb-2">
+              Custom Nail Art & Design
+            </h4>
             <p class="text-gray-600">
-              Bespoke, custom nail designs to express your personal style with unmatched precision
-              and high-level creativity.
+              Bespoke, custom nail designs to express your personal style with
+              unmatched precision and high-level creativity.
             </p>
           </div>
-          
+
           <div
             class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
             data-aos="fade-up"
@@ -453,16 +700,21 @@
               class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
               aria-label="Eyebrow tinting service"
             >
-              <i data-feather="eye" class="text-pink-600 w-6 h-6" aria-hidden="true"></i>
+              <i
+                data-feather="eye"
+                class="text-pink-600 w-6 h-6"
+                aria-hidden="true"
+              ></i>
             </div>
             <h4 class="text-xl font-bold text-gray-800 mb-2">
               Eyebrow Tinting
             </h4>
             <p class="text-gray-600">
-              Expert eyebrow tinting to enhance your natural beauty, adding depth and definition to perfectly frame your face.
+              Expert eyebrow tinting to enhance your natural beauty, adding
+              depth and definition to perfectly frame your face.
             </p>
           </div>
-          
+
           <div
             class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
             data-aos="fade-up"
@@ -472,24 +724,42 @@
               class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
               aria-label="Eyebrow waxing service"
             >
-              <i data-feather="tool" class="text-pink-600 w-6 h-6" aria-hidden="true"></i>
+              <i
+                data-feather="tool"
+                class="text-pink-600 w-6 h-6"
+                aria-hidden="true"
+              ></i>
             </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Eyebrow Waxing & Shaping</h4>
+            <h4 class="text-xl font-bold text-gray-800 mb-2">
+              Eyebrow Waxing & Shaping
+            </h4>
             <p class="text-gray-600">
               Say goodbye to stray hairs and hello to perfectly shaped brows.
               Waxed with the utmost care and finesse for a clean look.
             </p>
           </div>
-          
         </div>
       </div>
     </section>
 
-    <section id="contact" class="py-20" style="background-color: var(--color-background);">
+    <section
+      id="contact"
+      class="py-20"
+      style="background-color: var(--color-background)"
+    >
       <div class="max-w-6xl mx-auto px-4">
         <div class="text-center mb-16" data-aos="fade-up">
-          <h2 class="text-sm font-semibold uppercase tracking-widest text-pink-500 mb-2">Book Your Session</h2>
-          <h3 class="text-4xl font-bold text-pink-700" style="font-family: 'Playfair Display', serif;">Get In Touch</h3>
+          <h2
+            class="text-sm font-semibold uppercase tracking-widest text-pink-500 mb-2"
+          >
+            Book Your Session
+          </h2>
+          <h3
+            class="text-4xl font-bold text-pink-700"
+            style="font-family: 'Playfair Display', serif"
+          >
+            Get In Touch
+          </h3>
           <p class="text-gray-600 max-w-2xl mx-auto mt-4">
             Please book in advance as we may be fully booked at times. We'll do
             our best to accommodate you as quickly as possible.
@@ -497,21 +767,28 @@
         </div>
 
         <div class="flex flex-col md:flex-row gap-12">
-          
           <div class="md:w-1/2" data-aos="fade-right">
-            <div class="bg-white p-8 rounded-xl shadow-2xl border-t-8 border-pink-500">
-              <h4 class="text-2xl font-bold text-pink-600 mb-6" style="font-family: 'Playfair Display', serif;">
+            <div
+              class="bg-white p-8 rounded-xl shadow-2xl border-t-8 border-pink-500"
+            >
+              <h4
+                class="text-2xl font-bold text-pink-600 mb-6"
+                style="font-family: 'Playfair Display', serif"
+              >
                 Contact Information
               </h4>
 
               <div class="space-y-6">
-                
                 <div class="flex items-start">
-                  <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                  <div
+                    class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                  >
                     <i data-feather="map-pin" class="text-pink-500 w-6 h-6"></i>
                   </div>
                   <div>
-                    <h5 class="font-bold text-gray-800 text-lg">Our Location</h5>
+                    <h5 class="font-bold text-gray-800 text-lg">
+                      Our Location
+                    </h5>
                     <p class="text-gray-600">
                       27 Prinsloo Drive, Still Bay West
                     </p>
@@ -525,11 +802,15 @@
                 </div>
 
                 <div class="flex items-start">
-                  <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                  <div
+                    class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                  >
                     <i data-feather="mail" class="text-pink-500 w-6 h-6"></i>
                   </div>
                   <div>
-                    <h5 class="font-bold text-gray-800 text-lg">Email Address</h5>
+                    <h5 class="font-bold text-gray-800 text-lg">
+                      Email Address
+                    </h5>
                     <a
                       href="mailto:wilmajprinsloo@gmail.com"
                       class="text-pink-500 hover:text-pink-700 font-medium transition-colors"
@@ -539,11 +820,15 @@
                 </div>
 
                 <div class="flex items-start">
-                  <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                  <div
+                    class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                  >
                     <i data-feather="phone" class="text-pink-500 w-6 h-6"></i>
                   </div>
                   <div>
-                    <h5 class="font-bold text-gray-800 text-lg">Call or WhatsApp</h5>
+                    <h5 class="font-bold text-gray-800 text-lg">
+                      Call or WhatsApp
+                    </h5>
                     <a
                       href="tel:+27635978505"
                       class="text-pink-500 hover:text-pink-700 font-medium transition-colors"
@@ -551,9 +836,8 @@
                     >
                   </div>
                 </div>
-
               </div>
-              
+
               <div class="mt-10 pt-6 border-t border-pink-200">
                 <img
                   src="https://huggingface.co/spaces/UnTam3d/nails-by-wilma/resolve/main/images/Nails_by_Wilma_Location.webp"
@@ -565,13 +849,22 @@
           </div>
 
           <div class="md:w-1/2" data-aos="fade-left">
-            <form class="bg-white p-8 rounded-xl shadow-2xl border-t-8 border-pink-500" action="https://formspree.io/f/mdkwnpqw" method="POST">
-              <h4 class="text-2xl font-bold text-pink-600 mb-6" style="font-family: 'Playfair Display', serif;">
+            <form
+              class="bg-white p-8 rounded-xl shadow-2xl border-t-8 border-pink-500"
+              action="https://formspree.io/f/mdkwnpqw"
+              method="POST"
+            >
+              <h4
+                class="text-2xl font-bold text-pink-600 mb-6"
+                style="font-family: 'Playfair Display', serif"
+              >
                 Send Us a Message
               </h4>
-              
+
               <div class="mb-4">
-                <label for="name" class="block text-gray-700 font-medium mb-2">Your Name <span class="text-red-500">*</span></label>
+                <label for="name" class="block text-gray-700 font-medium mb-2"
+                  >Your Name <span class="text-red-500">*</span></label
+                >
                 <input
                   type="text"
                   id="name"
@@ -581,9 +874,11 @@
                   required
                 />
               </div>
-              
+
               <div class="mb-4">
-                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                <label for="email" class="block text-gray-700 font-medium mb-2"
+                  >Email Address</label
+                >
                 <input
                   type="email"
                   id="email"
@@ -592,9 +887,11 @@
                   placeholder="Email (optional)"
                 />
               </div>
-              
+
               <div class="mb-4">
-                <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number <span class="text-red-500">*</span></label>
+                <label for="phone" class="block text-gray-700 font-medium mb-2"
+                  >Phone Number <span class="text-red-500">*</span></label
+                >
                 <input
                   type="tel"
                   id="phone"
@@ -604,9 +901,13 @@
                   required
                 />
               </div>
-              
+
               <div class="mb-4">
-                <label for="service" class="block text-gray-700 font-medium mb-2">Service Interested In</label>
+                <label
+                  for="service"
+                  class="block text-gray-700 font-medium mb-2"
+                  >Service Interested In</label
+                >
                 <select
                   id="service"
                   name="service"
@@ -621,9 +922,13 @@
                   <option value="other">Other Inquiry</option>
                 </select>
               </div>
-              
+
               <div class="mb-6">
-                <label for="message" class="block text-gray-700 font-medium mb-2">Your Message <span class="text-red-500">*</span></label>
+                <label
+                  for="message"
+                  class="block text-gray-700 font-medium mb-2"
+                  >Your Message <span class="text-red-500">*</span></label
+                >
                 <textarea
                   id="message"
                   name="message"
@@ -633,7 +938,7 @@
                   required
                 ></textarea>
               </div>
-              
+
               <button
                 type="submit"
                 class="w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-xl font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5"
@@ -647,147 +952,102 @@
       </div>
     </section>
 
-    <footer class="text-white py-12" style="background-color: var(--color-secondary);">
+    <footer
+      class="text-white py-12"
+      style="background-color: var(--color-secondary)"
+    >
       <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-pink-800 pb-8 mb-8">
-          
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-pink-800 pb-8 mb-8"
+        >
           <div>
-            <h4 class="text-xl font-bold text-pink-500 mb-4" style="font-family: 'Playfair Display', serif;">Nails by Wilma</h4>
+            <h4
+              class="text-xl font-bold text-pink-500 mb-4"
+              style="font-family: 'Playfair Display', serif"
+            >
+              Nails by Wilma
+            </h4>
             <p class="text-gray-400">
-              Your destination for professional, artistic, and luxurious nail care and beauty services in Still Bay. We bring your vision to life.
+              Your destination for professional, artistic, and luxurious nail
+              care and beauty services in Still Bay. We bring your vision to
+              life.
             </p>
           </div>
-          
+
           <div>
             <h4 class="text-xl font-bold text-pink-500 mb-4">Quick Links</h4>
             <ul class="space-y-2">
               <li>
-                <a href="#home" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >Home</a
+                >
               </li>
               <li>
-                <a href="#gallery" class="text-gray-400 hover:text-white transition-colors duration-300">Gallery</a>
+                <a
+                  href="#gallery"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >Gallery</a
+                >
               </li>
               <li>
-                <a href="#services" class="text-gray-400 hover:text-white transition-colors duration-300">Services</a>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >Services</a
+                >
               </li>
               <li>
-                <a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-300">Contact & Booking</a>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >Contact & Booking</a
+                >
               </li>
             </ul>
           </div>
-          
+
           <div>
-            <h4 class="text-xl font-bold text-pink-500 mb-4">Connect With Us</h4>
+            <h4 class="text-xl font-bold text-pink-500 mb-4">
+              Connect With Us
+            </h4>
             <div class="flex space-x-4">
-              
-              <a href="mailto:wilmajprinsloo@gmail.com"
+              <a
+                href="mailto:wilmajprinsloo@gmail.com"
                 class="w-10 h-10 bg-pink-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
-                aria-label="Email Wilma">
+                aria-label="Email Wilma"
+              >
                 <i data-feather="mail" class="w-5 h-5"></i>
               </a>
-              
-              <a href="tel:+27635978505"
+
+              <a
+                href="tel:+27635978505"
                 class="w-10 h-10 bg-pink-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
-                aria-label="Call Wilma">
+                aria-label="Call Wilma"
+              >
                 <i data-feather="phone" class="w-5 h-5"></i>
               </a>
-              
-              <a href="https://share.google/7oTRMbvnIgs1R8oF9" target="_blank"
+
+              <a
+                href="https://share.google/7oTRMbvnIgs1R8oF9"
+                target="_blank"
                 class="w-10 h-10 bg-pink-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
-                aria-label="Find us on Map">
+                aria-label="Find us on Map"
+              >
                 <i data-feather="map-pin" class="w-5 h-5"></i>
               </a>
-              
             </div>
           </div>
-          
         </div>
 
         <div class="text-center text-gray-500 text-sm">
-          &copy; <span id="current-year"></span> Nails by Wilma. All Rights Reserved.
+          &copy; <span id="current-year"></span> Nails by Wilma. All Rights
+          Reserved.
         </div>
       </div>
     </footer>
 
-    <script>
-      // 1. Feather Icons Initialization
-      feather.replace();
-
-      // 2. AOS Initialization
-      AOS.init({
-        once: true,
-        duration: 800,
-        offset: 50,
-      });
-
-      // 3. Mobile Menu Toggle
-      const button = document.querySelector('.mobile-menu-button');
-      const menu = document.querySelector('.mobile-menu');
-      button.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-      });
-
-      // 4. Dynamic Year in Footer
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-
-      // 5. Lightbox Functionality
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImage = document.getElementById('lightbox-image');
-      const galleryItems = document.querySelectorAll('.gallery-item');
-      const closeButton = document.getElementById('lightbox-close');
-      const prevButton = document.getElementById('lightbox-prev');
-      const nextButton = document.getElementById('lightbox-next');
-      let currentIndex = 0;
-      const imageSources = Array.from(galleryItems).map(item => item.dataset.src);
-
-      function openLightbox(index) {
-        currentIndex = index;
-        lightboxImage.src = imageSources[currentIndex];
-        lightbox.style.display = 'flex';
-      }
-
-      function closeLightbox() {
-        lightbox.style.display = 'none';
-      }
-
-      function showNext() {
-        currentIndex = (currentIndex + 1) % imageSources.length;
-        lightboxImage.src = imageSources[currentIndex];
-      }
-
-      function showPrev() {
-        currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
-        lightboxImage.src = imageSources[currentIndex];
-      }
-
-      galleryItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-          openLightbox(index);
-        });
-      });
-
-      closeButton.addEventListener('click', closeLightbox);
-      prevButton.addEventListener('click', showPrev);
-      nextButton.addEventListener('click', showNext);
-
-      // Close lightbox on outside click or ESC key
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-          closeLightbox();
-        }
-      });
-      document.addEventListener('keydown', (e) => {
-        if (lightbox.style.display === 'flex') {
-          if (e.key === 'Escape') {
-            closeLightbox();
-          } else if (e.key === 'ArrowRight') {
-            showNext();
-          } else if (e.key === 'ArrowLeft') {
-            showPrev();
-          }
-        }
-      });
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
-
