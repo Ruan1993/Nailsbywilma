@@ -31,10 +31,26 @@ const imageSources = Array.from(galleryItems).map(
   (item) => item.dataset.src
 );
 
+// NEW: Helper function to preload an image by its index
+function preloadImage(index) {
+  // Ensure index wraps around correctly (handles positive and negative)
+  const newIndex = (index + imageSources.length) % imageSources.length;
+  const src = imageSources[newIndex];
+
+  // Create a new Image object in memory.
+  // Setting its .src triggers the browser to download it and cache it.
+  const img = new Image();
+  img.src = src;
+}
+
 function openLightbox(index) {
   currentIndex = index;
   lightboxImage.src = imageSources[currentIndex];
   lightbox.style.display = "flex";
+  
+  // Preload the next and previous images
+  preloadImage(currentIndex + 1);
+  preloadImage(currentIndex - 1);
 }
 
 function closeLightbox() {
@@ -44,12 +60,18 @@ function closeLightbox() {
 function showNext() {
   currentIndex = (currentIndex + 1) % imageSources.length;
   lightboxImage.src = imageSources[currentIndex];
+  
+  // Preload the *next* image in the sequence
+  preloadImage(currentIndex + 1);
 }
 
 function showPrev() {
   currentIndex =
     (currentIndex - 1 + imageSources.length) % imageSources.length;
   lightboxImage.src = imageSources[currentIndex];
+  
+  // Preload the *previous* image in the sequence
+  preloadImage(currentIndex - 1);
 }
 
 galleryItems.forEach((item, index) => {
@@ -80,7 +102,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// 6. Lightbox Swipe Functionality (New Feature)
+// 6. Lightbox Swipe Functionality (No change to this section)
 let touchstartX = 0;
 let touchendX = 0;
 // Define the minimum distance required to register as a swipe
