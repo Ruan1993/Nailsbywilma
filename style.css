@@ -1,3 +1,22 @@
+/* Add this to the top of style.css */
+* {
+    /* Critical property to ensure no hidden element causes overflow */
+    box-sizing: border-box; 
+}
+
+/* Apply overflow fix to both html and body for robustness */
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0; /* Set margin to zero */
+  padding: 0; /* Set padding to zero */
+  /* This ensures the body is the correct size and centered */
+  width: 100%; 
+  position: relative;
+}
+
 /* Base colors */
 :root {
   --color-primary: #ec4899; /* Pink-500 */
@@ -65,23 +84,31 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.95); /* Deeper overlay */
   z-index: 1000;
-  align-items: center;
+  /* Ensure the content container is centered */
+  align-items: center; 
   justify-content: center;
   backdrop-filter: blur(5px);
 }
 .lightbox-content {
-  max-width: 90%;
-  max-height: 90%;
+  /* Use 100% of the lightbox space, with padding for safety */
+  width: 100%;
+  height: 100%;
+  /* Final vertical padding fix for clipping (top/bottom) */
+  padding: 3rem 1rem; 
   position: relative;
+  /* This ensures the image inside is centered relative to this content area */
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
 }
 .lightbox-image {
-  max-width: 90vw;
-  max-height: 80vh;
+  max-width: 100%; /* Ensures it doesn't overflow its container */
+  max-height: 85vh; /* Final height restriction to prevent vertical clipping */
   object-fit: contain;
   /* SHOCKING NEON SILVER/GLITTER EFFECT for Lightbox */
   box-shadow: 0 0 15px 2px rgb(250, 14, 226),
     /* Bright Magenta/Pink Core Sparkle */ 0 0 40px 8px var(--color-primary),
-    /* Strong Pink Neon Glow */ 0 0 80px 10px #ffffff; /* Wide Silver/Glitter Bloom */
+    0 0 80px 10px #ffffff; /* Wide Silver/Glitter Bloom */
   border-radius: 1rem;
 }
 .lightbox-nav button {
@@ -141,3 +168,4 @@
   width: 100%;
   object-fit: cover;
 }
+/* END OF FILE */
