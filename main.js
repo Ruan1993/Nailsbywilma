@@ -1,23 +1,37 @@
-// 1. Feather Icons Initialization
-feather.replace();
+// 1. Feather Icons Initialization (safe)
+try {
+  if (window.feather && typeof feather.replace === "function") {
+    feather.replace();
+  }
+} catch (_) {}
 
-// 2. AOS Initialization
-AOS.init({
-  once: true,
-  duration: 800,
-  offset: 50,
+window.addEventListener("load", () => {
+  try {
+    if (window.feather && typeof feather.replace === "function") {
+      feather.replace();
+    }
+  } catch (_) {}
 });
+
+// 2. AOS Initialization (safe)
+try {
+  if (window.AOS && typeof AOS.init === "function") {
+    AOS.init({ once: true, duration: 800, offset: 50 });
+  }
+} catch (_) {}
 
 // 3. Mobile Menu Toggle
 const button = document.querySelector(".mobile-menu-button");
 const menu = document.querySelector(".mobile-menu");
-button.addEventListener("click", () => {
-  menu.classList.toggle("hidden");
-});
+if (button && menu) {
+  button.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+}
 
 // 4. Dynamic Year in Footer
-document.getElementById("current-year").textContent =
-  new Date().getFullYear();
+const yearEl = document.getElementById("current-year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // 5. Lightbox Functionality
 const lightbox = document.getElementById("lightbox");
@@ -74,24 +88,28 @@ function showPrev() {
   preloadImage(currentIndex - 1);
 }
 
-galleryItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    openLightbox(index);
+if (galleryItems && galleryItems.length > 0) {
+  galleryItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      openLightbox(index);
+    });
   });
-});
+}
 
-closeButton.addEventListener("click", closeLightbox);
-prevButton.addEventListener("click", showPrev);
-nextButton.addEventListener("click", showNext);
+if (closeButton) closeButton.addEventListener("click", closeLightbox);
+if (prevButton) prevButton.addEventListener("click", showPrev);
+if (nextButton) nextButton.addEventListener("click", showNext);
 
 // Close lightbox on outside click or ESC key
-lightbox.addEventListener("click", (e) => {
-  if (e.target === lightbox) {
-    closeLightbox();
-  }
-});
+if (lightbox) {
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+}
 document.addEventListener("keydown", (e) => {
-  if (lightbox.style.display === "flex") {
+  if (lightbox && lightbox.style.display === "flex") {
     if (e.key === "Escape") {
       closeLightbox();
     } else if (e.key === "ArrowRight") {
@@ -123,14 +141,93 @@ function checkSwipeDirection() {
 }
 
 // Touch start: record the starting X position
-lightbox.addEventListener("touchstart", (e) => {
-  // Use e.changedTouches[0].screenX for the initial touch point
-  touchstartX = e.changedTouches[0].screenX;
-});
+if (lightbox) {
+  lightbox.addEventListener("touchstart", (e) => {
+    touchstartX = e.changedTouches[0].screenX;
+  });
 
 // Touch end: record the ending X position and check the swipe
-lightbox.addEventListener("touchend", (e) => {
-  // Use e.changedTouches[0].screenX for the final touch point
-  touchendX = e.changedTouches[0].screenX;
-  checkSwipeDirection();
-});
+  lightbox.addEventListener("touchend", (e) => {
+    touchendX = e.changedTouches[0].screenX;
+    checkSwipeDirection();
+  });
+}
+
+const backToTop = document.getElementById("back-to-top");
+function toggleBackToTop() {
+  if (window.scrollY > 400) {
+    backToTop.classList.add("show");
+  } else {
+    backToTop.classList.remove("show");
+  }
+}
+let ticking = false;
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      toggleBackToTop();
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
+if (backToTop) {
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+toggleBackToTop();
+
+const form = document.getElementById("form");
+if (form) {
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const statusEl = document.getElementById("form-status");
+  function showStatus(type, message) {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.classList.remove(
+      "hidden",
+      "bg-green-50",
+      "text-green-700",
+      "border-green-300",
+      "bg-red-50",
+      "text-red-700",
+      "border-red-300"
+    );
+    if (type === "success") {
+      statusEl.classList.add("bg-green-50", "text-green-700", "border", "border-green-300");
+    } else {
+      statusEl.classList.add("bg-red-50", "text-red-700", "border", "border-red-300");
+    }
+  }
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    formData.append("access_key", "f0345ed1-fc1a-4da3-bddb-f3a86377f34f");
+    const originalText = submitBtn ? submitBtn.textContent : "Send";
+    if (submitBtn) {
+      submitBtn.textContent = "Sending...";
+      submitBtn.disabled = true;
+    }
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      if (response.ok) {
+        showStatus("success", "Thank you! Your message has been sent. I will respond shortly.");
+        form.reset();
+      } else {
+        showStatus("error", "Error: " + (data && data.message ? data.message : "Unknown error"));
+      }
+    } catch (_) {
+      showStatus("error", "Something went wrong. Please try again.");
+    } finally {
+      if (submitBtn) {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    }
+  });
+}

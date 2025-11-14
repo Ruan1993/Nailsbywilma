@@ -10,10 +10,11 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" as="image" href="images/Nails_Example_1.webp" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -26,7 +27,7 @@
   >
   
     <nav
-      class="shadow-xl sticky top-0 z-50 text-white"
+      class="shadow-xl fixed top-0 left-0 right-0 z-50 text-white"
       style="background-color: var(--color-secondary)"
     >
       <div class="max-w-6xl mx-auto px-4">
@@ -66,8 +67,7 @@
               >Contact</a
             >
             <a
-              href="https://calendly.com/your-username"
-              target="_blank"
+              href="#contact"
               class="bg-pink-600 hover:bg-pink-700 text-white px-5 py-2.5 ml-4 rounded-full font-medium transition shadow-lg transform hover:scale-105"
               >Book Now</a
             >
@@ -137,8 +137,7 @@
           </p>
           <div class="flex space-x-4">
             <a
-              href="https://calendly.com/your-username"
-              target="_blank"
+              href="#contact"
               class="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-full font-semibold text-lg transition shadow-xl transform hover:-translate-y-1 hover:scale-105"
               >Book Your Appointment</a
             >
@@ -169,6 +168,7 @@
                   src="images/Nails_Example_1.webp"
                   alt="Stunning pink and white marble almond shape nail design"
                   class="rounded-[2.8rem]"
+                  fetchpriority="high"
                 />
               </div>
             </div>
@@ -691,8 +691,7 @@
             <button id="lightbox-next" aria-label="Next Image" class="pointer-events-auto">
                 <i data-feather="chevron-right"></i>
             </button>
-        </div>
-        </div>
+      </div>
     </div>
 
     <section id="services" class="py-20 bg-white">
@@ -938,6 +937,7 @@
                   src="images/Nails_by_Wilma_Location.webp"
                   alt="Nails by Wilma Location Map"
                   class="rounded-xl shadow-lg w-full"
+                  loading="lazy" decoding="async"
                 />
               </div>
             </div>
@@ -945,10 +945,12 @@
 
           <div class="md:w-1/2" data-aos="fade-left">
             <form
+              id="form"
               class="bg-white p-8 rounded-xl shadow-2xl border-t-8 border-pink-500"
-              action="https://formspree.io/f/mdkwnpqw"
+              action="#"
               method="POST"
             >
+              <div id="form-status" class="hidden mb-4 rounded-lg border p-4 text-sm" aria-live="polite"></div>
               <h4
                 class="text-2xl font-bold text-pink-600 mb-6"
                 style="font-family: 'Playfair Display', serif"
@@ -1110,7 +1112,7 @@
             <div class="flex space-x-4">
               <a
                 href="mailto:wilmajprinsloo@gmail.com"
-                class="w-10 h-10 bg-pink-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
+                class="w-10 h-10 bg-pink-800 text-white rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
                 aria-label="Email Wilma"
               >
                 <i data-feather="mail" class="w-5 h-5"></i>
@@ -1118,7 +1120,7 @@
 
               <a
                 href="tel:+27635978505"
-                class="w-10 h-10 bg-pink-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
+                class="w-10 h-10 bg-pink-800 text-white rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
                 aria-label="Call Wilma"
               >
                 <i data-feather="phone" class="w-5 h-5"></i>
@@ -1127,7 +1129,7 @@
               <a
                 href="https://share.google/7oTRMbvnIgs1R8oF9"
                 target="_blank"
-                class="w-10 h-10 bg-pink-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
+                class="w-10 h-10 bg-pink-800 text-white rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
                 aria-label="Find us on Map"
               >
                 <i data-feather="map-pin" class="w-5 h-5"></i>
@@ -1143,6 +1145,10 @@
         </div>
       </div>
     </footer>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+      <i data-feather="arrow-up"></i>
+    </button>
 
     <script src="main.js"></script>
   </body>
