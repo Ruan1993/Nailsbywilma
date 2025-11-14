@@ -207,6 +207,8 @@ if (form) {
     e.preventDefault();
     const formData = new FormData(form);
     formData.append("access_key", "f0345ed1-fc1a-4da3-bddb-f3a86377f34f");
+    formData.append("subject", "Nails by Wilma — New Website Message");
+    formData.append("from_name", "Nails by Wilma Website");
     const originalText = submitBtn ? submitBtn.textContent : "Send";
     if (submitBtn) {
       submitBtn.textContent = "Sending...";

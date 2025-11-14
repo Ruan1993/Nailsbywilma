@@ -82,7 +82,7 @@
         </div>
       </div>
       <div
-        class="mobile-menu hidden md:hidden bg-pink-900/90 pb-4 px-4 shadow-inner"
+        class="mobile-menu hidden md:hidden bg-pink-900/90 pb-4 px-4 shadow-inner text-center"
       >
         <a
           href="#home"
@@ -107,6 +107,12 @@
           class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200"
           onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
           >Contact</a
+        >
+        <a
+          href="#contact"
+          class="mt-4 block bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-full font-semibold text-center transition shadow-lg"
+          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          >Book Now</a
         >
       </div>
     </nav>
@@ -1043,6 +1049,7 @@
                 Send Inquiry
               </button>
               <div id="form-status" class="hidden mt-4 rounded-lg border p-4 text-sm" aria-live="polite"></div>
+              <input type="hidden" name="website" value="Nails by Wilma" />
             </form>
           </div>
         </div>
@@ -1139,9 +1146,9 @@
         </div>
 
         <div class="text-center text-gray-500 text-sm">
-          &copy; <span id="current-year"></span> Nails by Wilma. All Rights
-          Reserved. |
-  Designed by <a href="https://ruancoetzee.netlify.app/" target="_blank" class="text-blue-500 hover:underline">Ruan Coetzee</a>
+          &copy; <span id="current-year"></span> Nails by Wilma. All Rights Reserved.
+          <span class="hidden md:inline"> | </span>
+          <span class="block md:inline">Designed by <a href="https://ruancoetzee.netlify.app/" target="_blank" class="text-blue-500 hover:underline">RC Digital Creations</a></span>
         </div>
       </div>
     </footer>
