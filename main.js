@@ -199,6 +199,9 @@ if (form) {
     } else {
       statusEl.classList.add("bg-red-50", "text-red-700", "border", "border-red-300");
     }
+    try {
+      statusEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch (_) {}
   }
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
