@@ -242,16 +242,122 @@ const reviewsSlider = document.getElementById("reviews-slider");
 const reviewsTrack = document.getElementById("reviews-track");
 let reviewIndex = 0;
 let reviewAutoplay;
+let reviewCount = 0;
+let reviewsInfiniteInit = false;
+function initInfiniteReviews() {
+  if (!reviewsTrack || reviewsInfiniteInit) return;
+  const slides = Array.from(reviewsTrack.querySelectorAll(".review-slide"));
+  if (!slides.length) return;
+  reviewCount = slides.length;
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slides.length - 1].cloneNode(true);
+  reviewsTrack.insertBefore(lastClone, reviewsTrack.firstChild);
+  reviewsTrack.appendChild(firstClone);
+  reviewIndex = 1;
+  reviewsTrack.style.transform = `translateX(-${reviewIndex * 100}%)`;
+  reviewsInfiniteInit = true;
+  reviewsTrack.addEventListener("transitionend", () => {
+    if (!reviewsInfiniteInit) return;
+    if (reviewIndex === reviewCount + 1) {
+      reviewsTrack.style.transition = "none";
+      reviewIndex = 1;
+      reviewsTrack.style.transform = `translateX(-${reviewIndex * 100}%)`;
+      void reviewsTrack.offsetWidth;
+      reviewsTrack.style.transition = "transform 0.6s ease";
+    } else if (reviewIndex === 0) {
+      reviewsTrack.style.transition = "none";
+      reviewIndex = reviewCount;
+      reviewsTrack.style.transform = `translateX(-${reviewIndex * 100}%)`;
+      void reviewsTrack.offsetWidth;
+      reviewsTrack.style.transition = "transform 0.6s ease";
+    }
+  });
+}
 function setReviewIndex(i) {
-  const slides = reviewsTrack ? reviewsTrack.querySelectorAll(".review-slide") : [];
-  if (!slides.length || !reviewsTrack) return;
-  reviewIndex = (i + slides.length) % slides.length;
+  if (!reviewsTrack) return;
+  reviewIndex = i;
   reviewsTrack.style.transform = `translateX(-${reviewIndex * 100}%)`;
 }
 function startReviewAutoplay() {
   stopReviewAutoplay();
   reviewAutoplay = setInterval(() => setReviewIndex(reviewIndex + 1), 6000);
 }
+
+let servicesIndex = 0;
+let servicesAutoplay = null;
+function getServicesVisibleCount() {
+  const w = window.innerWidth;
+  if (w < 640) return 1;
+  if (w < 1024) return 2;
+  return 3;
+}
+function setServicesIndex(i, instant = false) {
+  const track = document.getElementById("services-track");
+  const container = document.getElementById("services-slider");
+  if (!track || !container) return;
+  const items = track.querySelectorAll(".service-item");
+  const visible = getServicesVisibleCount();
+  servicesIndex = i;
+  const itemWidth = items[0] ? items[0].offsetWidth : container.clientWidth / visible;
+  const offset = servicesIndex * itemWidth;
+  track.style.transition = instant ? "none" : "transform 0.6s ease";
+  track.style.transform = `translateX(-${offset}px)`;
+}
+function servicesMaxOffsetIndex() {
+  const track = document.getElementById("services-track");
+  const visible = getServicesVisibleCount();
+  const items = track ? track.querySelectorAll(".service-item") : [];
+  return Math.max(0, items.length - visible);
+}
+function servicesGoNext() {
+  const maxIdx = servicesMaxOffsetIndex();
+  if (servicesIndex >= maxIdx) {
+    setServicesIndex(0, true);
+  } else {
+    setServicesIndex(servicesIndex + 1);
+  }
+}
+function servicesGoPrev() {
+  const maxIdx = servicesMaxOffsetIndex();
+  if (servicesIndex <= 0) {
+    setServicesIndex(maxIdx, true);
+  } else {
+    setServicesIndex(servicesIndex - 1);
+  }
+}
+function stopServicesAutoplay() {
+  if (servicesAutoplay) {
+    clearInterval(servicesAutoplay);
+    servicesAutoplay = null;
+  }
+}
+function startServicesAutoplay() {
+  stopServicesAutoplay();
+  servicesAutoplay = setInterval(() => servicesGoNext(), 6000);
+}
+const servicesPrev = document.getElementById("services-prev");
+const servicesNext = document.getElementById("services-next");
+if (servicesPrev) {
+  servicesPrev.addEventListener("click", () => {
+    servicesGoPrev();
+    startServicesAutoplay();
+  });
+}
+if (servicesNext) {
+  servicesNext.addEventListener("click", () => {
+    servicesGoNext();
+    startServicesAutoplay();
+  });
+}
+window.addEventListener("resize", () => {
+  setServicesIndex(servicesIndex, true);
+});
+document.addEventListener("DOMContentLoaded", () => {
+  setServicesIndex(0, true);
+  startServicesAutoplay();
+  initInfiniteReviews();
+  startReviewAutoplay();
+});
 function stopReviewAutoplay() {
   if (reviewAutoplay) clearInterval(reviewAutoplay);
 }
@@ -262,97 +368,60 @@ if (nextReviewBtn) nextReviewBtn.addEventListener("click", () => setReviewIndex(
 if (reviewsSlider) {
   reviewsSlider.addEventListener("mouseenter", stopReviewAutoplay, { passive: true });
   reviewsSlider.addEventListener("mouseleave", startReviewAutoplay, { passive: true });
-  startReviewAutoplay();
 }
 
-// Leave a Review modal and submission
-const openReviewModal = document.getElementById("open-review-modal");
-const reviewModal = document.getElementById("review-modal");
-const reviewCancel = document.getElementById("review-cancel");
-const reviewForm = document.getElementById("review-form");
-const reviewStatus = document.getElementById("review-status");
-function showReviewStatus(type, msg) {
-  if (!reviewStatus) return;
-  reviewStatus.textContent = msg;
-  reviewStatus.classList.remove("hidden", "bg-green-50", "text-green-700", "border-green-300", "bg-red-50", "text-red-700", "border-red-300");
-  if (type === "success") {
-    reviewStatus.classList.add("bg-green-50", "text-green-700", "border", "border-green-300");
-  } else {
-    reviewStatus.classList.add("bg-red-50", "text-red-700", "border", "border-red-300");
-  }
-}
-function toggleReviewModal(show) {
-  if (!reviewModal) return;
-  if (show) {
-    reviewModal.classList.remove("hidden");
-    reviewModal.classList.add("flex");
-  } else {
-    reviewModal.classList.add("hidden");
-    reviewModal.classList.remove("flex");
-  }
-}
-if (openReviewModal) openReviewModal.addEventListener("click", () => toggleReviewModal(true));
-if (reviewCancel) reviewCancel.addEventListener("click", () => toggleReviewModal(false));
-if (reviewModal) reviewModal.addEventListener("click", (e) => { if (e.target === reviewModal) toggleReviewModal(false); });
-
-function appendLocalReview(name, rating, message) {
-  if (!reviewsTrack) return;
-  const slide = document.createElement("div");
-  slide.className = "review-slide";
-  const stars = "★".repeat(Number(rating));
-  const hollow = "☆".repeat(5 - Number(rating));
-  slide.innerHTML = `
-    <div class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500">
-      <div class="mb-4 text-yellow-500 font-bold text-lg">${stars}${hollow}</div>
-      <p class="text-gray-700 mb-4 text-lg italic">${message}</p>
-      <p class="font-bold text-pink-600">- ${name}</p>
-    </div>
-  `;
-  reviewsTrack.appendChild(slide);
-}
-
-function loadLocalReviews() {
-  try {
-    const saved = JSON.parse(localStorage.getItem("userReviews") || "[]");
-    saved.forEach((r) => appendLocalReview(r.name, r.rating, r.message));
-  } catch (_) {}
-}
-loadLocalReviews();
-
+// Open Google Reviews directly when clicking the button
 const GOOGLE_REVIEW_URL = "https://g.page/r/CfQogR3qhNr0EAE/review";
-if (reviewForm) {
-  reviewForm.addEventListener("submit", async (e) => {
+const openReviewModal = document.getElementById("open-review-modal");
+if (openReviewModal) {
+  openReviewModal.addEventListener("click", (e) => {
     e.preventDefault();
-    const name = document.getElementById("review-name").value.trim();
-    const rating = document.getElementById("review-rating").value;
-    const message = document.getElementById("review-message").value.trim();
-    if (!name || !rating || !message) {
-      showReviewStatus("error", "Please complete all fields.");
-      return;
-    }
+    window.open(GOOGLE_REVIEW_URL, "_blank");
+  });
+}
+
+// Share buttons
+const shareWhatsapp = document.getElementById("share-whatsapp");
+const shareFacebook = document.getElementById("share-facebook");
+const shareSms = document.getElementById("share-sms");
+const shareCopy = document.getElementById("share-copy");
+const shareStatus = document.getElementById("share-status");
+function showShareStatus(msg) {
+  if (!shareStatus) return;
+  shareStatus.textContent = msg;
+  shareStatus.classList.remove("hidden");
+}
+const shareUrl = window.location.origin + window.location.pathname;
+const shareText = `Check out Nails by Wilma: ${shareUrl}`;
+if (shareWhatsapp) {
+  shareWhatsapp.addEventListener("click", () => {
+    const url = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+    window.open(url, "_blank");
+  });
+}
+if (shareFacebook) {
+  shareFacebook.addEventListener("click", () => {
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+    window.open(url, "_blank");
+  });
+}
+if (shareSms) {
+  shareSms.addEventListener("click", () => {
+    const smsUrl = `sms:?&body=${encodeURIComponent(shareText)}`;
     try {
-      const body = new FormData();
-      body.append("access_key", "f0345ed1-fc1a-4da3-bddb-f3a86377f34f");
-      body.append("subject", "Nails by Wilma — New Public Review");
-      body.append("from_name", "Nails by Wilma Website");
-      body.append("name", name);
-      body.append("rating", String(rating));
-      body.append("message", message);
-      const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body });
-      if (res.ok) {
-        const list = JSON.parse(localStorage.getItem("userReviews") || "[]");
-        list.push({ name, rating, message });
-        localStorage.setItem("userReviews", JSON.stringify(list));
-        appendLocalReview(name, rating, message);
-        setReviewIndex(reviewIndex + 1);
-        showReviewStatus("success", "Thanks! Your review was added here. Now posting on Google...");
-        toggleReviewModal(false);
-        window.open(GOOGLE_REVIEW_URL, "_blank");
-      } else {
-        showReviewStatus("error", "Unable to send right now. Please try again.");
-      }
+      window.location.href = smsUrl;
     } catch (_) {
-      showReviewStatus("error", "Network error. Please try again.");
+      showShareStatus("Open this on your phone to share via SMS.");
+    }
+  });
+}
+if (shareCopy) {
+  shareCopy.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      showShareStatus("Link copied to clipboard.");
+    } catch (_) {
+      showShareStatus("Could not copy. Long-press the link to copy.");
     }
   });
 }

@@ -17,7 +17,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" href="images/Nails_by_Wilma_Logo.png" />
   </head>
   <body
     class="font-sans text-gray-800"
@@ -180,14 +180,14 @@
           <h3 class="text-4xl font-bold text-pink-700" style="font-family: 'Playfair Display', serif">Client Love & Reviews</h3>
           <p class="text-gray-600 max-w-2xl mx-auto mt-4">Real feedback from happy clients. Use the arrows or sit back and enjoy.</p>
           <div class="mt-6">
-            <button id="open-review-modal" class="bg-pink-600 hover:bg-pink-700 text-white px-5 py-2 rounded-full font-semibold transition shadow-lg">Leave a Review</button>
+            <a href="https://g.page/r/CfQogR3qhNr0EAE/review" target="_blank" rel="noopener" class="bg-pink-600 hover:bg-pink-700 text-white px-5 py-2 rounded-full font-semibold transition shadow-lg">Leave a Review</a>
           </div>
         </div>
 
         <div id="reviews-slider" class="reviews-slider">
           <div id="reviews-track" class="reviews-track">
             <div class="review-slide">
-              <div class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500">
+              <div class="review-card bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500">
                 <div class="flex mb-4 text-yellow-500">
                   <i data-feather="star" class="w-5 h-5 fill-current"></i>
                   <i data-feather="star" class="w-5 h-5 fill-current"></i>
@@ -200,7 +200,7 @@
               </div>
             </div>
             <div class="review-slide">
-              <div class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500">
+              <div class="review-card bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500">
                 <div class="flex mb-4 text-yellow-500">
                   <i data-feather="star" class="w-5 h-5 fill-current"></i>
                   <i data-feather="star" class="w-5 h-5 fill-current"></i>
@@ -213,7 +213,7 @@
               </div>
             </div>
             <div class="review-slide">
-              <div class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500">
+              <div class="review-card bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500">
                 <div class="flex mb-4 text-yellow-500">
                   <i data-feather="star" class="w-5 h-5 fill-current"></i>
                   <i data-feather="star" class="w-5 h-5 fill-current"></i>
@@ -226,7 +226,7 @@
               </div>
             </div>
             <div class="review-slide">
-              <div class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500">
+              <div class="review-card bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500">
                 <div class="flex mb-4 text-yellow-500">
                   <i data-feather="star" class="w-5 h-5 fill-current"></i>
                   <i data-feather="star" class="w-5 h-5 fill-current"></i>
@@ -239,7 +239,7 @@
               </div>
             </div>
             <div class="review-slide">
-              <div class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500">
+              <div class="review-card bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500">
                 <div class="flex mb-4 text-yellow-500">
                   <i data-feather="star" class="w-5 h-5 fill-current"></i>
                   <i data-feather="star" class="w-5 h-5 fill-current"></i>
@@ -259,29 +259,7 @@
           </div>
         </div>
 
-        <div id="review-modal" class="fixed inset-0 bg-black/60 hidden z-[1000] items-center justify-center p-4">
-          <div class="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl">
-            <h4 class="text-2xl font-bold text-pink-600 mb-4" style="font-family: 'Playfair Display', serif">Leave a Review</h4>
-            <form id="review-form" class="space-y-4" action="#" method="POST">
-              <input type="text" id="review-name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="Your name" required />
-              <select id="review-rating" name="rating" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500" required>
-                <option value="" disabled selected>Rating</option>
-                <option value="5">★★★★★</option>
-                <option value="4">★★★★☆</option>
-                <option value="3">★★★☆☆</option>
-                <option value="2">★★☆☆☆</option>
-                <option value="1">★☆☆☆☆</option>
-              </select>
-              <textarea id="review-message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="Share your experience" required></textarea>
-              <div class="flex items-center justify-between gap-3">
-                <button type="button" id="review-cancel" class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700">Cancel</button>
-                <button type="submit" class="px-5 py-2 rounded-lg bg-pink-600 hover:bg-pink-700 text-white font-semibold">Post Review</button>
-              </div>
-              <div id="review-status" class="hidden mt-3 rounded-lg border p-3 text-sm" aria-live="polite"></div>
-            </form>
-            <div class="mt-4 text-sm text-gray-600">After posting, you will be taken to our Google reviews to share the same feedback.</div>
-          </div>
-        </div>
+        
       </div>
     </section
     >
@@ -659,6 +637,69 @@
               loading="lazy"
             />
           </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_30.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_30.webp"
+              alt="Almond orange ombre and cutout crescent detail"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-src="images/Nails_Example_31.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_31.webp"
+              alt="Square neon coral set with crescent accents"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-src="images/Nails_Example_32.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_32.webp"
+              alt="Animal print accents with French and deep berry art"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_33.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_33.webp"
+              alt="Neon coral nails with glitter wave accent"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_34.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_34.webp"
+              alt="Coral French blend with rhinestone detail"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -709,123 +750,57 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div
-            class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
-            data-aos="fade-up"
-          >
-            <div
-              class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
-              aria-label="Manicure service"
-            >
-              <i
-                data-feather="chevrons-right"
-                class="text-pink-600 w-6 h-6"
-                aria-hidden="true"
-              ></i>
+        <div id="services-slider" class="services-slider">
+          <div id="services-track" class="services-track">
+            <div class="service-item">
+              <div class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                <div class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300" aria-label="Manicure service">
+                  <i data-feather="chevrons-right" class="text-pink-600 w-6 h-6" aria-hidden="true"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Manicures (Classic & Gel)</h4>
+                <p class="text-gray-600">Classic, gel, or luxurious spa manicures to keep your hands looking beautiful, healthy, and perfectly groomed.</p>
+              </div>
             </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">
-              Manicures (Classic & Gel)
-            </h4>
-            <p class="text-gray-600">
-              Classic, gel, or luxurious spa manicures to keep your hands
-              looking beautiful, healthy, and perfectly groomed.
-            </p>
+            <div class="service-item">
+              <div class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                <div class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300" aria-label="Pedicure service">
+                  <i data-feather="sun" class="text-pink-600 w-6 h-6" aria-hidden="true"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Pedicures (Relaxation & Repair)</h4>
+                <p class="text-gray-600">Relaxing foot treatments and pedicures with various options to pamper your feet and leave your toes vibrant.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <div class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                <div class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300" aria-label="Nail art service">
+                  <i data-feather="feather" class="text-pink-600 w-6 h-6" aria-hidden="true"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Custom Nail Art & Design</h4>
+                <p class="text-gray-600">Bespoke, custom nail designs to express your personal style with unmatched precision and high-level creativity.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <div class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                <div class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300" aria-label="Eyebrow tinting service">
+                  <i data-feather="eye" class="text-pink-600 w-6 h-6" aria-hidden="true"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Eyebrow Tinting</h4>
+                <p class="text-gray-600">Expert eyebrow tinting to enhance your natural beauty, adding depth and definition to perfectly frame your face.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <div class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                <div class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300" aria-label="Eyebrow waxing service">
+                  <i data-feather="tool" class="text-pink-600 w-6 h-6" aria-hidden="true"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Eyebrow Waxing & Shaping</h4>
+                <p class="text-gray-600">Say goodbye to stray hairs and hello to perfectly shaped brows. Waxed with the utmost care and finesse for a clean look.</p>
+              </div>
+            </div>
           </div>
-
-          <div
-            class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div
-              class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
-              aria-label="Pedicure service"
-            >
-              <i
-                data-feather="sun"
-                class="text-pink-600 w-6 h-6"
-                aria-hidden="true"
-              ></i>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">
-              Pedicures (Relaxation & Repair)
-            </h4>
-            <p class="text-gray-600">
-              Relaxing foot treatments and pedicures with various options to
-              pamper your feet and leave your toes vibrant.
-            </p>
-          </div>
-
-          <div
-            class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <div
-              class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
-              aria-label="Nail art service"
-            >
-              <i
-                data-feather="feather"
-                class="text-pink-600 w-6 h-6"
-                aria-hidden="true"
-              ></i>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">
-              Custom Nail Art & Design
-            </h4>
-            <p class="text-gray-600">
-              Bespoke, custom nail designs to express your personal style with
-              unmatched precision and high-level creativity.
-            </p>
-          </div>
-
-          <div
-            class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
-            data-aos="fade-up"
-          >
-            <div
-              class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
-              aria-label="Eyebrow tinting service"
-            >
-              <i
-                data-feather="eye"
-                class="text-pink-600 w-6 h-6"
-                aria-hidden="true"
-              ></i>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">
-              Eyebrow Tinting
-            </h4>
-            <p class="text-gray-600">
-              Expert eyebrow tinting to enhance your natural beauty, adding
-              depth and definition to perfectly frame your face.
-            </p>
-          </div>
-
-          <div
-            class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div
-              class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
-              aria-label="Eyebrow waxing service"
-            >
-              <i
-                data-feather="tool"
-                class="text-pink-600 w-6 h-6"
-                aria-hidden="true"
-              ></i>
-            </div>
-            <h4 class="text-xl font-bold text-gray-800 mb-2">
-              Eyebrow Waxing & Shaping
-            </h4>
-            <p class="text-gray-600">
-              Say goodbye to stray hairs and hello to perfectly shaped brows.
-              Waxed with the utmost care and finesse for a clean look.
-            </p>
+          <div class="services-nav">
+            <button id="services-prev" aria-label="Previous Services" class="pointer-events-auto"><i data-feather="chevron-left"></i></button>
+            <button id="services-next" aria-label="Next Services" class="pointer-events-auto"><i data-feather="chevron-right"></i></button>
           </div>
         </div>
       </div>
@@ -1046,12 +1021,12 @@
     </section>
 
     <footer
-      class="text-white py-12"
+      class="text-white py-12 relative overflow-hidden"
       style="background-color: var(--color-secondary)"
     >
       <div class="max-w-6xl mx-auto px-4">
         <div
-          class="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-pink-800 pb-8 mb-8"
+          class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-8 mb-8"
         >
           <div>
             <h4
@@ -1112,6 +1087,7 @@
                 aria-label="Email Wilma"
               >
                 <i data-feather="mail" class="w-5 h-5"></i>
+                <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap">Email us</span>
               </a>
 
               <a
@@ -1120,6 +1096,19 @@
                 aria-label="Call Wilma"
               >
                 <i data-feather="phone" class="w-5 h-5"></i>
+                <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap">Call us</span>
+              </a>
+
+              <a
+                href="https://wa.me/27635978505"
+                target="_blank"
+                class="w-10 h-10 bg-pink-800 text-white rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
+                aria-label="WhatsApp Wilma"
+              >
+                <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true">
+                  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                </svg>
+                <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap">WhatsApp us</span>
               </a>
 
               <a
@@ -1129,7 +1118,48 @@
                 aria-label="Find us on Map"
               >
                 <i data-feather="map-pin" class="w-5 h-5"></i>
+                <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap">Find us on Google</span>
               </a>
+            </div>
+            <div class="mt-6 rounded-xl p-4 border border-pink-500 bg-gradient-to-r from-pink-600/20 to-pink-400/20 shadow-lg">
+              <div class="flex items-center gap-2 mb-3">
+                <i data-feather="share-2" class="text-pink-200 w-5 h-5"></i>
+                <span class="text-pink-500 font-semibold">Share our website</span>
+              </div>
+              <div class="flex gap-4">
+                <div class="group relative">
+                  <button id="share-whatsapp" class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-md hover:brightness-110 transition ring-2 ring-pink-300">
+                    <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true">
+                      <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                    </svg>
+                  </button>
+                  <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none">Whatsapp</span>
+                </div>
+                <div class="group relative">
+                  <button id="share-facebook" class="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-md hover:brightness-110 transition ring-2 ring-pink-300">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                      <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24H12.82v-9.294H9.692V11.01h3.127V8.414c0-3.1 1.894-4.788 4.66-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.765v2.315h3.587l-.467 3.696h-3.12V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z"/>
+                    </svg>
+                  </button>
+                  <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none">Facebook</span>
+                </div>
+                <div class="group relative">
+                  <button id="share-sms" class="w-10 h-10 rounded-full bg-[#10B981] text-white flex items-center justify-center shadow-md hover:brightness-110 transition ring-2 ring-pink-300">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                      <path d="M20 4H4a2 2 0 00-2 2v9a2 2 0 002 2h3v3l4-3h9a2 2 0 002-2V6a2 2 0 00-2-2z"/>
+                      <circle cx="8" cy="10" r="1.3"/>
+                      <circle cx="12" cy="10" r="1.3"/>
+                      <circle cx="16" cy="10" r="1.3"/>
+                    </svg>
+                  </button>
+                  <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none">SMS</span>
+                </div>
+                <div class="group relative">
+                  <button id="share-copy" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center shadow-md hover:bg-pink-500 transition ring-2 ring-pink-300"><i data-feather="link" class="w-5 h-5"></i></button>
+                  <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none">Copy link</span>
+                </div>
+              </div>
+              <div id="share-status" class="hidden mt-3 text-xs text-white"></div>
             </div>
           </div>
         </div>
@@ -1137,7 +1167,7 @@
         <div class="text-center text-gray-500 text-sm">
           &copy; <span id="current-year"></span> Nails by Wilma. All Rights Reserved.
           <span class="hidden md:inline"> | </span>
-          <span class="block md:inline">Designed by <a href="https://ruancoetzee.netlify.app/" target="_blank" class="text-blue-500 hover:underline">RC Digital Creations</a></span>
+          <span class="block md:inline">Designed by <a href="https://ruancoetzee.netlify.app/" target="_blank" class="text-pink-500 hover:text-pink-700 hover:underline">RC Digital Creations</a></span>
         </div>
       </div>
     </footer>

@@ -9,6 +9,11 @@ html, body {
   overflow-x: hidden;
 }
 
+footer {
+  position: relative;
+  overflow: hidden;
+}
+
 body {
   margin: 0; /* Set margin to zero */
   padding: 0; /* Set padding to zero */
@@ -212,6 +217,67 @@ body {
 .review-slide {
   min-width: 100%;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 1rem;
+}
+.review-card {
+  max-width: 560px;
+  width: 90%;
+  padding: 1.25rem !important;
+}
+@media (max-width: 640px) {
+  .review-card { max-width: 92vw; }
+}
+.review-card p { font-size: 1rem; line-height: 1.6; }
+
+.services-slider {
+  position: relative;
+  overflow: hidden;
+}
+.services-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+.service-item {
+  flex: 0 0 33.3333%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+}
+@media (max-width: 1024px) {
+  .service-item { flex: 0 0 50%; }
+}
+@media (max-width: 640px) {
+  .service-item { flex: 0 0 100%; }
+}
+.services-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.services-nav button {
+  background: rgba(236, 72, 153, 0.9);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.35);
+}
+.services-nav button:hover {
+  background: rgba(219, 39, 119, 1);
+}
+@media (min-width: 768px) {
+  .services-slider { padding: 0 28px; }
+  .services-nav { left: 0; right: 0; }
 }
 .reviews-nav {
   position: absolute;
@@ -241,8 +307,5 @@ body {
   width: 18px;
   height: 18px;
 }
-#gallery, #services, #contact {
-  content-visibility: auto;
-  contain-intrinsic-size: 1000px;
-}
+/* Removed content-visibility to prevent placeholder stripe artifacts while scrolling */
 /* END OF FILE */
