@@ -236,3 +236,123 @@ if (form) {
     }
   });
 }
+
+// Reviews slider
+const reviewsSlider = document.getElementById("reviews-slider");
+const reviewsTrack = document.getElementById("reviews-track");
+let reviewIndex = 0;
+let reviewAutoplay;
+function setReviewIndex(i) {
+  const slides = reviewsTrack ? reviewsTrack.querySelectorAll(".review-slide") : [];
+  if (!slides.length || !reviewsTrack) return;
+  reviewIndex = (i + slides.length) % slides.length;
+  reviewsTrack.style.transform = `translateX(-${reviewIndex * 100}%)`;
+}
+function startReviewAutoplay() {
+  stopReviewAutoplay();
+  reviewAutoplay = setInterval(() => setReviewIndex(reviewIndex + 1), 6000);
+}
+function stopReviewAutoplay() {
+  if (reviewAutoplay) clearInterval(reviewAutoplay);
+}
+const prevReviewBtn = document.getElementById("reviews-prev");
+const nextReviewBtn = document.getElementById("reviews-next");
+if (prevReviewBtn) prevReviewBtn.addEventListener("click", () => setReviewIndex(reviewIndex - 1));
+if (nextReviewBtn) nextReviewBtn.addEventListener("click", () => setReviewIndex(reviewIndex + 1));
+if (reviewsSlider) {
+  reviewsSlider.addEventListener("mouseenter", stopReviewAutoplay, { passive: true });
+  reviewsSlider.addEventListener("mouseleave", startReviewAutoplay, { passive: true });
+  startReviewAutoplay();
+}
+
+// Leave a Review modal and submission
+const openReviewModal = document.getElementById("open-review-modal");
+const reviewModal = document.getElementById("review-modal");
+const reviewCancel = document.getElementById("review-cancel");
+const reviewForm = document.getElementById("review-form");
+const reviewStatus = document.getElementById("review-status");
+function showReviewStatus(type, msg) {
+  if (!reviewStatus) return;
+  reviewStatus.textContent = msg;
+  reviewStatus.classList.remove("hidden", "bg-green-50", "text-green-700", "border-green-300", "bg-red-50", "text-red-700", "border-red-300");
+  if (type === "success") {
+    reviewStatus.classList.add("bg-green-50", "text-green-700", "border", "border-green-300");
+  } else {
+    reviewStatus.classList.add("bg-red-50", "text-red-700", "border", "border-red-300");
+  }
+}
+function toggleReviewModal(show) {
+  if (!reviewModal) return;
+  if (show) {
+    reviewModal.classList.remove("hidden");
+    reviewModal.classList.add("flex");
+  } else {
+    reviewModal.classList.add("hidden");
+    reviewModal.classList.remove("flex");
+  }
+}
+if (openReviewModal) openReviewModal.addEventListener("click", () => toggleReviewModal(true));
+if (reviewCancel) reviewCancel.addEventListener("click", () => toggleReviewModal(false));
+if (reviewModal) reviewModal.addEventListener("click", (e) => { if (e.target === reviewModal) toggleReviewModal(false); });
+
+function appendLocalReview(name, rating, message) {
+  if (!reviewsTrack) return;
+  const slide = document.createElement("div");
+  slide.className = "review-slide";
+  const stars = "★".repeat(Number(rating));
+  const hollow = "☆".repeat(5 - Number(rating));
+  slide.innerHTML = `
+    <div class="bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500">
+      <div class="mb-4 text-yellow-500 font-bold text-lg">${stars}${hollow}</div>
+      <p class="text-gray-700 mb-4 text-lg italic">${message}</p>
+      <p class="font-bold text-pink-600">- ${name}</p>
+    </div>
+  `;
+  reviewsTrack.appendChild(slide);
+}
+
+function loadLocalReviews() {
+  try {
+    const saved = JSON.parse(localStorage.getItem("userReviews") || "[]");
+    saved.forEach((r) => appendLocalReview(r.name, r.rating, r.message));
+  } catch (_) {}
+}
+loadLocalReviews();
+
+const GOOGLE_REVIEW_URL = "https://g.page/r/CfQogR3qhNr0EAE/review";
+if (reviewForm) {
+  reviewForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("review-name").value.trim();
+    const rating = document.getElementById("review-rating").value;
+    const message = document.getElementById("review-message").value.trim();
+    if (!name || !rating || !message) {
+      showReviewStatus("error", "Please complete all fields.");
+      return;
+    }
+    try {
+      const body = new FormData();
+      body.append("access_key", "f0345ed1-fc1a-4da3-bddb-f3a86377f34f");
+      body.append("subject", "Nails by Wilma — New Public Review");
+      body.append("from_name", "Nails by Wilma Website");
+      body.append("name", name);
+      body.append("rating", String(rating));
+      body.append("message", message);
+      const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body });
+      if (res.ok) {
+        const list = JSON.parse(localStorage.getItem("userReviews") || "[]");
+        list.push({ name, rating, message });
+        localStorage.setItem("userReviews", JSON.stringify(list));
+        appendLocalReview(name, rating, message);
+        setReviewIndex(reviewIndex + 1);
+        showReviewStatus("success", "Thanks! Your review was added here. Now posting on Google...");
+        toggleReviewModal(false);
+        window.open(GOOGLE_REVIEW_URL, "_blank");
+      } else {
+        showReviewStatus("error", "Unable to send right now. Please try again.");
+      }
+    } catch (_) {
+      showReviewStatus("error", "Network error. Please try again.");
+    }
+  });
+}

@@ -199,6 +199,44 @@ body {
   opacity: 1;
   pointer-events: auto;
 }
+
+.reviews-slider {
+  position: relative;
+  overflow: hidden;
+}
+.reviews-track {
+  display: flex;
+  transition: transform 0.6s ease;
+  will-change: transform;
+}
+.review-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+.reviews-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.reviews-nav button {
+  background: rgba(236, 72, 153, 0.9);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.35);
+}
+.reviews-nav button:hover {
+  background: rgba(219, 39, 119, 1);
+}
 .back-to-top svg {
   width: 18px;
   height: 18px;
