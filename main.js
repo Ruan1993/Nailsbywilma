@@ -399,6 +399,78 @@ if (shareWhatsapp) {
     window.open(url, "_blank");
   });
 }
+
+// Hearts background
+(function() {
+  const canvas = document.getElementById("heart-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const heartColors = [
+    "rgba(255, 192, 203, 0.9)",
+    "rgba(255, 182, 193, 0.8)",
+    "rgba(255, 105, 180, 0.7)",
+    "rgba(255, 166, 201, 0.8)",
+    "rgba(244, 194, 194, 0.6)"
+  ];
+  let width, height;
+  let hearts = [];
+  const random = (min, max) => Math.random() * (max - min) + min;
+  class Heart {
+    constructor(initial) { this.init(initial); }
+    init(initial) {
+      this.x = Math.random() * width;
+      this.y = initial ? Math.random() * height : height + 20;
+      this.size = random(5, 15);
+      this.speed = random(0.002, 0.008) + this.size / 500;
+      this.swayAmplitude = random(0.2, 1.0);
+      this.swayFrequency = random(0.0001, 0.0005);
+      this.swayOffset = random(0, Math.PI * 2);
+      this.color = heartColors[Math.floor(Math.random() * heartColors.length)];
+      this.rotation = 0;
+      this.rotationSpeed = random(-0.00002, 0.00002);
+    }
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+      ctx.fillStyle = this.color;
+      const s = this.size;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(-s/2, -s/2, -s, s/3, 0, s);
+      ctx.bezierCurveTo(s, s/3, s/2, -s/2, 0, 0);
+      ctx.fill();
+      ctx.restore();
+    }
+    update() {
+      this.y -= this.speed;
+      this.swayOffset += this.swayFrequency;
+      this.x += Math.sin(this.swayOffset) * this.swayAmplitude;
+      this.rotation += this.rotationSpeed;
+      if (this.y < -50) this.init(false);
+    }
+  }
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  function initParticles() {
+    hearts = [];
+    const particleCount = Math.floor((width * height) / 12000);
+    const maxParticles = 60;
+    const count = Math.min(particleCount, maxParticles);
+    for (let i = 0; i < count; i++) hearts.push(new Heart(true));
+  }
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    for (let i = 0; i < hearts.length; i++) { hearts[i].update(); hearts[i].draw(); }
+    requestAnimationFrame(animate);
+  }
+  window.addEventListener("resize", () => { resize(); initParticles(); });
+  resize();
+  initParticles();
+  animate();
+})();
 if (shareFacebook) {
   shareFacebook.addEventListener("click", () => {
     const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
