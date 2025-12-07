@@ -406,11 +406,11 @@ if (shareWhatsapp) {
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
   const heartColors = [
-    "rgba(255, 192, 203, 0.9)",
-    "rgba(255, 182, 193, 0.8)",
-    "rgba(255, 105, 180, 0.7)",
-    "rgba(255, 166, 201, 0.8)",
-    "rgba(244, 194, 194, 0.6)"
+    "rgba(255, 105, 180, 0.9)",
+    "rgba(219, 112, 147, 0.9)",
+    "rgba(255, 20, 147, 0.8)",
+    "rgba(199, 21, 133, 0.7)",
+    "rgba(233, 30, 99, 0.8)"
   ];
   let width, height;
   let hearts = [];
@@ -456,8 +456,8 @@ if (shareWhatsapp) {
   }
   function initParticles() {
     hearts = [];
-    const particleCount = Math.floor((width * height) / 12000);
-    const maxParticles = 60;
+    const particleCount = Math.floor((width * height) / 8000);
+    const maxParticles = 100;
     const count = Math.min(particleCount, maxParticles);
     for (let i = 0; i < count; i++) hearts.push(new Heart(true));
   }
