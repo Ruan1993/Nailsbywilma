@@ -237,51 +237,7 @@ if (form) {
   });
 }
 
-// Reviews slider
-const reviewsSlider = document.getElementById("reviews-slider");
-const reviewsTrack = document.getElementById("reviews-track");
-let reviewIndex = 0;
-let reviewAutoplay;
-let reviewCount = 0;
-let reviewsInfiniteInit = false;
-function initInfiniteReviews() {
-  if (!reviewsTrack || reviewsInfiniteInit) return;
-  const slides = Array.from(reviewsTrack.querySelectorAll(".review-slide"));
-  if (!slides.length) return;
-  reviewCount = slides.length;
-  const firstClone = slides[0].cloneNode(true);
-  const lastClone = slides[slides.length - 1].cloneNode(true);
-  reviewsTrack.insertBefore(lastClone, reviewsTrack.firstChild);
-  reviewsTrack.appendChild(firstClone);
-  reviewIndex = 1;
-  reviewsTrack.style.transform = `translateX(-${reviewIndex * 100}%)`;
-  reviewsInfiniteInit = true;
-  reviewsTrack.addEventListener("transitionend", () => {
-    if (!reviewsInfiniteInit) return;
-    if (reviewIndex === reviewCount + 1) {
-      reviewsTrack.style.transition = "none";
-      reviewIndex = 1;
-      reviewsTrack.style.transform = `translateX(-${reviewIndex * 100}%)`;
-      void reviewsTrack.offsetWidth;
-      reviewsTrack.style.transition = "transform 0.6s ease";
-    } else if (reviewIndex === 0) {
-      reviewsTrack.style.transition = "none";
-      reviewIndex = reviewCount;
-      reviewsTrack.style.transform = `translateX(-${reviewIndex * 100}%)`;
-      void reviewsTrack.offsetWidth;
-      reviewsTrack.style.transition = "transform 0.6s ease";
-    }
-  });
-}
-function setReviewIndex(i) {
-  if (!reviewsTrack) return;
-  reviewIndex = i;
-  reviewsTrack.style.transform = `translateX(-${reviewIndex * 100}%)`;
-}
-function startReviewAutoplay() {
-  stopReviewAutoplay();
-  reviewAutoplay = setInterval(() => setReviewIndex(reviewIndex + 1), 6000);
-}
+
 
 let servicesIndex = 0;
 let servicesAutoplay = null;
@@ -355,20 +311,9 @@ window.addEventListener("resize", () => {
 document.addEventListener("DOMContentLoaded", () => {
   setServicesIndex(0, true);
   startServicesAutoplay();
-  initInfiniteReviews();
-  startReviewAutoplay();
+
 });
-function stopReviewAutoplay() {
-  if (reviewAutoplay) clearInterval(reviewAutoplay);
-}
-const prevReviewBtn = document.getElementById("reviews-prev");
-const nextReviewBtn = document.getElementById("reviews-next");
-if (prevReviewBtn) prevReviewBtn.addEventListener("click", () => setReviewIndex(reviewIndex - 1));
-if (nextReviewBtn) nextReviewBtn.addEventListener("click", () => setReviewIndex(reviewIndex + 1));
-if (reviewsSlider) {
-  reviewsSlider.addEventListener("mouseenter", stopReviewAutoplay, { passive: true });
-  reviewsSlider.addEventListener("mouseleave", startReviewAutoplay, { passive: true });
-}
+
 
 // Open Google Reviews directly when clicking the button
 const GOOGLE_REVIEW_URL = "https://g.page/r/CfQogR3qhNr0EAE/review";

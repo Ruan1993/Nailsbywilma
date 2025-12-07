@@ -16,7 +16,7 @@
     <link rel="preload" as="image" href="images/Nails_Example_1.webp" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"
@@ -45,6 +45,8 @@
           <div class="flex items-center space-x-3">
             <img
               src="images/Nails_by_Wilma_Logo.png"
+              width="48"
+              height="48"
               alt="Nails by Wilma Logo"
               class="h-12 w-auto transition-transform duration-300 hover:scale-110"
             />
@@ -123,11 +125,7 @@
       <div
         class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center"
       >
-        <div
-          class="md:w-1/2 mb-10 md:mb-0"
-          data-aos="fade-right"
-          data-aos-duration="1000"
-        >
+        <div class="md:w-1/2 mb-10 md:mb-0">
           <h1
             class="text-5xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight"
             style="font-family: 'Playfair Display', serif"
@@ -153,11 +151,7 @@
             >
           </div>
         </div>
-        <div
-          class="md:w-1/2 flex justify-center"
-          data-aos="fade-left"
-          data-aos-duration="1000"
-        >
+        <div class="md:w-1/2 flex justify-center">
           <div class="relative w-full max-w-sm mx-auto">
             <div
               class="absolute -top-8 -left-8 w-40 h-40 bg-pink-300 rounded-full opacity-30 blur-xl hidden sm:block"
@@ -171,6 +165,8 @@
               <div class="hero-image-wrapper rounded-[2.8rem] overflow-hidden">
                 <img
                   src="images/Nails_Example_1.webp"
+                  width="800"
+                  height="800"
                   alt="Stunning pink and white marble almond shape nail design"
                   class="rounded-[2.8rem]"
                   fetchpriority="high"
@@ -197,8 +193,7 @@
             Client Love & Reviews
           </h3>
           <p class="text-gray-600 max-w-2xl mx-auto mt-4">
-            Real feedback from happy clients. Use the arrows or sit back and
-            enjoy.
+            Real feedback from happy clients.
           </p>
           <div class="mt-6">
             <a
@@ -211,116 +206,16 @@
           </div>
         </div>
 
-        <div id="reviews-slider" class="reviews-slider">
-          <div id="reviews-track" class="reviews-track">
-            <div class="review-slide">
-              <div
-                class="review-card bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500"
-              >
-                <div class="flex mb-4 text-yellow-500">
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                </div>
-                <p class="text-gray-700 mb-4 text-lg italic">
-                  "Wilma is a true artist! My nails lasted for weeks and the art
-                  was flawless. I recommend her to everyone!"
-                </p>
-                <p class="font-bold text-pink-600">- Sarah K.</p>
-              </div>
-            </div>
-            <div class="review-slide">
-              <div
-                class="review-card bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500"
-              >
-                <div class="flex mb-4 text-yellow-500">
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                </div>
-                <p class="text-gray-700 mb-4 text-lg italic">
-                  "The most relaxing manicure I've ever had. Wilma's attention
-                  to detail is truly amazing. A wonderful experience."
-                </p>
-                <p class="font-bold text-pink-600">- Jessica M.</p>
-              </div>
-            </div>
-            <div class="review-slide">
-              <div
-                class="review-card bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500"
-              >
-                <div class="flex mb-4 text-yellow-500">
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                </div>
-                <p class="text-gray-700 mb-4 text-lg italic">
-                  "Life isn't perfect but my nails always are. Done @Nails by
-                  Wilma! 🔥💯"
-                </p>
-                <p class="font-bold text-pink-600">- Chantelle C.</p>
-              </div>
-            </div>
-            <div class="review-slide">
-              <div
-                class="review-card bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500"
-              >
-                <div class="flex mb-4 text-yellow-500">
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                </div>
-                <p class="text-gray-700 mb-4 text-lg italic">
-                  "She did my nails beautifully – even better than my matric
-                  farewell nails! Highly recommend!"
-                </p>
-                <p class="font-bold text-pink-600">- Jane F.</p>
-              </div>
-            </div>
-            <div class="review-slide">
-              <div
-                class="review-card bg-pink-50 p-8 rounded-2xl shadow-lg border-t-4 border-pink-500"
-              >
-                <div class="flex mb-4 text-yellow-500">
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                  <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                </div>
-                <p class="text-gray-700 mb-4 text-lg italic">
-                  "I get compliments on my nails everywhere I go. Wilma's
-                  designs are stunning! She never disappoints."
-                </p>
-                <p class="font-bold text-pink-600">- Danielle W.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="reviews-nav">
-            <button
-              id="reviews-prev"
-              aria-label="Previous Review"
-              class="pointer-events-auto"
-            >
-              <i data-feather="chevron-left"></i>
-            </button>
-            <button
-              id="reviews-next"
-              aria-label="Next Review"
-              class="pointer-events-auto"
-            >
-              <i data-feather="chevron-right"></i>
-            </button>
-          </div>
+        <div class="mt-12">
+          <div
+            id="featurable-d2ee8e47-6edc-4574-8a10-611bd9ca2719"
+            data-featurable-async
+          ></div>
+          <script
+            src="https://featurable.com/assets/bundle.js"
+            defer
+            charset="UTF-8"
+          ></script>
         </div>
       </div>
     </section>
@@ -360,6 +255,8 @@
             <img
               src="images/thumbnails/Nails_Example_2.webp"
               alt="Pink and white marble almond shape nail design"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -373,6 +270,8 @@
             <img
               src="images/thumbnails/Nails_Example_3.webp"
               alt="Elegant square tip French manicure with a modern twist"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -386,6 +285,8 @@
             <img
               src="images/thumbnails/Nails_Example_4.webp"
               alt="Long acrylic nails with mixed pastel colors and glitter accents"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -399,6 +300,8 @@
             <img
               src="images/thumbnails/Nails_Example_5.webp"
               alt="Vibrant hand-painted floral nail art on a pink base"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -411,6 +314,8 @@
             <img
               src="images/thumbnails/Nails_Example_6.webp"
               alt="Short, neat gel nails in a deep burgundy color perfect for autumn"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -424,6 +329,8 @@
             <img
               src="images/thumbnails/Nails_Example_7.webp"
               alt="Soft pink ombre nails with a subtle shimmer finish, long coffin shape"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -437,6 +344,8 @@
             <img
               src="images/thumbnails/Nails_Example_8.webp"
               alt="Fun, colorful abstract splatter nail art on a short round nail shape"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -449,6 +358,8 @@
             <img
               src="images/thumbnails/Nails_Example_9.webp"
               alt="Matte black nails with glossy French tips, very chic and sophisticated"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -462,6 +373,8 @@
             <img
               src="images/thumbnails/Nails_Example_10.webp"
               alt="Vivid neon pink and orange striped nail art for a summer holiday look"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -475,6 +388,8 @@
             <img
               src="images/thumbnails/Nails_Example_12.webp"
               alt="Simple white and gold glitter gradient on oval shaped nails"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -488,6 +403,8 @@
             <img
               src="images/thumbnails/Nails_Example_13.webp"
               alt="Delicate baby blue nails with tiny white clouds painted on each nail"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -500,6 +417,8 @@
             <img
               src="images/thumbnails/Nails_Example_14.webp"
               alt="Deep red glossy nails with a single accent nail featuring diamond rhinestones"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -513,6 +432,8 @@
             <img
               src="images/thumbnails/Nails_Example_15.webp"
               alt="Pastel yellow and mint green mismatched nails with a high-shine top coat"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -526,6 +447,8 @@
             <img
               src="images/thumbnails/Nails_Example_16.webp"
               alt="Natural nude gel polish with a delicate chrome effect on the tips"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -539,6 +462,8 @@
             <img
               src="images/thumbnails/Nails_Example_17.webp"
               alt="Geometric nail art using black lines and negative space on natural nails"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -551,6 +476,8 @@
             <img
               src="images/thumbnails/Nails_Example_18.webp"
               alt="Close-up of pink marble nail art on almond nails"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -564,6 +491,8 @@
             <img
               src="images/thumbnails/Nails_Example_19.webp"
               alt="Classy French manicure on square-tipped nails"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -577,6 +506,8 @@
             <img
               src="images/thumbnails/Nails_Example_20.webp"
               alt="Pastel pink, blue and yellow long acrylic nails"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -590,6 +521,8 @@
             <img
               src="images/thumbnails/Nails_Example_22.webp"
               alt="Detailed floral nail art with small red and white flowers"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -603,6 +536,8 @@
             <img
               src="images/thumbnails/Nails_Example_21.webp"
               alt="Bright yellow nail polish with a single floral accent nail"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -616,6 +551,8 @@
             <img
               src="images/thumbnails/Nails_Example_24.webp"
               alt="Purple and white floral design on a long nail"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -626,9 +563,15 @@
             data-aos-delay="300"
             data-src="images/Nails_Example_25.webp"
           >
-            <img src="images/thumbnails/Nails_Example_25.webp" alt="Elegant
-            white and pink flower petals painted on nails" class: "w-full h-full
-            object-cover aspect-square" loading="lazy" />
+            <img
+              src="images/thumbnails/Nails_Example_25.webp"
+              alt="Elegant
+            white and pink flower petals painted on nails"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
           </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg"
@@ -639,6 +582,8 @@
             <img
               src="images/thumbnails/Nails_Example_28.webp"
               alt="Dark blue nails with delicate white flower line art"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -652,6 +597,8 @@
             <img
               src="images/thumbnails/Nails_Example_29.webp"
               alt="Natural-looking nails with subtle white floral accents"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -665,6 +612,8 @@
             <img
               src="images/thumbnails/Nails_Example_23.webp"
               alt="Intricate black and white floral pattern on a single nail"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -678,6 +627,8 @@
             <img
               src="images/thumbnails/Nails_Example_27.webp"
               alt="Colorful, abstract flower design on long coffin nails"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -691,6 +642,8 @@
             <img
               src="images/thumbnails/Nails_Example_26.webp"
               alt="Pastel blue nails with white daisy flower art"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -703,6 +656,8 @@
             <img
               src="images/thumbnails/Nails_Example_30.webp"
               alt="Almond orange ombre and cutout crescent detail"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -716,6 +671,8 @@
             <img
               src="images/thumbnails/Nails_Example_31.webp"
               alt="Square neon coral set with crescent accents"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -729,6 +686,8 @@
             <img
               src="images/thumbnails/Nails_Example_32.webp"
               alt="Animal print accents with French and deep berry art"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -742,6 +701,8 @@
             <img
               src="images/thumbnails/Nails_Example_33.webp"
               alt="Neon coral nails with glitter wave accent"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -754,6 +715,8 @@
             <img
               src="images/thumbnails/Nails_Example_34.webp"
               alt="Coral French blend with rhinestone detail"
+              width="400"
+              height="400"
               class="w-full h-full object-cover aspect-square"
               loading="lazy"
             />
@@ -1416,6 +1379,6 @@
       <i data-feather="arrow-up"></i>
     </button>
 
-    <script src="main.js"></script>
+    <script defer src="main.js"></script>
   </body>
 </html>
