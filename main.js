@@ -1,19 +1,44 @@
-// 1. Feather Icons Initialization (safe)
+// 10. Swipe Support Helper
+function addSwipeSupport(element, onSwipeLeft, onSwipeRight) {
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const minSwipeDistance = 50;
+
+    element.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    element.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const distance = touchEndX - touchStartX;
+        if (Math.abs(distance) < minSwipeDistance) return;
+
+        if (distance < 0) {
+            // Swipe Left
+            if (onSwipeLeft) onSwipeLeft();
+        } else {
+            // Swipe Right
+            if (onSwipeRight) onSwipeRight();
+        }
+    }
+}
+
+// 1. Feather Icons Initialization
 try {
-  if (window.feather && typeof feather.replace === "function") {
-    feather.replace();
-  }
+  if (window.feather && typeof feather.replace === "function") feather.replace();
 } catch (_) {}
 
 window.addEventListener("load", () => {
   try {
-    if (window.feather && typeof feather.replace === "function") {
-      feather.replace();
-    }
+    if (window.feather && typeof feather.replace === "function") feather.replace();
   } catch (_) {}
 });
 
-// 2. AOS Initialization (safe)
+// 2. AOS Initialization
 try {
   if (window.AOS && typeof AOS.init === "function") {
     AOS.init({ once: true, duration: 800, offset: 50 });
@@ -24,12 +49,10 @@ try {
 const button = document.querySelector(".mobile-menu-button");
 const menu = document.querySelector(".mobile-menu");
 if (button && menu) {
-  button.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
+  button.addEventListener("click", () => menu.classList.toggle("hidden"));
 }
 
-// 4. Dynamic Year in Footer
+// 4. Dynamic Year
 const yearEl = document.getElementById("current-year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -40,405 +63,392 @@ const galleryItems = document.querySelectorAll(".gallery-item");
 const closeButton = document.getElementById("lightbox-close");
 const prevButton = document.getElementById("lightbox-prev");
 const nextButton = document.getElementById("lightbox-next");
-let currentIndex = 0;
-const imageSources = Array.from(galleryItems).map(
-  (item) => item.dataset.src
-);
+let lightboxIndex = 0;
+const imageSources = Array.from(galleryItems).map(item => item.dataset.src);
 
-// NEW: Helper function to preload an image by its index
 function preloadImage(index) {
-  // Ensure index wraps around correctly (handles positive and negative)
   const newIndex = (index + imageSources.length) % imageSources.length;
-  const src = imageSources[newIndex];
-
-  // Create a new Image object in memory.
-  // Setting its .src triggers the browser to download it and cache it.
   const img = new Image();
-  img.src = src;
+  img.src = imageSources[newIndex];
 }
 
 function openLightbox(index) {
-  currentIndex = index;
-  lightboxImage.src = imageSources[currentIndex];
+  lightboxIndex = index;
+  lightboxImage.src = imageSources[lightboxIndex];
   lightbox.style.display = "flex";
-  
-  // Preload the next and previous images
-  preloadImage(currentIndex + 1);
-  preloadImage(currentIndex - 1);
+  preloadImage(lightboxIndex + 1);
+  preloadImage(lightboxIndex - 1);
 }
 
 function closeLightbox() {
   lightbox.style.display = "none";
 }
 
-function showNext() {
-  currentIndex = (currentIndex + 1) % imageSources.length;
-  lightboxImage.src = imageSources[currentIndex];
-  
-  // Preload the *next* image in the sequence
-  preloadImage(currentIndex + 1);
+function showLightboxNext() {
+  lightboxImage.style.opacity = '0';
+  lightboxImage.style.transform = 'scale(0.95)';
+  setTimeout(() => {
+    lightboxIndex = (lightboxIndex + 1) % imageSources.length;
+    lightboxImage.src = imageSources[lightboxIndex];
+    lightboxImage.onload = () => {
+      lightboxImage.style.opacity = '1';
+      lightboxImage.style.transform = 'scale(1)';
+    };
+    setTimeout(() => {
+       lightboxImage.style.opacity = '1';
+       lightboxImage.style.transform = 'scale(1)';
+    }, 50);
+    preloadImage(lightboxIndex + 1);
+  }, 200);
 }
 
-function showPrev() {
-  currentIndex =
-    (currentIndex - 1 + imageSources.length) % imageSources.length;
-  lightboxImage.src = imageSources[currentIndex];
-  
-  // Preload the *previous* image in the sequence
-  preloadImage(currentIndex - 1);
+function showLightboxPrev() {
+  lightboxImage.style.opacity = '0';
+  lightboxImage.style.transform = 'scale(0.95)';
+  setTimeout(() => {
+    lightboxIndex = (lightboxIndex - 1 + imageSources.length) % imageSources.length;
+    lightboxImage.src = imageSources[lightboxIndex];
+    lightboxImage.onload = () => {
+      lightboxImage.style.opacity = '1';
+      lightboxImage.style.transform = 'scale(1)';
+    };
+    setTimeout(() => {
+       lightboxImage.style.opacity = '1';
+       lightboxImage.style.transform = 'scale(1)';
+    }, 50);
+    preloadImage(lightboxIndex - 1);
+  }, 200);
 }
 
-if (galleryItems && galleryItems.length > 0) {
+if (galleryItems.length > 0) {
   galleryItems.forEach((item, index) => {
-    item.addEventListener("click", () => {
-      openLightbox(index);
-    });
+    item.addEventListener("click", () => openLightbox(index));
   });
 }
-
 if (closeButton) closeButton.addEventListener("click", closeLightbox);
-if (prevButton) prevButton.addEventListener("click", showPrev);
-if (nextButton) nextButton.addEventListener("click", showNext);
-
-// Close lightbox on outside click or ESC key
+if (prevButton) prevButton.addEventListener("click", showLightboxPrev);
+if (nextButton) nextButton.addEventListener("click", showLightboxNext);
 if (lightbox) {
   lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-      closeLightbox();
-    }
+    if (e.target === lightbox) closeLightbox();
   });
 }
 document.addEventListener("keydown", (e) => {
   if (lightbox && lightbox.style.display === "flex") {
-    if (e.key === "Escape") {
-      closeLightbox();
-    } else if (e.key === "ArrowRight") {
-      showNext();
-    } else if (e.key === "ArrowLeft") {
-      showPrev();
-    }
+    if (e.key === "Escape") closeLightbox();
+    else if (e.key === "ArrowRight") showLightboxNext();
+    else if (e.key === "ArrowLeft") showLightboxPrev();
   }
 });
 
-// 6. Lightbox Swipe Functionality (No change to this section)
-let touchstartX = 0;
-let touchendX = 0;
-// Define the minimum distance required to register as a swipe
-const swipeThreshold = 50; 
-
-function checkSwipeDirection() {
-  const diff = touchendX - touchstartX;
-  
-  if (lightbox.style.display === "flex") {
-    if (diff < -swipeThreshold) {
-      // Swiped Left (move to next image)
-      showNext();
-    } else if (diff > swipeThreshold) {
-      // Swiped Right (move to previous image)
-      showPrev();
-    }
-  }
-}
-
-// Touch start: record the starting X position
 if (lightbox) {
-  lightbox.addEventListener("touchstart", (e) => {
-    touchstartX = e.changedTouches[0].screenX;
-  });
-
-// Touch end: record the ending X position and check the swipe
-  lightbox.addEventListener("touchend", (e) => {
-    touchendX = e.changedTouches[0].screenX;
-    checkSwipeDirection();
-  });
+    addSwipeSupport(lightbox, showLightboxNext, showLightboxPrev);
 }
 
-const backToTop = document.getElementById("back-to-top");
-function toggleBackToTop() {
-  if (window.scrollY > 400) {
-    backToTop.classList.add("show");
-  } else {
-    backToTop.classList.remove("show");
-  }
-}
-let ticking = false;
-window.addEventListener("scroll", () => {
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      toggleBackToTop();
-      ticking = false;
-    });
-    ticking = true;
-  }
-}, { passive: true });
-if (backToTop) {
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-toggleBackToTop();
-
-const form = document.getElementById("form");
-if (form) {
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const statusEl = document.getElementById("form-status");
-  function showStatus(type, message) {
-    if (!statusEl) return;
-    statusEl.textContent = message;
-    statusEl.classList.remove(
-      "hidden",
-      "bg-green-50",
-      "text-green-700",
-      "border-green-300",
-      "bg-red-50",
-      "text-red-700",
-      "border-red-300"
-    );
-    if (type === "success") {
-      statusEl.classList.add("bg-green-50", "text-green-700", "border", "border-green-300");
-    } else {
-      statusEl.classList.add("bg-red-50", "text-red-700", "border", "border-red-300");
-    }
-    try {
-      statusEl.scrollIntoView({ behavior: "smooth", block: "center" });
-    } catch (_) {}
-  }
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    formData.append("access_key", "f0345ed1-fc1a-4da3-bddb-f3a86377f34f");
-    formData.append("subject", "Nails by Wilma — New Website Message");
-    formData.append("from_name", "Nails by Wilma Website");
-    const originalText = submitBtn ? submitBtn.textContent : "Send";
-    if (submitBtn) {
-      submitBtn.textContent = "Sending...";
-      submitBtn.disabled = true;
-    }
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await response.json();
-      if (response.ok) {
-        showStatus("success", "Thank you! Your message has been sent. I will respond shortly.");
-        form.reset();
-      } else {
-        showStatus("error", "Error: " + (data && data.message ? data.message : "Unknown error"));
-      }
-    } catch (_) {
-      showStatus("error", "Something went wrong. Please try again.");
-    } finally {
-      if (submitBtn) {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      }
-    }
-  });
-}
-
-
-
-let servicesIndex = 0;
-let servicesAutoplay = null;
-function getServicesVisibleCount() {
-  const w = window.innerWidth;
-  if (w < 640) return 1;
-  if (w < 1024) return 2;
-  return 3;
-}
-function setServicesIndex(i, instant = false) {
-  const track = document.getElementById("services-track");
-  const container = document.getElementById("services-slider");
-  if (!track || !container) return;
-  const items = track.querySelectorAll(".service-item");
-  const visible = getServicesVisibleCount();
-  servicesIndex = i;
-  const itemWidth = items[0] ? items[0].offsetWidth : container.clientWidth / visible;
-  const offset = servicesIndex * itemWidth;
-  track.style.transition = instant ? "none" : "transform 0.6s ease";
-  track.style.transform = `translateX(-${offset}px)`;
-}
-function servicesMaxOffsetIndex() {
-  const track = document.getElementById("services-track");
-  const visible = getServicesVisibleCount();
-  const items = track ? track.querySelectorAll(".service-item") : [];
-  return Math.max(0, items.length - visible);
-}
-function servicesGoNext() {
-  const maxIdx = servicesMaxOffsetIndex();
-  if (servicesIndex >= maxIdx) {
-    setServicesIndex(0, true);
-  } else {
-    setServicesIndex(servicesIndex + 1);
-  }
-}
-function servicesGoPrev() {
-  const maxIdx = servicesMaxOffsetIndex();
-  if (servicesIndex <= 0) {
-    setServicesIndex(maxIdx, true);
-  } else {
-    setServicesIndex(servicesIndex - 1);
-  }
-}
-function stopServicesAutoplay() {
-  if (servicesAutoplay) {
-    clearInterval(servicesAutoplay);
-    servicesAutoplay = null;
-  }
-}
-function startServicesAutoplay() {
-  stopServicesAutoplay();
-  servicesAutoplay = setInterval(() => servicesGoNext(), 6000);
-}
+// 6. Services Slider
+const servicesTrack = document.getElementById("services-track");
 const servicesPrev = document.getElementById("services-prev");
 const servicesNext = document.getElementById("services-next");
-if (servicesPrev) {
-  servicesPrev.addEventListener("click", () => {
-    servicesGoPrev();
+
+if (servicesTrack && servicesPrev && servicesNext) {
+    let servicesIndex = 0;
+    const items = servicesTrack.querySelectorAll(".service-item");
+    const totalServices = items.length;
+    let servicesAutoplay = null;
+    
+    function getServicesVisibleCount() {
+        if (window.innerWidth >= 1024) return 3;
+        if (window.innerWidth >= 640) return 2;
+        return 1;
+    }
+    
+    function setServicesIndex(i, instant = false) {
+        const visible = getServicesVisibleCount();
+        const maxIndex = totalServices - visible;
+        
+        if (i > maxIndex) {
+            servicesIndex = 0;
+        } else if (i < 0) {
+            servicesIndex = maxIndex;
+        } else {
+            servicesIndex = i;
+        }
+        
+        const percent = servicesIndex * (100 / visible);
+        servicesTrack.style.transition = instant ? 'none' : 'transform 0.6s ease';
+        servicesTrack.style.transform = `translateX(-${percent}%)`;
+    }
+    
+    function nextService() {
+        setServicesIndex(servicesIndex + 1);
+    }
+    
+    function prevService() {
+        setServicesIndex(servicesIndex - 1);
+    }
+    
+    servicesNext.addEventListener("click", () => {
+        nextService();
+        resetServicesAutoplay();
+    });
+    
+    servicesPrev.addEventListener("click", () => {
+        prevService();
+        resetServicesAutoplay();
+    });
+    
+    function startServicesAutoplay() {
+        servicesAutoplay = setInterval(nextService, 10000);
+    }
+    
+    function resetServicesAutoplay() {
+        if (servicesAutoplay) clearInterval(servicesAutoplay);
+        startServicesAutoplay();
+    }
+    
     startServicesAutoplay();
-  });
+    window.addEventListener("resize", () => setServicesIndex(servicesIndex, true));
+
+    // Swipe for Services
+    const servicesContainer = servicesTrack.parentElement; // Swipe on the container, not just the track
+    addSwipeSupport(servicesContainer, () => {
+        nextService();
+        resetServicesAutoplay();
+    }, () => {
+        prevService();
+        resetServicesAutoplay();
+    });
 }
-if (servicesNext) {
-  servicesNext.addEventListener("click", () => {
-    servicesGoNext();
-    startServicesAutoplay();
-  });
-}
-window.addEventListener("resize", () => {
-  setServicesIndex(servicesIndex, true);
+
+// 7. Gallery Pagination & Slideshow (NEW)
+document.addEventListener('DOMContentLoaded', () => {
+    const galleryContainer = document.querySelector('.gallery-container');
+    const nextBtn = document.getElementById('gallery-next-btn');
+    
+    if (!galleryContainer || !nextBtn) return;
+
+    const allItems = Array.from(galleryContainer.querySelectorAll('.gallery-item'));
+    
+    const itemsPerPageDesktop = 15;
+    const itemsPerPageMobile = 9;
+    let currentPage = 0;
+    let autoSlideInterval;
+
+    function getItemsPerPage() {
+        return window.innerWidth >= 768 ? itemsPerPageDesktop : itemsPerPageMobile;
+    }
+
+    function shuffle(array) {
+        let currentIndex = array.length, randomIndex;
+        while (currentIndex != 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
+        }
+        return array;
+    }
+
+    shuffle(allItems);
+
+    function renderPage() {
+        // Fix CLS by locking container height before update
+        if (galleryContainer.offsetHeight > 0) {
+            galleryContainer.style.minHeight = `${galleryContainer.offsetHeight}px`;
+        }
+
+        const perPage = getItemsPerPage();
+        const total = allItems.length;
+        // Handle negative modulo correctly
+        let start = (currentPage * perPage) % total;
+        if (start < 0) start += total;
+        
+        galleryContainer.innerHTML = '';
+        
+        for (let i = 0; i < perPage; i++) {
+            const index = (start + i) % total;
+            const item = allItems[index];
+            item.classList.remove('aos-animate');
+            galleryContainer.appendChild(item);
+        }
+        
+        setTimeout(() => {
+            if (window.AOS) window.AOS.refresh();
+            // Release height lock after paint
+            galleryContainer.style.minHeight = '';
+        }, 100);
+    }
+
+    function nextPage() {
+        currentPage++;
+        renderPage();
+    }
+
+    function prevPage() {
+        currentPage--;
+        renderPage();
+    }
+
+    nextBtn.addEventListener('click', () => {
+        nextPage();
+        resetInterval();
+    });
+
+    // Swipe for Gallery
+    addSwipeSupport(galleryContainer, () => {
+        nextPage();
+        resetInterval();
+    }, () => {
+        prevPage();
+        resetInterval();
+    });
+
+    function startInterval() {
+        autoSlideInterval = setInterval(nextPage, 10000);
+    }
+
+    function resetInterval() {
+        clearInterval(autoSlideInterval);
+        startInterval();
+    }
+
+    renderPage();
+    startInterval();
+    
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(renderPage, 200);
+    });
 });
-document.addEventListener("DOMContentLoaded", () => {
-  setServicesIndex(0, true);
-  startServicesAutoplay();
 
-});
-
-
-// Open Google Reviews directly when clicking the button
-const GOOGLE_REVIEW_URL = "https://g.page/r/CfQogR3qhNr0EAE/review";
-const openReviewModal = document.getElementById("open-review-modal");
-if (openReviewModal) {
-  openReviewModal.addEventListener("click", (e) => {
-    e.preventDefault();
-    window.open(GOOGLE_REVIEW_URL, "_blank");
-  });
-}
-
-// Share buttons
-const shareWhatsapp = document.getElementById("share-whatsapp");
-const shareFacebook = document.getElementById("share-facebook");
-const shareSms = document.getElementById("share-sms");
-const shareCopy = document.getElementById("share-copy");
-const shareStatus = document.getElementById("share-status");
-function showShareStatus(msg) {
-  if (!shareStatus) return;
-  shareStatus.textContent = msg;
-  shareStatus.classList.remove("hidden");
-}
-const shareUrl = window.location.origin + window.location.pathname;
-const shareText = `Check out Nails by Wilma: ${shareUrl}`;
-if (shareWhatsapp) {
-  shareWhatsapp.addEventListener("click", () => {
-    const url = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
-    window.open(url, "_blank");
-  });
-}
-
-// Hearts background
+// 8. Hearts Background
 (function() {
   const canvas = document.getElementById("heart-canvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
-  const heartColors = [
-    "rgba(255, 20, 147, 0.8)",  // DeepPink
-    "rgba(219, 112, 147, 0.9)", // PaleVioletRed
-    "rgba(199, 21, 133, 0.8)",  // MediumVioletRed
-    "rgba(255, 105, 180, 0.9)", // HotPink
-    "rgba(233, 30, 99, 0.8)"    // Material Pink
-  ];
-  let width, height;
-  let hearts = [];
-  const random = (min, max) => Math.random() * (max - min) + min;
+  let width, height, hearts = [];
+
   class Heart {
-    constructor(initial) { this.init(initial); }
-    init(initial) {
+    constructor(init = false) {
+      this.init(init);
+    }
+    init(init) {
       this.x = Math.random() * width;
-      this.y = initial ? Math.random() * height : height + 20;
-      this.size = random(5, 15);
-      this.speed = random(0.002, 0.008) + this.size / 500;
-      this.swayAmplitude = random(0.2, 1.0);
-      this.swayFrequency = random(0.0001, 0.0005);
-      this.swayOffset = random(0, Math.PI * 2);
-      this.color = heartColors[Math.floor(Math.random() * heartColors.length)];
-      this.rotation = 0;
-      this.rotationSpeed = random(-0.00002, 0.00002);
+      this.y = init ? Math.random() * height : height + Math.random() * 50;
+      this.size = Math.random() * 15 + 5;
+      this.speed = Math.random() * 1 + 0.5;
+      this.opacity = Math.random() * 0.5 + 0.1;
+      this.swayOffset = Math.random() * Math.PI * 2;
+      this.swayAmplitude = Math.random() * 1;
+      this.swayFrequency = Math.random() * 0.02 + 0.005;
+      this.color = `rgba(236, 72, 153, ${this.opacity})`;
     }
     draw() {
-      ctx.save();
-      ctx.translate(this.x, this.y);
-      ctx.rotate(this.rotation);
       ctx.fillStyle = this.color;
-      const s = this.size;
       ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.bezierCurveTo(-s/2, -s/2, -s, s/3, 0, s);
-      ctx.bezierCurveTo(s, s/3, s/2, -s/2, 0, 0);
+      const x = this.x, y = this.y, s = this.size;
+      ctx.moveTo(x, y + s / 4);
+      ctx.quadraticCurveTo(x, y, x + s / 2, y);
+      ctx.quadraticCurveTo(x + s, y, x + s, y + s / 2);
+      ctx.quadraticCurveTo(x + s, y + s, x, y + s * 1.5);
+      ctx.quadraticCurveTo(x - s, y + s, x - s, y + s / 2);
+      ctx.quadraticCurveTo(x - s, y, x - s / 2, y);
+      ctx.quadraticCurveTo(x, y, x, y + s / 4);
       ctx.fill();
-      ctx.restore();
     }
     update() {
       this.y -= this.speed;
       this.swayOffset += this.swayFrequency;
       this.x += Math.sin(this.swayOffset) * this.swayAmplitude;
-      this.rotation += this.rotationSpeed;
       if (this.y < -50) this.init(false);
     }
   }
+
   function resize() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
   }
+
   function initParticles() {
     hearts = [];
-    const particleCount = Math.floor((width * height) / 8000);
-    const maxParticles = 100;
-    const count = Math.min(particleCount, maxParticles);
+    const count = Math.min(Math.floor((width * height) / 10000), 50);
     for (let i = 0; i < count; i++) hearts.push(new Heart(true));
   }
+
   function animate() {
     ctx.clearRect(0, 0, width, height);
-    for (let i = 0; i < hearts.length; i++) { hearts[i].update(); hearts[i].draw(); }
+    hearts.forEach(h => { h.update(); h.draw(); });
     requestAnimationFrame(animate);
   }
+
   window.addEventListener("resize", () => { resize(); initParticles(); });
   resize();
   initParticles();
   animate();
 })();
+
+// 9. Share Buttons
+const shareFacebook = document.getElementById("share-facebook");
+const shareWhatsapp = document.getElementById("share-whatsapp");
+const shareSms = document.getElementById("share-sms");
+const shareCopy = document.getElementById("share-copy");
+const shareStatus = document.getElementById("share-status");
+const shareUrl = window.location.href;
+const shareText = "Check out Nails by Wilma! " + shareUrl;
+
+function showShareStatus(msg) {
+  if (!shareStatus) return;
+  shareStatus.textContent = msg;
+  shareStatus.classList.remove("hidden");
+  setTimeout(() => shareStatus.classList.add("hidden"), 3000);
+}
+
 if (shareFacebook) {
   shareFacebook.addEventListener("click", () => {
-    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-    window.open(url, "_blank");
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, "_blank");
   });
 }
+
+if (shareWhatsapp) {
+  shareWhatsapp.addEventListener("click", () => {
+    window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank");
+  });
+}
+
 if (shareSms) {
   shareSms.addEventListener("click", () => {
-    const smsUrl = `sms:?&body=${encodeURIComponent(shareText)}`;
-    try {
-      window.location.href = smsUrl;
-    } catch (_) {
-      showShareStatus("Open this on your phone to share via SMS.");
-    }
+     try { window.location.href = `sms:?&body=${encodeURIComponent(shareText)}`; } 
+     catch (_) { showShareStatus("Open on phone to share via SMS."); }
   });
 }
 if (shareCopy) {
   shareCopy.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(shareUrl);
-      showShareStatus("Link copied to clipboard.");
+      showShareStatus("Link copied!");
     } catch (_) {
-      showShareStatus("Could not copy. Long-press the link to copy.");
+      showShareStatus("Could not copy link.");
     }
   });
+}
+
+// 11. Back to Top Button
+const backToTopButton = document.getElementById("back-to-top");
+
+if (backToTopButton) {
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add("show");
+        } else {
+            backToTopButton.classList.remove("show");
+        }
+    });
+
+    backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
 }
