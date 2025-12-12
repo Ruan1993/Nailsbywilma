@@ -1,5 +1,5 @@
 const MODEL_NAME = "gemini-2.5-flash";
-const CHAT_ENDPOINT = "https://rcdigitalcreations.co.za/api/chat";
+const CHAT_ENDPOINT = "https://www.rcdigitalcreations.co.za/api/chat";
 
 const WEBSITE_CONTEXT = `--- NAILS BY WILMA CONTEXT --- 
  
@@ -39,7 +39,7 @@ const WEBSITE_CONTEXT = `--- NAILS BY WILMA CONTEXT ---
  BOOKING & POLICIES: 
  - Booking Method: WhatsApp is best (+27 63 597 8505). 
  - Location: Home studio at 27 Prinsloo Drive, Still Bay West. 
- - Late Policy: Please arrive on time. >15 mins late may require rescheduling. 
+ - Late Policy: Please arrive on time. >15 mins late may require rescheduling.
  
  TONE & PERSONALITY (BELLA): 
  - Name: Bella. 
