@@ -1,64 +1,77 @@
 const MODEL_NAME = "gemini-2.5-flash";
 const CHAT_ENDPOINT = "https://www.rcdigitalcreations.co.za/api/chat";
 
-const WEBSITE_CONTEXT = `--- NAILS BY WILMA CONTEXT --- 
- 
- BUSINESS OVERVIEW: 
- Name: Nails by Wilma 
- Owner: Wilma Prinsloo 
- Location: 27 Prinsloo Drive, Still Bay West, Stilbaai. 
- Tagline: "Professional Nail Services & Art | Best in Still Bay" 
- Contact: wilmajprinsloo@gmail.com | WhatsApp/Phone: +27 63 597 8505 
- Mission: To provide professional, artistic, and luxurious nail care and beauty services that leave clients feeling pampered and polished. 
- 
- SERVICES & PRICING: 
- (Note to Bella: If a price isn't listed here, ask the client to WhatsApp for a custom quote.) 
- 
- 1. HANDS & FEET 
-    - Manicures (Classic & Gel): [INSERT PRICE, e.g., R250] 
-    - Spa Pedicures (Relaxation & Repair): [INSERT PRICE, e.g., R300] 
-    - Gel Overlay on Natural Nails: [INSERT PRICE] 
-    - Tips / Extensions (Acrylic or Gel): [INSERT PRICE] 
- 
- 2. NAIL ART 
-    - Custom Hand-Painted Art: [INSERT PRICE, e.g., R10-R50 per nail] 
-    - French Ombré / Baby Boomer: [INSERT PRICE] 
-    - "Wilma's Special" (Intricate floral or geometric art): Quote upon request. 
- 
- 3. BEAUTY EXTRAS 
-    - Eyebrow Shaping (Waxing): [INSERT PRICE, e.g., R80] 
-    - Eyebrow Tinting: [INSERT PRICE, e.g., R80] 
-    - Combo (Wax & Tint): [INSERT PRICE] 
- 
- OPERATING HOURS: 
- - Monday to Friday: 08:00 - 17:00 
- - Saturday: 08:00 - 13:00 
- - Sunday & Public Holidays: Closed 
- (Note to Bella: If someone asks for a slot outside these times, ask them to WhatsApp Wilma directly to check availability.) 
- 
- BOOKING & POLICIES: 
- - Booking Method: WhatsApp is best (+27 63 597 8505). 
- - Location: Home studio at 27 Prinsloo Drive, Still Bay West. 
- - Late Policy: Please arrive on time. >15 mins late may require rescheduling.
- 
- TONE & PERSONALITY (BELLA): 
- - Name: Bella. 
- - Persona: A sophisticated, warm, and feminine beauty assistant. 
- - Tone: Welcoming, "lady-like," professional, and encouraging. Use emojis like 💅, ✨, 🌸, 💖. 
- - Key Phrase: "Your perfect nails are just an appointment away!" 
- 
- FAQ ANSWERS: 
- Q: Do you do acrylics? 
- A: No, we specialize in gel products and nail art but we only use the best products (Bio Sculpture). Wilma is a certified Nail Technician at Bio Sculpture and clients come back with nails after 5 to 6 weeks that still look great. 
- 
- Q: Can I bring a reference photo? 
- A: Absolutely! Wilma loves recreating designs or creating custom art based on your inspiration. 
- 
- Q: How long does a set take? 
- A: typically 1 to 2 hours depending on the complexity of the art. 
- 
- Q: Where are you located? 
- A: We are at 27 Prinsloo Drive, Still Bay West.`;
+const WEBSITE_CONTEXT = `--- NAILS BY WILMA CONTEXT ---
+
+BUSINESS OVERVIEW:
+Name: Nails by Wilma
+Owner: Wilma Prinsloo
+Location: 27 Prinsloo Drive, Still Bay West, Stilbaai.
+Tagline: "Professional Nail Services & Art | Best in Still Bay"
+Contact: wilmajprinsloo@gmail.com | WhatsApp/Phone: +27 63 597 8505
+Mission: To provide professional, artistic, and luxurious nail care and beauty services that leave clients feeling pampered and polished.
+
+EXPERIENCE:
+Wilma has been doing nails for more than 15 years, bringing a wealth of experience and skill to her work. She officially started "Nails by Wilma" early in 2025.
+
+OPERATING HOURS:
+- Monday to Friday: 08:00 - 17:00
+- Saturday: 08:00 - 13:00
+- Sunday & Public Holidays: Closed
+(Note to Bella: If someone asks for a slot outside these times, ask them to WhatsApp Wilma directly to check availability.)
+
+SERVICES & PRICING:
+(Note to Bella: If a price isn't listed here, ask the client to WhatsApp for a custom quote.)
+
+1. HANDS & FEET
+   - Manicures (Classic & Gel): [INSERT PRICE, e.g., R250]
+   - Spa Pedicures (Relaxation & Repair): [INSERT PRICE, e.g., R300]
+   - Gel Overlay on Natural Nails: [INSERT PRICE]
+   - Tips / Extensions (Acrylic or Gel): [INSERT PRICE]
+
+2. NAIL ART
+   - Custom Hand-Painted Art: [INSERT PRICE, e.g., R10-R50 per nail]
+   - French Ombré / Baby Boomer: [INSERT PRICE]
+   - "Wilma's Special" (Intricate floral or geometric art): Quote upon request.
+
+3. BEAUTY EXTRAS
+   - Eyebrow Shaping (Waxing): [INSERT PRICE, e.g., R80]
+   - Eyebrow Tinting: [INSERT PRICE, e.g., R80]
+   - Combo (Wax & Tint): [INSERT PRICE]
+
+ADDITIONAL SERVICES (GUESTHOUSE):
+We also have a guesthouse named "De Brakke" located in Stilbaai West.
+Website: https://www.debrakke.co.za/
+For prices and appointments for the guesthouse, clients can also contact Wilma directly.
+
+BOOKING & POLICIES:
+- Booking Method: WhatsApp is best (+27 63 597 8505).
+- Location: Home studio at 27 Prinsloo Drive, Still Bay West.
+- Late Policy: Please arrive on time. >15 mins late may require rescheduling.
+- Reviews: Clients can leave a review on Google here: https://www.google.com/maps/place//data=!4m3!3m2!1s0x1dd6c1afaea257ab:0xf4da84ea1d8128f4!12e1?source=g.page.m._&laa=merchant-review-solicitation
+
+TONE & PERSONALITY (BELLA):
+- Name: Bella.
+- Persona: A sophisticated, warm, and feminine beauty assistant.
+- Tone: Welcoming, "lady-like," professional, and encouraging. Use emojis like 💅, ✨, 🌸, 💖.
+- Key Phrase: "Your perfect nails are just an appointment away!"
+
+FAQ ANSWERS:
+Q: Do you do acrylics?
+A: No, we specialize in gel products and nail art but we only use the best products (Bio Sculpture). Wilma is a certified Nail Technician at Bio Sculpture and clients come back with nails after 5 to 6 weeks that still look great.
+
+Q: Can I bring a reference photo?
+A: Absolutely! Wilma loves recreating designs or creating custom art based on your inspiration.
+
+Q: How long does a set take?
+A: Typically 1 to 2 hours depending on the complexity of the art.
+
+Q: Where are you located?
+A: We are at 27 Prinsloo Drive, Still Bay West.
+
+Q: Who made this website?
+A: This website was made by Ruan from RC Digital Creations. You can contact them at https://www.rcdigitalcreations.co.za/ or via WhatsApp at 063 473 3098.
+`;
 
 let websiteContent = WEBSITE_CONTEXT;
 let chatContainer;
@@ -103,29 +116,47 @@ function createMessageElement(text, sender) {
 
 function appendMessage(text, sender) {
   const messageElement = createMessageElement(text, sender);
-  // Quick-reply buttons for AI (Updated for Wilma) 
-  if (
-    sender === "ai" &&
-    (text.toLowerCase().includes("call") ||
-      text.toLowerCase().includes("whatsapp") ||
-      text.toLowerCase().includes("book"))
-  ) {
-    const btns = document.createElement("div");
-    btns.className = "flex gap-2 mt-3 flex-wrap";
-    btns.innerHTML = `
-      <a href="https://wa.me/27635978505?text=Hi%20Wilma%2C%20I%27d%20like%20to%20book%20an%20appointment" target="_blank" style="background-color: #25D366;" class="px-4 py-2 text-white rounded-full text-sm hover:opacity-90 transition-opacity no-underline flex items-center gap-2 shadow-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z"/></svg>
-        WhatsApp Wilma
-      </a>
-      
-      <a href="tel:+27635978505" class="px-4 py-2 bg-pink-500 text-white rounded-full text-sm hover:bg-pink-600 transition-colors no-underline shadow-sm flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-        Call Salon
-      </a>
-    `;
-    const bubble = messageElement.querySelector(".bella-ai-bubble");
-    if (bubble) bubble.appendChild(btns);
+  
+  if (sender === "ai") {
+    const lowerText = text.toLowerCase();
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.className = "flex gap-2 mt-3 flex-wrap";
+    let hasButtons = false;
+    let buttonsHTML = "";
+
+    // Contact Buttons Logic
+    if (lowerText.includes("call") || lowerText.includes("whatsapp") || lowerText.includes("book") || lowerText.includes("contact") || lowerText.includes("number")) {
+       buttonsHTML += `
+          <a href="https://wa.me/27635978505?text=Hi%20Wilma%2C%20I%27d%20like%20to%20book%20an%20appointment" target="_blank" style="background-color: #25D366;" class="px-4 py-2 text-white rounded-full text-sm hover:opacity-90 transition-opacity no-underline flex items-center gap-2 shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z"/></svg>
+            WhatsApp Wilma
+          </a>
+          <a href="tel:+27635978505" class="px-4 py-2 bg-pink-500 text-white rounded-full text-sm hover:bg-pink-600 transition-colors no-underline shadow-sm flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+            Call Salon
+          </a>
+       `;
+       hasButtons = true;
+    }
+
+    // Review Button Logic
+    if (lowerText.includes("review") || lowerText.includes("google") || lowerText.includes("feedback")) {
+       buttonsHTML += `
+          <a href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x1dd6c1afaea257ab:0xf4da84ea1d8128f4!12e1?source=g.page.m._&laa=merchant-review-solicitation" target="_blank" class="px-4 py-2 bg-blue-500 text-white rounded-full text-sm hover:bg-blue-600 transition-colors no-underline shadow-sm flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/></svg>
+            Leave a Review
+          </a>
+       `;
+       hasButtons = true;
+    }
+
+    if (hasButtons) {
+        buttonsContainer.innerHTML = buttonsHTML;
+        const bubble = messageElement.querySelector(".bella-ai-bubble");
+        if (bubble) bubble.appendChild(buttonsContainer);
+    }
   }
+  
   chatContainer.appendChild(messageElement);
   chatContainer.scrollTop = chatContainer.scrollHeight;
 }
