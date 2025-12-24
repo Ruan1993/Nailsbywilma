@@ -1,0 +1,90 @@
+/* Chat widget base */
+#chatbot-widget-container,
+#chatbot-widget-container * {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+.chat-container::-webkit-scrollbar {
+  width: 8px;
+}
+.chat-container::-webkit-scrollbar-thumb {
+  background-color: #e9a9c2;
+  border-radius: 4px;
+}
+.chat-container::-webkit-scrollbar-track {
+  background-color: #fff0f6;
+}
+
+/* Palette */
+:root {
+  --bella-pink: var(--color-primary);
+  --bella-rose: #f5c2d1;
+  --bella-deep: #d946ef;
+  --bella-bg: #fff8fb;
+}
+
+/* Toggle button */
+#chat-toggle-button {
+  background-color: var(--bella-pink);
+  color: #fff;
+  border: 3px solid #000;
+  animation: pulse-black-ring 2s infinite;
+}
+
+@keyframes pulse-black-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+#chat-toggle-button:hover {
+  filter: brightness(1.05);
+  transform: scale(1.1);
+}
+
+/* Header gradient */
+#main-chat-window header {
+  background: linear-gradient(135deg, var(--bella-pink), var(--bella-rose));
+  color: #fff;
+}
+
+/* Bubbles */
+.bella-user-bubble {
+  max-width: 36ch;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border-bottom-right-radius: 0.25rem;
+  background-color: var(--bella-pink);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.bella-ai-bubble {
+  max-width: 36ch;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border-top-left-radius: 0.25rem;
+  background: #ffffff;
+  color: #5b5b5b;
+  border: 1px solid #f1c8d6;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+.bella-ai-label {
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: var(--bella-pink);
+}
+
+/* Window */
+#main-chat-window {
+  background: #ffffffee;
+}
+.chat-container {
+  background: var(--bella-bg);
+}

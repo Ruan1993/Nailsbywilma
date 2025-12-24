@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Nails by Wilma | Professional Nail Services & Art | Best in Still Bay |
+      Nails Stilbaai
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="images/Nails_Example_1.webp" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"
+    ></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="chat-widget.css" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" href="images/Nails_by_Wilma_Logo.png" />
+    <link rel="apple-touch-icon" href="images/Nails_by_Wilma_Logo.png" />
+  </head>
+  <body
+    class="font-sans text-gray-800"
+    style="
+      background-color: var(--color-background);
+      font-family: 'Inter', sans-serif;
+    "
+  >
+    <canvas id="heart-canvas"></canvas>
+
+    <nav
+      class="shadow-xl fixed top-0 left-0 right-0 z-50 text-white"
+      style="background-color: var(--color-secondary)"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center space-x-3">
+            <img
+              src="images/Nails_by_Wilma_Logo.png"
+              width="48"
+              height="48"
+              alt="Nails by Wilma Logo"
+              class="h-12 w-auto transition-transform duration-300 hover:scale-110"
+            />
+            <h1
+              class="text-3xl font-bold text-white transition-colors duration-300"
+              style="font-family: 'Playfair Display', serif"
+            >
+              Nails by <span class="text-pink-500">Wilma</span>
+            </h1>
+          </div>
+          <div class="hidden md:flex items-center space-x-2">
+            <a
+              href="#home"
+              class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg"
+              >Home</a
+            >
+            <a
+              href="#gallery"
+              class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg"
+              >Gallery</a
+            >
+            <a
+              href="#reviews"
+              class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg"
+              >Reviews</a
+            >
+            <a
+              href="#services"
+              class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg"
+              >Services</a
+            >
+            <a
+              href="#contact"
+              class="nav-link text-lg font-semibold text-white transition-all duration-300 px-4 py-2 rounded-lg"
+              >Contact</a
+            >
+          </div>
+          <div class="md:hidden">
+            <button
+              class="mobile-menu-button p-2 rounded-md hover:bg-pink-500 transition-colors transition-transform duration-300 hover:scale-110"
+            >
+              <i data-feather="menu" class="text-white w-7 h-7"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mobile-menu hidden md:hidden bg-pink-900/90 pb-4 px-4 shadow-inner text-center"
+      >
+        <a
+          href="#home"
+          class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800"
+          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          >Home</a
+        >
+        <a
+          href="#gallery"
+          class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800"
+          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          >Gallery</a
+        >
+        <a
+          href="#reviews"
+          class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800"
+          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          >Reviews</a
+        >
+        <a
+          href="#services"
+          class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800"
+          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          >Services</a
+        >
+        <a
+          href="#contact"
+          class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200"
+          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          >Contact</a
+        >
+      </div>
+    </nav>
+
+    <section
+      id="home"
+      class="hero-pattern pt-28 pb-20 md:py-32 relative overflow-hidden"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center"
+      >
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <h1
+            class="text-5xl md:text-6xl font-bold text-gray-800 mb-4 leading-tight"
+            style="font-family: 'Playfair Display', serif"
+          >
+            Elevate Your Style with
+            <span class="text-pink-600">Wilma's Art</span>
+          </h1>
+
+          <!-- Trust Bar -->
+          <a href="#reviews" class="inline-block mb-6 animate-fade-in group no-underline">
+            <div class="flex items-center gap-2 text-gray-800 font-semibold text-sm md:text-lg transition-transform transform group-hover:scale-105">
+               <span class="text-pink-500 text-lg md:text-xl animate-shimmer">★★★★★</span>
+               <span class="group-hover:text-pink-600 transition-colors">5/5 Rating from <span id="review-count">9+</span> happy clients</span>
+            </div>
+          </a>
+          <p class="text-xl text-gray-600 mb-8">
+            Experience professional nail care services and bespoke nail art
+            crafted with passion and precision. Your perfect nails are just an
+            appointment away!
+          </p>
+          <div class="flex space-x-4">
+            <a
+              href="#contact"
+              class="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-full font-semibold text-lg transition shadow-xl transform hover:-translate-y-1 hover:scale-105"
+              >Book Your Appointment</a
+            >
+            <a
+              href="#gallery"
+              class="border-2 border-pink-600 text-pink-600 hover:bg-pink-100 px-8 py-3 rounded-full font-semibold text-lg transition shadow-md transform hover:-translate-y-1 hover:scale-105"
+              >View Our Gallery</a
+            >
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <div class="relative w-full max-w-sm mx-auto">
+            <div
+              class="absolute -top-8 -left-8 w-40 h-40 bg-pink-300 rounded-full opacity-30 blur-xl hidden sm:block"
+            ></div>
+            <div
+              class="absolute -bottom-8 -right-8 w-40 h-40 bg-pink-400 rounded-full opacity-30 blur-xl hidden sm:block"
+            ></div>
+            <div
+              class="relative z-10 rounded-[3rem] shadow-2xl overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-500 bg-white p-2"
+            >
+              <div class="hero-image-wrapper rounded-[2.8rem] overflow-hidden">
+                <img
+                  src="images/Nails_Example_1.webp"
+                  width="800"
+                  height="800"
+                  alt="Stunning pink and white marble almond shape nail design"
+                  class="rounded-[2.8rem]"
+                  fetchpriority="high"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10" data-aos="fade-up">
+          <h2
+            class="text-sm font-semibold uppercase tracking-widest text-pink-500 mb-2"
+          >
+            Word of Mouth
+          </h2>
+          <h3
+            class="text-4xl font-bold text-pink-700"
+            style="font-family: 'Playfair Display', serif"
+          >
+            Client Love & Reviews
+          </h3>
+          <p class="text-gray-600 max-w-2xl mx-auto mt-4">
+            Real feedback from happy clients.
+          </p>
+          <div class="mt-6">
+            <div id="rc-reviews-slideshow-container" class="mb-8"></div>
+            <a
+              href="https://g.page/r/CfQogR3qhNr0EAE/review"
+              target="_blank"
+              rel="noopener"
+              class="bg-pink-600 hover:bg-pink-700 text-white px-5 py-2 rounded-full font-semibold transition shadow-lg inline-block transform hover:-translate-y-1 hover:scale-105"
+              >Leave a Review</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="gallery"
+      class="py-20"
+      style="background-color: var(--color-background)"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2
+            class="text-sm font-semibold uppercase tracking-widest text-pink-500 mb-2"
+          >
+            Our Masterpieces
+          </h2>
+          <h3
+            class="text-4xl font-bold text-pink-700"
+            style="font-family: 'Playfair Display', serif"
+          >
+            The Wilma Nail Gallery
+          </h3>
+          <p class="text-gray-600 max-w-2xl mx-auto mt-4">
+            Browse our portfolio of stunning nail designs, crafted with care and
+            precision for delighted clients. Click an image to view it
+            full-screen!
+          </p>
+        </div>
+        <div class="grid grid-cols-3 md:grid-cols-5 gap-4 gallery-container">
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_2.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_2.webp"
+              alt="Pink and white marble almond shape nail design"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-src="images/Nails_Example_3.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_3.webp"
+              alt="Elegant square tip French manicure with a modern twist"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-src="images/Nails_Example_4.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_4.webp"
+              alt="Long acrylic nails with mixed pastel colors and glitter accents"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_5.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_5.webp"
+              alt="Vibrant hand-painted floral nail art on a pink base"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_6.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_6.webp"
+              alt="Short, neat gel nails in a deep burgundy color perfect for autumn"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-src="images/Nails_Example_7.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_7.webp"
+              alt="Soft pink ombre nails with a subtle shimmer finish, long coffin shape"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_8.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_8.webp"
+              alt="Fun, colorful abstract splatter nail art on a short round nail shape"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_9.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_9.webp"
+              alt="Matte black nails with glossy French tips, very chic and sophisticated"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-src="images/Nails_Example_10.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_10.webp"
+              alt="Vivid neon pink and orange striped nail art for a summer holiday look"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-src="images/Nails_Example_12.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_12.webp"
+              alt="Simple white and gold glitter gradient on oval shaped nails"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_13.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_13.webp"
+              alt="Delicate baby blue nails with tiny white clouds painted on each nail"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_14.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_14.webp"
+              alt="Deep red glossy nails with a single accent nail featuring diamond rhinestones"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-src="images/Nails_Example_15.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_15.webp"
+              alt="Pastel yellow and mint green mismatched nails with a high-shine top coat"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-src="images/Nails_Example_16.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_16.webp"
+              alt="Natural nude gel polish with a delicate chrome effect on the tips"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_17.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_17.webp"
+              alt="Geometric nail art using black lines and negative space on natural nails"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_18.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_18.webp"
+              alt="Close-up of pink marble nail art on almond nails"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-src="images/Nails_Example_19.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_19.webp"
+              alt="Classy French manicure on square-tipped nails"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-src="images/Nails_Example_20.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_20.webp"
+              alt="Pastel pink, blue and yellow long acrylic nails"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_22.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_22.webp"
+              alt="Detailed floral nail art with small red and white flowers"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_21.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_21.webp"
+              alt="Bright yellow nail polish with a single floral accent nail"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_24.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_24.webp"
+              alt="Purple and white floral design on a long nail"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_25.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_25.webp"
+              alt="Elegant
+            white and pink flower petals painted on nails"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_28.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_28.webp"
+              alt="Dark blue nails with delicate white flower line art"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_29.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_29.webp"
+              alt="Natural-looking nails with subtle white floral accents"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_23.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_23.webp"
+              alt="Intricate black and white floral pattern on a single nail"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_27.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_27.webp"
+              alt="Colorful, abstract flower design on long coffin nails"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_26.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_26.webp"
+              alt="Pastel blue nails with white daisy flower art"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_30.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_30.webp"
+              alt="Almond orange ombre and cutout crescent detail"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-src="images/Nails_Example_31.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_31.webp"
+              alt="Square neon coral set with crescent accents"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-src="images/Nails_Example_32.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_32.webp"
+              alt="Animal print accents with French and deep berry art"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            data-src="images/Nails_Example_33.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_33.webp"
+              alt="Neon coral nails with glitter wave accent"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_34.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_34.webp"
+              alt="Coral French blend with rhinestone detail"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_35.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_35.webp"
+              alt="Beautiful nail art design by Wilma"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_36.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_36.webp"
+              alt="Beautiful nail art design by Wilma"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_37.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_37.webp"
+              alt="Beautiful nail art design by Wilma"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_38.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_38.webp"
+              alt="Beautiful nail art design by Wilma"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_39.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_39.webp"
+              alt="Beautiful nail art design by Wilma"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_40.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_40.webp"
+              alt="Beautiful nail art design by Wilma"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_41.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_41.webp"
+              alt="Beautiful nail art design by Wilma"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_42.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_42.webp"
+              alt="Beautiful nail art design by Wilma"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="gallery-item rounded-xl overflow-hidden shadow-lg"
+            data-aos="zoom-in"
+            data-src="images/Nails_Example_43.webp"
+          >
+            <img
+              src="images/thumbnails/Nails_Example_43.webp"
+              alt="Beautiful nail art design by Wilma"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover aspect-square"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <!-- Gallery Navigation -->
+        <div class="flex justify-center mt-12">
+          <button
+            id="gallery-next-btn"
+            class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 flex items-center gap-2 text-lg"
+          >
+            <span>More Designs</span>
+            <i data-feather="arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div id="lightbox" class="lightbox">
+      <button
+        id="lightbox-close"
+        class="lightbox-close"
+        aria-label="Close Lightbox"
+      >
+        <i data-feather="x"></i>
+      </button>
+      <div class="lightbox-content">
+        <img
+          id="lightbox-image"
+          class="lightbox-image rounded-xl"
+          src=""
+          alt="Full-screen nail art preview"
+        />
+      </div>
+      <div
+        class="lightbox-nav absolute w-full h-full flex items-center justify-between px-4 md:px-12 pointer-events-none"
+      >
+        <button
+          id="lightbox-prev"
+          aria-label="Previous Image"
+          class="pointer-events-auto"
+        >
+          <i data-feather="chevron-left"></i>
+        </button>
+        <button
+          id="lightbox-next"
+          aria-label="Next Image"
+          class="pointer-events-auto"
+        >
+          <i data-feather="chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <section id="services" class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2
+            class="text-sm font-semibold uppercase tracking-widest text-pink-500 mb-2"
+          >
+            Our Offerings
+          </h2>
+          <h3
+            class="text-4xl font-bold text-pink-700"
+            style="font-family: 'Playfair Display', serif"
+          >
+            Expert Services Menu
+          </h3>
+          <p class="text-gray-600 max-w-2xl mx-auto mt-4">
+            Professional nail care and beauty services tailored to leave you
+            feeling pampered and polished.
+          </p>
+        </div>
+
+        <div id="services-slider" class="services-slider">
+          <div id="services-track" class="services-track">
+            <div class="service-item">
+              <div
+                class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
+              >
+                <div
+                  class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
+                  aria-label="Manicure service"
+                >
+                  <i
+                    data-feather="chevrons-right"
+                    class="text-pink-600 w-6 h-6"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">
+                  Manicures (Classic & Gel)
+                </h4>
+                <p class="text-gray-600">
+                  Classic, gel, or luxurious spa manicures to keep your hands
+                  looking beautiful, healthy, and perfectly groomed.
+                </p>
+              </div>
+            </div>
+            <div class="service-item">
+              <div
+                class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
+              >
+                <div
+                  class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
+                  aria-label="Pedicure service"
+                >
+                  <i
+                    data-feather="sun"
+                    class="text-pink-600 w-6 h-6"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">
+                  Pedicures (Relaxation & Repair)
+                </h4>
+                <p class="text-gray-600">
+                  Relaxing foot treatments and pedicures with various options to
+                  pamper your feet and leave your toes vibrant.
+                </p>
+              </div>
+            </div>
+            <div class="service-item">
+              <div
+                class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
+              >
+                <div
+                  class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
+                  aria-label="Nail art service"
+                >
+                  <i
+                    data-feather="feather"
+                    class="text-pink-600 w-6 h-6"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">
+                  Custom Nail Art & Design
+                </h4>
+                <p class="text-gray-600">
+                  Bespoke, custom nail designs to express your personal style
+                  with unmatched precision and high-level creativity.
+                </p>
+              </div>
+            </div>
+            <div class="service-item">
+              <div
+                class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
+              >
+                <div
+                  class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
+                  aria-label="Eyebrow tinting service"
+                >
+                  <i
+                    data-feather="eye"
+                    class="text-pink-600 w-6 h-6"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">
+                  Eyebrow Tinting
+                </h4>
+                <p class="text-gray-600">
+                  Expert eyebrow tinting to enhance your natural beauty, adding
+                  depth and definition to perfectly frame your face.
+                </p>
+              </div>
+            </div>
+            <div class="service-item">
+              <div
+                class="bg-pink-50 p-8 rounded-xl shadow-lg border-b-4 border-pink-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
+              >
+                <div
+                  class="w-14 h-14 bg-pink-200/50 rounded-full flex items-center justify-center mb-4 border border-pink-300"
+                  aria-label="Eyebrow waxing service"
+                >
+                  <i
+                    data-feather="tool"
+                    class="text-pink-600 w-6 h-6"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">
+                  Eyebrow Waxing & Shaping
+                </h4>
+                <p class="text-gray-600">
+                  Say goodbye to stray hairs and hello to perfectly shaped
+                  brows. Waxed with the utmost care and finesse for a clean
+                  look.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="services-nav">
+            <button
+              id="services-prev"
+              aria-label="Previous Services"
+              class="pointer-events-auto"
+            >
+              <i data-feather="chevron-left"></i>
+            </button>
+            <button
+              id="services-next"
+              aria-label="Next Services"
+              class="pointer-events-auto"
+            >
+              <i data-feather="chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="contact"
+      class="py-20"
+      style="background-color: var(--color-background)"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2
+            class="text-sm font-semibold uppercase tracking-widest text-pink-500 mb-2"
+          >
+            Book Your Session
+          </h2>
+          <h3
+            class="text-4xl font-bold text-pink-700"
+            style="font-family: 'Playfair Display', serif"
+          >
+            Get In Touch
+          </h3>
+          <p class="text-gray-600 max-w-2xl mx-auto mt-4">
+            The best way to book is via our new online system. For other
+            inquiries, feel free to use the contact info below.
+          </p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-12">
+          <div class="md:w-1/2" data-aos="fade-right">
+            <div
+              class="bg-white p-8 rounded-xl shadow-2xl border-t-8 border-pink-500"
+            >
+              <h4
+                class="text-2xl font-bold text-pink-600 mb-6"
+                style="font-family: 'Playfair Display', serif"
+              >
+                Contact Information
+              </h4>
+
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <div
+                    class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                  >
+                    <i data-feather="map-pin" class="text-pink-500 w-6 h-6"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-bold text-gray-800 text-lg">
+                      Our Location
+                    </h5>
+                    <p class="text-gray-600">
+                      27 Prinsloo Drive, Still Bay West
+                    </p>
+                    <a
+                      href="https://share.google/7oTRMbvnIgs1R8oF9"
+                      target="_blank"
+                      class="text-pink-500 hover:text-pink-700 font-medium transition-colors mt-1 inline-block"
+                      >View on Google Maps</a
+                    >
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div
+                    class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                  >
+                    <i data-feather="mail" class="text-pink-500 w-6 h-6"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-bold text-gray-800 text-lg">
+                      Email Address
+                    </h5>
+                    <a
+                      href="mailto:wilmajprinsloo@gmail.com"
+                      class="text-pink-500 hover:text-pink-700 font-medium transition-colors"
+                      >wilmajprinsloo@gmail.com</a
+                    >
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div
+                    class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                  >
+                    <i data-feather="phone" class="text-pink-500 w-6 h-6"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-bold text-gray-800 text-lg">
+                      Call or WhatsApp
+                    </h5>
+                    <a
+                      href="tel:+27635978505"
+                      class="text-pink-500 hover:text-pink-700 font-medium transition-colors"
+                      >+27 63 597 8505</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-10 pt-6 border-t border-pink-200">
+                <img
+                  src="images/Nails_by_Wilma_Location.webp"
+                  alt="Nails by Wilma Location Map"
+                  class="rounded-xl shadow-lg w-full"
+                  width="600"
+                  height="400"
+                  style="aspect-ratio: 3/2"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="md:w-1/2" data-aos="fade-left">
+            <form
+              id="form"
+              class="bg-white p-8 rounded-xl shadow-2xl border-t-8 border-pink-500"
+              action="#"
+              method="POST"
+            >
+              <h4
+                class="text-2xl font-bold text-pink-600 mb-6"
+                style="font-family: 'Playfair Display', serif"
+              >
+                Send Us a Message
+              </h4>
+
+              <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-medium mb-2"
+                  >Your Name <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition duration-200"
+                  placeholder="Your full name"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-medium mb-2"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition duration-200"
+                  placeholder="Email (optional)"
+                />
+              </div>
+
+              <div class="mb-4">
+                <label for="phone" class="block text-gray-700 font-medium mb-2"
+                  >Phone Number <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition duration-200"
+                  placeholder="Phone number"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label
+                  for="service"
+                  class="block text-gray-700 font-medium mb-2"
+                  >Service Interested In</label
+                >
+                <select
+                  id="service"
+                  name="service"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 bg-white transition duration-200"
+                >
+                  <option value="">Select a service (Optional)</option>
+                  <option value="manicure">Manicure</option>
+                  <option value="pedicure">Pedicure</option>
+                  <option value="nail-art">Nail Art</option>
+                  <option value="tinting">Eyebrow Tinting</option>
+                  <option value="waxing">Eyebrow Waxing</option>
+                  <option value="other">Other Inquiry</option>
+                </select>
+              </div>
+
+              <div class="mb-6">
+                <label
+                  for="message"
+                  class="block text-gray-700 font-medium mb-2"
+                  >Your Message <span class="text-red-500">*</span></label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition duration-200"
+                  placeholder="Tell us what you're looking for..."
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-xl font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105"
+                id="submit-button"
+              >
+                Send Inquiry
+              </button>
+              <div
+                id="form-status"
+                class="hidden mt-4 rounded-lg border p-4 text-sm"
+                aria-live="polite"
+              ></div>
+              <input type="hidden" name="website" value="Nails by Wilma" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="text-white py-12 relative overflow-hidden"
+      style="background-color: var(--color-secondary)"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-8 mb-8">
+          <div>
+            <h4
+              class="text-xl font-bold text-pink-500 mb-4"
+              style="font-family: 'Playfair Display', serif"
+            >
+              Nails by Wilma
+            </h4>
+            <p class="text-gray-400">
+              Your destination for professional, artistic, and luxurious nail
+              care and beauty services in Still Bay. We bring your vision to
+              life.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-bold text-pink-500 mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#gallery"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >Contact & Booking</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-bold text-pink-500 mb-4">
+              Connect With Us
+            </h4>
+            <div class="flex space-x-4">
+              <a
+                href="mailto:wilmajprinsloo@gmail.com"
+                class="w-10 h-10 bg-pink-800 text-white rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
+                aria-label="Email Wilma"
+              >
+                <i data-feather="mail" class="w-5 h-5"></i>
+                <span
+                  class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap"
+                  >Email us</span
+                >
+              </a>
+
+              <a
+                href="tel:+27635978505"
+                class="w-10 h-10 bg-pink-800 text-white rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
+                aria-label="Call Wilma"
+              >
+                <i data-feather="phone" class="w-5 h-5"></i>
+                <span
+                  class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap"
+                  >Call us</span
+                >
+              </a>
+
+              <a
+                href="https://wa.me/27635978505"
+                target="_blank"
+                class="w-10 h-10 bg-pink-800 text-white rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
+                aria-label="WhatsApp Wilma"
+              >
+                <svg
+                  viewBox="0 0 16 16"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"
+                  />
+                </svg>
+                <span
+                  class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap"
+                  >WhatsApp us</span
+                >
+              </a>
+
+              <a
+                href="https://share.google/7oTRMbvnIgs1R8oF9"
+                target="_blank"
+                class="w-10 h-10 bg-pink-800 text-white rounded-full flex items-center justify-center hover:bg-pink-500 transition-all duration-300 transform hover:scale-110 group relative"
+                aria-label="Find us on Map"
+              >
+                <i data-feather="map-pin" class="w-5 h-5"></i>
+                <span
+                  class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap"
+                  >Find us on Google</span
+                >
+              </a>
+            </div>
+            <div
+              class="mt-6 rounded-xl p-4 border border-pink-500 bg-gradient-to-r from-pink-600/20 to-pink-400/20 shadow-lg"
+            >
+              <div class="flex items-center gap-2 mb-3">
+                <i data-feather="share-2" class="text-pink-200 w-5 h-5"></i>
+                <span class="text-pink-500 font-semibold"
+                  >Share our website</span
+                >
+              </div>
+              <div class="flex gap-4">
+                <div class="group relative">
+                  <button
+                    id="share-whatsapp"
+                    class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-md hover:brightness-110 transition ring-2 ring-pink-300 transform hover:scale-110"
+                  >
+                    <svg
+                      viewBox="0 0 16 16"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"
+                      />
+                    </svg>
+                  </button>
+                  <span
+                    class="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none"
+                    >Whatsapp</span
+                  >
+                </div>
+                <div class="group relative">
+                  <button
+                    id="share-facebook"
+                    class="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-md hover:brightness-110 transition ring-2 ring-pink-300 transform hover:scale-110"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="22"
+                      height="22"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24H12.82v-9.294H9.692V11.01h3.127V8.414c0-3.1 1.894-4.788 4.66-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.765v2.315h3.587l-.467 3.696h-3.12V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z"
+                      />
+                    </svg>
+                  </button>
+                  <span
+                    class="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none"
+                    >Facebook</span
+                  >
+                </div>
+                <div class="group relative">
+                  <button
+                    id="share-sms"
+                    class="w-10 h-10 rounded-full bg-[#10B981] text-white flex items-center justify-center shadow-md hover:brightness-110 transition ring-2 ring-pink-300 transform hover:scale-110"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="22"
+                      height="22"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M20 4H4a2 2 0 00-2 2v9a2 2 0 002 2h3v3l4-3h9a2 2 0 002-2V6a2 2 0 00-2-2z"
+                      />
+                      <circle cx="8" cy="10" r="1.3" />
+                      <circle cx="12" cy="10" r="1.3" />
+                      <circle cx="16" cy="10" r="1.3" />
+                    </svg>
+                  </button>
+                  <span
+                    class="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none"
+                    >SMS</span
+                  >
+                </div>
+                <div class="group relative">
+                  <button
+                    id="share-copy"
+                    class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center shadow-md hover:bg-pink-500 transition ring-2 ring-pink-300 transform hover:scale-110"
+                  >
+                    <i data-feather="link" class="w-5 h-5"></i>
+                  </button>
+                  <span
+                    class="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-pink-700 text-xs font-semibold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition pointer-events-none"
+                    >Copy link</span
+                  >
+                </div>
+              </div>
+              <div
+                id="share-status"
+                class="hidden mt-3 text-xs text-white"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center text-gray-500 text-sm">
+          &copy; <span id="current-year">2024</span> Nails by Wilma. All Rights
+          Reserved.
+          <span class="hidden md:inline"> | </span>
+          <span class="block md:inline"
+            >Designed by
+            <a
+              href="https://rcdigitalcreations.co.za/"
+              target="_blank"
+              class="text-pink-500 hover:text-pink-700 hover:underline"
+              >RC Digital Creations</a
+            ></span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+      <i data-feather="arrow-up"></i>
+    </button>
+
+    <script defer src="main.js"></script>
+    <script defer src="chat-widget.js"></script>
+    <script src="widget.js?id=client_wilma" async></script>
+  </body>
+</html>
+</html>

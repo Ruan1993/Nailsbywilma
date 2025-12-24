@@ -1,0 +1,318 @@
+/* Add this to the top of style.css */
+* {
+    /* Critical property to ensure no hidden element causes overflow */
+    box-sizing: border-box; 
+}
+
+/* Apply overflow fix to both html and body for robustness */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Keyframes for Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0; /* Start invisible */
+}
+
+@keyframes shimmer {
+  0%, 90% { opacity: 1; transform: scale(1); }
+  92% { opacity: 0.7; transform: scale(0.9); }
+  95% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-shimmer {
+  animation: shimmer 5s infinite;
+  display: inline-block;
+}
+
+footer {
+  position: relative;
+  overflow: hidden;
+}
+
+body {
+  margin: 0; /* Set margin to zero */
+  padding: 0; /* Set padding to zero */
+  padding-bottom: 80px; /* Prevent fixed elements from overlapping footer content */
+  /* This ensures the body is the correct size and centered */
+  width: 100%; 
+  position: relative;
+}
+
+#heart-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Base colors */
+:root {
+  --color-primary: #ec4899; /* Pink-500 */
+  --color-secondary: #1a1a2e; /* Dark Blue/Black */
+  --color-background: #ffd6e7; /* Light Pink Background */
+}
+
+ 
+
+/* Custom Styles for Polish */
+.gallery-item {
+  transition: all 0.4s ease; /* 'all' will include our new border-color transition */
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 0.5rem; /* Soften the corners */
+
+  /* NEW: Added a 3px solid white border to act as a 'photo frame' */
+  border: 3px solid white;
+
+  /* This is our softer shadow from the last update */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+  /* CLS Fix: Ensure aspect ratio is reserved even before images load */
+  aspect-ratio: 1 / 1;
+}
+
+/* CLS Fix: Hide excess gallery items initially to prevent layout shift on load */
+/* Default (Mobile): Show 9 items, hide 10+ */
+.gallery-container .gallery-item:nth-child(n+10) {
+    display: none;
+}
+
+/* Desktop (>= 768px): Show 15 items, hide 16+ */
+@media (min-width: 768px) {
+    .gallery-container .gallery-item:nth-child(n+10) {
+        display: block; /* Restore 10-15 */
+    }
+    .gallery-container .gallery-item:nth-child(n+16) {
+        display: none; /* Hide 16+ */
+    }
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px) scale(1.02);
+  /* This is our subtle pink glow shadow on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15),
+    0 0 20px 4px rgba(236, 72, 153, 0.3);
+
+  /* NEW: Make the border glow with the primary brand color on hover */
+  border-color: var(--color-primary);
+}
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+.gallery-item img {
+  transition: transform 0.4s ease;
+  object-fit: cover;
+  width: 100%;
+  height: 100%; /* Ensure full height for better control in grid */
+}
+
+/* Navigation Hover for clarity */
+.nav-link:hover {
+  color: var(--color-primary) !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hero Section Background Pattern */
+.hero-pattern {
+  background-color: var(--color-background);
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+}
+
+/* Lightbox Styling */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95); /* Deeper overlay */
+  z-index: 1000;
+  /* Ensure the content container is centered */
+  align-items: center; 
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+.lightbox-content {
+  /* Use 100% of the lightbox space, with padding for safety */
+  width: 100%;
+  height: 100%;
+  /* Final vertical padding fix for clipping (top/bottom) */
+  padding: 3rem 1rem; 
+  position: relative;
+  /* This ensures the image inside is centered relative to this content area */
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+.lightbox-image {
+  max-width: 100%; /* Ensures it doesn't overflow its container */
+  max-height: 85vh; /* Final height restriction to prevent vertical clipping */
+  object-fit: contain;
+  /* SHOCKING NEON SILVER/GLITTER EFFECT for Lightbox */
+  box-shadow: 0 0 15px 2px rgb(250, 14, 226),
+    /* Bright Magenta/Pink Core Sparkle */ 0 0 40px 8px var(--color-primary),
+    0 0 80px 10px #ffffff; /* Wide Silver/Glitter Bloom */
+  border-radius: 1rem;
+}
+.lightbox-nav button {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  /* Key Change: Minimal padding to shrink the circular button */
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  border-radius: 50%;
+  line-height: 1; /* Fix vertical alignment */
+}
+.lightbox-nav button:hover {
+  background: var(--color-primary);
+  transform: scale(1.05);
+}
+
+/* FORCING TINY ICON SIZE */
+.lightbox-nav button svg {
+  /* Key Change: Explicitly set the icon size to be very small */
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  stroke-width: 2.5;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-primary);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.2s;
+  z-index: 1010;
+}
+.lightbox-close:hover {
+  background: #d946ef; /* a bit darker pink/purple for hover */
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Fix for Hero image when using object-cover */
+.hero-image-wrapper {
+  position: relative;
+  padding-top: 100%; /* Creates a square aspect ratio for the parent */
+}
+.hero-image-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  border-radius: 9999px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+  z-index: 1050;
+  opacity: 0;
+  pointer-events: none;
+}
+.back-to-top:hover {
+  transform: translateX(-50%) translateY(-2px) scale(1.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  background-color: rgba(236, 72, 153, 0.08);
+}
+.back-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top svg {
+  width: 18px;
+  height: 18px;
+}
+
+
+
+.services-slider {
+  position: relative;
+  overflow: hidden;
+}
+.services-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+.service-item {
+  flex: 0 0 33.3333%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+}
+@media (max-width: 1024px) {
+  .service-item { flex: 0 0 50%; }
+}
+@media (max-width: 640px) {
+  .service-item { flex: 0 0 100%; }
+}
+.services-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.services-nav button {
+  background: rgba(236, 72, 153, 0.9);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+  pointer-events: auto; /* Ensure buttons are clickable */
+}
+.services-nav button:hover {
+  background: rgba(219, 39, 119, 1);
+  transform: scale(1.1);
+}
+@media (min-width: 768px) {
+  .services-slider { padding: 0 28px; }
+  .services-nav { left: 0; right: 0; }
+}
