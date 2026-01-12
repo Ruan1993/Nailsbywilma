@@ -64,7 +64,12 @@ if (button && menu) {
 
 // 4. Dynamic Year
 const yearEl = document.getElementById("current-year");
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+if (yearEl) {
+  const startYear = 2025;
+  const currentYear = new Date().getFullYear();
+  yearEl.textContent =
+    currentYear > startYear ? `${startYear}–${currentYear}` : `${startYear}`;
+}
 
 // 5. Lightbox Functionality
 const lightbox = document.getElementById("lightbox");
@@ -513,4 +518,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   startGalleryInterval();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const el = document.getElementById("review-count");
+  if (!el) return;
+  let apiUrl = "https://rc-review-collector.vercel.app/api/widget";
+  const widgetScript = document.querySelector('script[src*="widget.js"]');
+  if (widgetScript) {
+    try {
+      const u = new URL(widgetScript.src, window.location.origin);
+      const id = u.searchParams.get("id");
+      if (id) apiUrl += `?id=${id}`;
+    } catch (_) {}
+  }
+  fetch(apiUrl)
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => {
+      if (!data || !Array.isArray(data.reviews)) return;
+      const count = data.reviews.length;
+      if (count > 0) el.textContent = `${count}+`;
+    })
+    .catch(() => {});
 });
