@@ -1,0 +1,737 @@
+/* Add this to the top of style.css */
+* {
+    /* Critical property to ensure no hidden element causes overflow */
+    box-sizing: border-box; 
+}
+
+/* Apply overflow fix to both html and body for robustness */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Keyframes for Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0; /* Start invisible */
+}
+
+@keyframes shimmer {
+  0%, 90% { opacity: 1; transform: scale(1); }
+  92% { opacity: 0.7; transform: scale(0.9); }
+  95% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-shimmer {
+  animation: shimmer 5s infinite;
+  display: inline-block;
+}
+
+footer {
+  position: relative;
+  overflow: hidden;
+}
+
+body {
+  margin: 0; /* Set margin to zero */
+  padding: 0; /* Set padding to zero */
+  padding-bottom: 80px; /* Prevent fixed elements from overlapping footer content */
+  /* This ensures the body is the correct size and centered */
+  width: 100%; 
+  position: relative;
+}
+
+#heart-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Base colors */
+:root {
+  --color-primary: #ec4899; /* Pink-500 */
+  --color-secondary: #1a1a2e; /* Dark Blue/Black */
+  --color-background: #ffd6e7; /* Light Pink Background */
+}
+
+ 
+
+/* Custom Styles for Polish */
+.gallery-item {
+  transition: all 0.4s ease; /* 'all' will include our new border-color transition */
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 0.5rem; /* Soften the corners */
+
+  /* NEW: Added a 3px solid white border to act as a 'photo frame' */
+  border: 3px solid white;
+
+  /* This is our softer shadow from the last update */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+  /* CLS Fix: Ensure aspect ratio is reserved even before images load */
+  aspect-ratio: 1 / 1;
+}
+
+/* CLS Fix: Hide excess gallery items initially to prevent layout shift on load */
+/* Default (Mobile): Show 9 items, hide 10+ */
+.gallery-container .gallery-item:nth-child(n+10) {
+    display: none;
+}
+
+/* Desktop (>= 768px): Show 15 items, hide 16+ */
+@media (min-width: 768px) {
+    .gallery-container .gallery-item:nth-child(n+10) {
+        display: block; /* Restore 10-15 */
+    }
+    .gallery-container .gallery-item:nth-child(n+16) {
+        display: none; /* Hide 16+ */
+    }
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px) scale(1.02);
+  /* This is our subtle pink glow shadow on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15),
+    0 0 20px 4px rgba(236, 72, 153, 0.3);
+
+  /* NEW: Make the border glow with the primary brand color on hover */
+  border-color: var(--color-primary);
+}
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+.gallery-item img {
+  transition: transform 0.4s ease;
+  object-fit: cover;
+  width: 100%;
+  height: 100%; /* Ensure full height for better control in grid */
+}
+
+/* Navigation Hover for clarity */
+.nav-link:hover {
+  color: var(--color-primary) !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hero Section Background Pattern */
+.hero-pattern {
+  background-color: var(--color-background);
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+}
+
+/* Lightbox Styling */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95); /* Deeper overlay */
+  z-index: 1000;
+  /* Ensure the content container is centered */
+  align-items: center; 
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+.lightbox-content {
+  /* Use 100% of the lightbox space, with padding for safety */
+  width: 100%;
+  height: 100%;
+  /* Final vertical padding fix for clipping (top/bottom) */
+  padding: 3rem 1rem; 
+  position: relative;
+  /* This ensures the image inside is centered relative to this content area */
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+.lightbox-image {
+  max-width: 100%; /* Ensures it doesn't overflow its container */
+  max-height: 85vh; /* Final height restriction to prevent vertical clipping */
+  object-fit: contain;
+  /* SHOCKING NEON SILVER/GLITTER EFFECT for Lightbox */
+  box-shadow: 0 0 15px 2px rgb(250, 14, 226),
+    /* Bright Magenta/Pink Core Sparkle */ 0 0 40px 8px var(--color-primary),
+    0 0 80px 10px #ffffff; /* Wide Silver/Glitter Bloom */
+  border-radius: 1rem;
+}
+.lightbox-nav button {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  /* Key Change: Minimal padding to shrink the circular button */
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  border-radius: 50%;
+  line-height: 1; /* Fix vertical alignment */
+}
+.lightbox-nav button:hover {
+  background: var(--color-primary);
+  transform: scale(1.05);
+}
+
+/* FORCING TINY ICON SIZE */
+.lightbox-nav button svg {
+  /* Key Change: Explicitly set the icon size to be very small */
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  stroke-width: 2.5;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-primary);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.2s;
+  z-index: 1010;
+}
+.lightbox-close:hover {
+  background: #d946ef; /* a bit darker pink/purple for hover */
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Fix for Hero image when using object-cover */
+.hero-image-wrapper {
+  position: relative;
+  padding-top: 100%; /* Creates a square aspect ratio for the parent */
+}
+.hero-image-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  border-radius: 9999px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+  z-index: 1050;
+  opacity: 0;
+  pointer-events: none;
+}
+.back-to-top:hover {
+  transform: translateX(-50%) translateY(-2px) scale(1.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  background-color: rgba(236, 72, 153, 0.08);
+}
+.back-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top svg {
+  width: 18px;
+  height: 18px;
+}
+
+
+
+.services-slider {
+  position: relative;
+  overflow: hidden;
+}
+.services-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+.service-item {
+  flex: 0 0 33.3333%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+}
+@media (max-width: 1024px) {
+  .service-item { flex: 0 0 50%; }
+}
+@media (max-width: 640px) {
+  .service-item { flex: 0 0 100%; }
+}
+.services-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.services-nav button {
+  background: rgba(236, 72, 153, 0.9);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+  pointer-events: auto; /* Ensure buttons are clickable */
+}
+.services-nav button:hover {
+  background: rgba(219, 39, 119, 1);
+  transform: scale(1.1);
+}
+@media (min-width: 768px) {
+  .services-slider { padding: 0 28px; }
+  .services-nav { left: 0; right: 0; }
+}
+
+
+/* Bold Hero Upgrade */
+.hero-luxe {
+  isolation: isolate;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.82), transparent 34%),
+    radial-gradient(circle at right 18%, rgba(236, 72, 153, 0.18), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0));
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(58px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-glow-left {
+  width: 18rem;
+  height: 18rem;
+  top: 5rem;
+  left: -4rem;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.hero-glow-right {
+  width: 22rem;
+  height: 22rem;
+  right: -6rem;
+  bottom: 0;
+  background: rgba(236, 72, 153, 0.22);
+}
+
+.hero-pill-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.65rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(236, 72, 153, 0.18);
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(14px);
+  color: #9d174d;
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(236, 72, 153, 0.09);
+}
+
+.hero-rating-chip {
+  padding: 0.9rem 1.1rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 16px 40px rgba(17, 24, 39, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.hero-text-gradient {
+  background: linear-gradient(135deg, #db2777 0%, #ec4899 45%, #fb7185 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-lead {
+  line-height: 1.75;
+}
+
+.hero-primary-cta,
+.hero-secondary-cta,
+.hero-assistant-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 9999px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.hero-primary-cta {
+  min-height: 3.6rem;
+  padding: 0.95rem 1.6rem;
+  color: #fff;
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+  box-shadow: 0 22px 34px rgba(236, 72, 153, 0.28);
+}
+
+.hero-secondary-cta {
+  min-height: 3.6rem;
+  padding: 0.95rem 1.6rem;
+  color: #be185d;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(236, 72, 153, 0.18);
+  box-shadow: 0 14px 28px rgba(17, 24, 39, 0.08);
+}
+
+.hero-primary-cta:hover,
+.hero-secondary-cta:hover,
+.hero-assistant-button:hover {
+  transform: translateY(-3px);
+}
+
+.hero-primary-cta:hover {
+  box-shadow: 0 28px 40px rgba(236, 72, 153, 0.34);
+}
+
+.hero-secondary-cta:hover,
+.hero-assistant-button:hover {
+  border-color: rgba(236, 72, 153, 0.35);
+  box-shadow: 0 18px 34px rgba(17, 24, 39, 0.12);
+}
+
+.hero-assistant-callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 1.4rem;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(236, 72, 153, 0.16);
+  box-shadow: 0 18px 40px rgba(17, 24, 39, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.hero-assistant-callout p {
+  margin: 0.25rem 0 0;
+  color: #4b5563;
+  font-size: 0.96rem;
+}
+
+.hero-assistant-label {
+  display: inline-block;
+  color: #be185d;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.hero-assistant-button {
+  min-width: 9rem;
+  min-height: 3rem;
+  padding: 0.85rem 1.15rem;
+  color: #be185d;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(236, 72, 153, 0.22);
+  cursor: pointer;
+}
+
+.hero-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.hero-feature-card {
+  padding: 1.1rem 1rem;
+  border-radius: 1.4rem;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 40px rgba(17, 24, 39, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.hero-feature-card strong {
+  display: block;
+  color: #111827;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.hero-feature-label,
+.hero-mini-label {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  color: #be185d;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-visual {
+  position: relative;
+}
+
+.hero-showcase {
+  position: relative;
+  min-height: 39rem;
+  max-width: 35rem;
+  margin-inline: auto;
+}
+
+.hero-main-frame,
+.hero-secondary-frame,
+.hero-floating-card {
+  box-shadow: 0 24px 60px rgba(17, 24, 39, 0.14);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hero-main-frame {
+  position: absolute;
+  inset: 2.7rem 1rem 4.5rem 4.3rem;
+  padding: 0.7rem;
+  border-radius: 2.5rem;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 240, 246, 0.92));
+  transform: rotate(4deg);
+}
+
+.hero-main-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.hero-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.hero-showcase:hover .hero-main-image {
+  transform: scale(1.045);
+}
+
+.hero-secondary-frame {
+  position: absolute;
+  left: 0;
+  bottom: 2.2rem;
+  width: 11.5rem;
+  aspect-ratio: 0.92;
+  padding: 0.45rem;
+  border-radius: 1.9rem;
+  background: rgba(255, 255, 255, 0.92);
+  transform: rotate(-9deg);
+}
+
+.hero-secondary-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+
+.hero-floating-card {
+  position: absolute;
+  z-index: 2;
+  padding: 1rem 1.05rem;
+  border-radius: 1.3rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(18px);
+}
+
+.hero-floating-card strong,
+.hero-floating-card small {
+  display: block;
+}
+
+.hero-floating-card strong {
+  color: #111827;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.hero-floating-card small {
+  margin-top: 0.18rem;
+  color: #6b7280;
+  font-size: 0.86rem;
+}
+
+.hero-floating-card-top {
+  top: 0;
+  right: 0;
+  max-width: 12rem;
+}
+
+.hero-floating-card-bottom {
+  right: 0.5rem;
+  bottom: 0;
+  max-width: 13rem;
+}
+
+.hero-scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 2rem;
+  color: rgba(17, 24, 39, 0.68);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.hero-scroll-line {
+  width: 4rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(190, 24, 93, 0.8), rgba(190, 24, 93, 0));
+}
+
+@media (max-width: 1024px) {
+  .hero-showcase {
+    min-height: 33rem;
+    max-width: 31rem;
+  }
+
+  .hero-main-frame {
+    inset: 2.3rem 0.8rem 4.3rem 3.6rem;
+  }
+
+  .hero-feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-pill-wrap {
+    gap: 0.55rem;
+  }
+
+  .hero-pill {
+    font-size: 0.8rem;
+    padding: 0.58rem 0.85rem;
+  }
+
+  .hero-assistant-callout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-assistant-button {
+    width: 100%;
+  }
+
+  .hero-showcase {
+    min-height: 28rem;
+    max-width: 24rem;
+  }
+
+  .hero-main-frame {
+    inset: 2rem 0.4rem 3.6rem 2.4rem;
+    border-radius: 2rem;
+  }
+
+  .hero-main-image-wrap {
+    border-radius: 1.65rem;
+  }
+
+  .hero-secondary-frame {
+    width: 8.5rem;
+    bottom: 1.35rem;
+  }
+
+  .hero-floating-card {
+    padding: 0.85rem 0.9rem;
+  }
+
+  .hero-floating-card-top,
+  .hero-floating-card-bottom {
+    max-width: 10.5rem;
+  }
+
+  .hero-scroll-cue {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-main-image,
+  .hero-primary-cta,
+  .hero-secondary-cta,
+  .hero-assistant-button,
+  .gallery-item,
+  .gallery-item img {
+    transition: none !important;
+  }
+}
+
+/* Main big image frame */
+#hero-showcase .hero-main-frame > div {
+  border: 3px solid #ec4899 !important;
+}
+
+/* Small image */
+#hero-showcase .hero-secondary-frame img {
+  border: 3px solid #ec4899 !important;
+}
+
+/* ALL hero cards / boxes */
+#hero-showcase .hero-box,
+#hero-showcase .beauty-box,
+#hero-showcase .hero-card,
+#hero-showcase .floating-box,
+#hero-showcase .info-box,
+#hero-showcase .card {
+  border: 2px solid #ec4899 !important;
+}
+
+/* If your boxes use shadows instead of borders */
+#hero-showcase .hero-box,
+#hero-showcase .beauty-box,
+#hero-showcase .hero-card {
+  box-shadow: 0 8px 25px rgba(236, 72, 153, 0.25) !important;
+}
+
+/* Optional: make main image pop more than others */
+#hero-showcase .hero-main-frame > div {
+  box-shadow: 0 15px 40px rgba(236, 72, 153, 0.35) !important;
+}
