@@ -171,6 +171,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let isDragging = false;
     let dragStartX = 0;
     let dragDeltaX = 0;
+    let baseTranslateX = 0;
+    let didTouchMove = false;
+    let handledBySwipe = false;
 
     function getItemsPerView() {
         if (window.innerWidth < 640) return 1;
@@ -187,11 +190,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const maxIndex = getMaxIndex();
 
         if (currentIndex < 0) currentIndex = 0;
-        if (currentIndex > maxIndex) currentIndex = 0;
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
 
-        const percentage = (100 / itemsPerView) * currentIndex;
+        // Use pixel-based translation so each step aligns to exactly one card.
+        const targetX = -items[currentIndex].offsetLeft;
         track.style.transition = withTransition ? "transform 0.6s ease" : "none";
-        track.style.transform = `translateX(-${percentage}%)`;
+        track.style.transform = `translateX(${targetX}px)`;
     }
 
     function next() {
@@ -219,9 +223,13 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = true;
         dragStartX = clientX;
         dragDeltaX = 0;
+        didTouchMove = false;
+        handledBySwipe = false;
         stopAutoplay();
         track.style.transition = "none";
         container.classList.add("is-dragging-services");
+        baseTranslateX = -items[currentIndex].offsetLeft;
+        track.style.transform = `translateX(${baseTranslateX}px)`;
     }
 
     function shouldStartDrag(target) {
@@ -231,15 +239,21 @@ document.addEventListener("DOMContentLoaded", () => {
     function onDragMove(clientX) {
         if (!isDragging) return;
         dragDeltaX = clientX - dragStartX;
-        const itemsPerView = getItemsPerView();
-        const basePercentage = (100 / itemsPerView) * currentIndex;
-        track.style.transform = `translateX(calc(-${basePercentage}% + ${dragDeltaX}px))`;
+        didTouchMove = true;
+        track.style.transform = `translateX(${baseTranslateX + dragDeltaX}px)`;
     }
 
     function onDragEnd() {
         if (!isDragging) return;
         isDragging = false;
         container.classList.remove("is-dragging-services");
+
+        // If the swipe helper already advanced the carousel, don't advance again.
+        if (handledBySwipe) {
+            handledBySwipe = false;
+            startAutoplay();
+            return;
+        }
 
         const threshold = Math.min(120, container.offsetWidth * 0.12);
         if (dragDeltaX <= -threshold) {
@@ -267,13 +281,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    addSwipeSupport(container, () => {
-        next();
-        startAutoplay();
-    }, () => {
-        prev();
-        startAutoplay();
-    });
+    addSwipeSupport(
+        container,
+        () => {
+            // If the user actually dragged (touchmove fired), the drag-end handler
+            // will snap to the correct next/prev card. Avoid double-advancing.
+            if (didTouchMove) return;
+            handledBySwipe = true;
+            next();
+            startAutoplay();
+        },
+        () => {
+            if (didTouchMove) return;
+            handledBySwipe = true;
+            prev();
+            startAutoplay();
+        }
+    );
 
     container.addEventListener("mousedown", (event) => {
         if (!shouldStartDrag(event.target)) return;

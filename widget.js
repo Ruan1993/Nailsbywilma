@@ -53,70 +53,89 @@
       /* Mobile: 1 review visible (100% width) */
       flex: 0 0 100%;
       box-sizing: border-box;
-      background: linear-gradient(145deg, #f9cade 0%, #f5afcf 42%, #ef7fb2 100%);
+      /* Soft premium pink-glass gradient */
+      background: linear-gradient(
+        145deg,
+        rgba(249, 202, 222, 0.78) 0%,
+        rgba(245, 175, 207, 0.62) 42%,
+        rgba(239, 127, 178, 0.52) 100%
+      );
       border-radius: 20px;
+      backdrop-filter: blur(14px);
       box-shadow:
-        0 0 0 4px rgba(236,72,153,0.78),
-        0 0 0 8px rgba(255,255,255,0.88),
-        0 18px 40px rgba(236,72,153,0.28),
-        0 14px 30px rgba(17,24,39,0.12);
+        /* Double-layer edge (inner highlight + soft pink glow) */
+        0 0 0 3px rgba(255,255,255,0.86),
+        0 0 0 6px rgba(236,72,153,0.18),
+        /* Refined depth */
+        0 18px 44px rgba(236,72,153,0.18),
+        0 14px 30px rgba(17,24,39,0.10);
       padding: 28px 24px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       user-select: none;
-      border: 3px solid rgba(219,39,119,0.95);
+      border: 3px solid rgba(236,72,153,0.40);
       position: relative; /* For Google Icon */
       overflow: hidden;
-      transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease, border-color 0.35s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, border-color 0.3s ease;
     }
     .review-card::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at top right, rgba(255,255,255,0.32), transparent 24%),
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0));
+        radial-gradient(circle at top right, rgba(255,255,255,0.48), transparent 26%),
+        radial-gradient(circle at top left, rgba(244,114,182,0.12), transparent 44%),
+        linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
       pointer-events: none;
     }
     .review-card::after {
       content: "";
       position: absolute;
-      inset: auto auto -40px -30px;
-      width: 120px;
-      height: 120px;
+      inset: auto auto -54px -44px;
+      width: 140px;
+      height: 140px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(255,255,255,0.18), rgba(255,255,255,0));
+      background: radial-gradient(
+        circle,
+        rgba(236,72,153,0.22),
+        rgba(236,72,153,0.10),
+        rgba(255,255,255,0)
+      );
       pointer-events: none;
+      filter: blur(1px);
     }
     .review-card:hover {
-      transform: translateY(-8px) rotate(-0.5deg);
-      border-color: rgba(190,24,93,1);
+      transform: translateY(-6px);
+      border-color: rgba(236,72,153,0.65);
       box-shadow:
-        0 0 0 5px rgba(236,72,153,0.95),
-        0 0 0 10px rgba(255,255,255,0.94),
-        0 24px 48px rgba(236,72,153,0.34),
-        0 18px 34px rgba(17,24,39,0.14);
-      filter: saturate(1.05);
+        0 0 0 4px rgba(255,255,255,0.90),
+        0 0 0 10px rgba(236,72,153,0.22),
+        0 26px 60px rgba(236,72,153,0.22),
+        0 18px 42px rgba(17,24,39,0.14);
+      filter: none;
     }
+    /* Keep a single visual style for the card highlight on hover */
     .review-card::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at top right, rgba(255,255,255,0.48), transparent 24%),
-        radial-gradient(circle at bottom left, rgba(244,114,182,0.10), transparent 28%);
+        radial-gradient(circle at top right, rgba(255,255,255,0.48), transparent 26%),
+        radial-gradient(circle at top left, rgba(244,114,182,0.12), transparent 44%),
+        linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
       pointer-events: none;
     }
     .review-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(190,24,93,1);
+      transform: translateY(-6px);
+      border-color: rgba(236,72,153,0.65);
       box-shadow:
-        0 0 0 5px rgba(236,72,153,0.95),
-        0 0 0 10px rgba(255,255,255,0.94),
-        0 24px 48px rgba(236,72,153,0.34),
-        0 18px 34px rgba(17,24,39,0.14);
+        0 0 0 4px rgba(255,255,255,0.90),
+        0 0 0 10px rgba(236,72,153,0.22),
+        0 26px 60px rgba(236,72,153,0.22),
+        0 18px 42px rgba(17,24,39,0.14);
+      filter: none;
     }
 
     .google-icon {
@@ -161,24 +180,32 @@
     }
 
     .author-name {
-      font-weight: 700;
+      font-weight: 750;
       font-size: 16px;
-      color: #1f2937;
+      color: #111827;
+      letter-spacing: 0.01em;
       margin-bottom: 4px;
     }
 
     .stars {
-      color: #ec4899; /* Brand Pink for Stars */
+      color: #D4AF37; /* Base gold (inactive stars use opacity) */
       font-size: 18px;
       letter-spacing: 2px;
       display: flex;
       gap: 2px;
+      /* Subtle premium glow (kept low so it doesn't look bright) */
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.12);
+    }
+
+    .stars svg {
+      /* Apply glow to the SVG stars themselves */
+      filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.12));
     }
 
     .review-text {
       font-size: 16px;
-      color: #374151;
-      line-height: 1.72;
+      color: #2d3748;
+      line-height: 1.68;
       font-style: italic;
       max-width: 34ch;
     }
@@ -300,7 +327,7 @@
       object-fit: cover;
       cursor: pointer;
       border: 1px solid #ddd;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .photo-thumbnail:hover {
       transform: scale(1.05);
@@ -409,7 +436,17 @@
       return;
     }
 
-    const starSvg = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>';
+    const starSvg =
+      '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">' +
+        '<path ' +
+          'd="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" ' +
+          'fill="url(#rcStarGold)" ' +
+          // Stronger outline so no edge looks faded/transparent.
+          'stroke="rgba(255, 230, 170, 0.9)" ' +
+          'stroke-width="0.7" ' +
+          'stroke-linejoin="round" ' +
+        '/>' +
+      '</svg>';
     const googleIconSvg = '<svg class="google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.21.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>';
 
     const slidesHtml = validReviews.map(review => {
@@ -459,6 +496,18 @@
     shadow.innerHTML = `
       <style>${styles}</style>
       <div class="widget-wrapper">
+        <svg width="0" height="0" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+          <defs>
+            <!-- Metallic gold gradient with a brighter top reflection -->
+            <linearGradient id="rcStarGold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FFF2C2" stop-opacity="1" />
+              <stop offset="18%" stop-color="#F6D56A" stop-opacity="1" />
+              <stop offset="45%" stop-color="#D4AF37" stop-opacity="1" />
+              <stop offset="72%" stop-color="#B8871B" stop-opacity="1" />
+              <stop offset="100%" stop-color="#6B3D00" stop-opacity="1" />
+            </linearGradient>
+          </defs>
+        </svg>
         <div class="slides-container">
           ${slidesHtml}
         </div>
