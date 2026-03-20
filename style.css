@@ -78,25 +78,17 @@ body {
 
   /* This is our softer shadow from the last update */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  
-  /* CLS Fix: Ensure aspect ratio is reserved even before images load */
-  aspect-ratio: 1 / 1;
 }
 
-/* CLS Fix: Hide excess gallery items initially to prevent layout shift on load */
-/* Default (Mobile): Show 9 items, hide 10+ */
-.gallery-container .gallery-item:nth-child(n+10) {
-    display: none;
+.gallery-container {
+  grid-auto-flow: dense;
 }
 
-/* Desktop (>= 768px): Show 15 items, hide 16+ */
-@media (min-width: 768px) {
-    .gallery-container .gallery-item:nth-child(n+10) {
-        display: block; /* Restore 10-15 */
-    }
-    .gallery-container .gallery-item:nth-child(n+16) {
-        display: none; /* Hide 16+ */
-    }
+/* Ensure gallery items take full space in their grid slots */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .gallery-item:hover {
@@ -510,35 +502,36 @@ body {
   position: relative;
 }
 
+/* Hero Section Layout Fix */
 .hero-showcase {
   position: relative;
-  min-height: 39rem;
-  max-width: 35rem;
+  min-height: 42rem;
+  max-width: 38rem;
   margin-inline: auto;
-}
-
-.hero-main-frame,
-.hero-secondary-frame,
-.hero-floating-card {
-  box-shadow: 0 24px 60px rgba(17, 24, 39, 0.14);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-main-frame {
   position: absolute;
-  inset: 2.7rem 1rem 4.5rem 4.3rem;
-  padding: 0.7rem;
-  border-radius: 2.5rem;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 240, 246, 0.92));
-  transform: rotate(4deg);
+  width: 85%;
+  height: 75%;
+  padding: 0.8rem;
+  border-radius: 2rem;
+  background: white;
+  transform: rotate(3deg);
+  z-index: 1;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
 .hero-main-image-wrap {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   overflow: hidden;
+  background: #fdf2f8; /* Soft pink placeholder */
 }
 
 .hero-main-image {
@@ -554,31 +547,33 @@ body {
 
 .hero-secondary-frame {
   position: absolute;
-  left: 0;
-  bottom: 2.2rem;
-  width: 11.5rem;
-  aspect-ratio: 0.92;
-  padding: 0.45rem;
-  border-radius: 1.9rem;
-  background: rgba(255, 255, 255, 0.92);
-  transform: rotate(-9deg);
+  left: -2rem;
+  bottom: 4rem;
+  width: 12rem;
+  aspect-ratio: 0.85;
+  padding: 0.6rem;
+  border-radius: 1.8rem;
+  background: white;
+  transform: rotate(-6deg);
+  z-index: 3;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
 .hero-secondary-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 1.5rem;
+  border-radius: 1.4rem;
 }
 
 .hero-floating-card {
   position: absolute;
-  z-index: 2;
-  padding: 1rem 1.05rem;
-  border-radius: 1.3rem;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(18px);
+  z-index: 4;
+  padding: 1.2rem;
+  border-radius: 1.5rem;
+  background: white;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  min-width: 13rem;
 }
 
 .hero-floating-card strong,
@@ -599,15 +594,59 @@ body {
 }
 
 .hero-floating-card-top {
-  top: 0;
-  right: 0;
-  max-width: 12rem;
+  top: 1rem;
+  right: -1rem;
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .hero-floating-card-bottom {
-  right: 0.5rem;
-  bottom: 0;
-  max-width: 13rem;
+  right: -1.5rem;
+  bottom: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Services Styling */
+.service-card-price {
+  display: inline-flex;
+  background-color: #fdf2f8; /* light pink background */
+  border: 2px solid #ec4899; /* pink border */
+  color: #be185d; /* dark pink text */
+  font-weight: 800; /* bold text */
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 10px rgba(236, 72, 153, 0.15);
+  margin-top: 0.5rem;
+}
+
+.services-pricing-note {
+  margin-top: 3rem;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #fff1f2;
+  border-radius: 1rem;
+  border: 1px solid #fecdd3;
+}
+
+.services-pricing-note p {
+  color: #9d174d; /* dark pink */
+  font-weight: 700; /* bold text */
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Service Badges (Best Value, Quick Refresh, etc.) */
+.service-badge {
+  display: inline-block;
+  color: #be185d; /* dark pink */
+  font-weight: 800; /* extra bold */
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  background-color: #fff1f2;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  border: 1px solid #fecdd3;
 }
 
 .hero-scroll-cue {
@@ -633,7 +672,8 @@ body {
   }
 
   .hero-main-frame {
-    inset: 2.3rem 0.8rem 4.3rem 3.6rem;
+    width: 90%;
+    height: 70%;
   }
 
   .hero-feature-grid {
@@ -666,26 +706,37 @@ body {
   }
 
   .hero-main-frame {
-    inset: 2rem 0.4rem 3.6rem 2.4rem;
-    border-radius: 2rem;
+    width: 95%;
+    height: 65%;
+    border-radius: 1.5rem;
   }
 
   .hero-main-image-wrap {
-    border-radius: 1.65rem;
+    border-radius: 1.25rem;
   }
 
   .hero-secondary-frame {
     width: 8.5rem;
-    bottom: 1.35rem;
+    bottom: 2rem;
+    left: -1rem;
   }
 
   .hero-floating-card {
     padding: 0.85rem 0.9rem;
   }
 
-  .hero-floating-card-top,
-  .hero-floating-card-bottom {
+  .hero-floating-card-top {
+    top: 0;
+    right: -0.5rem;
     max-width: 10.5rem;
+    min-width: 10rem;
+  }
+
+  .hero-floating-card-bottom {
+    right: -1rem;
+    bottom: 1rem;
+    max-width: 10.5rem;
+    min-width: 10rem;
   }
 
   .hero-scroll-cue {
