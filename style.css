@@ -618,13 +618,17 @@ body {
 /* Services Styling */
 .service-card-price {
   display: inline-flex;
-  background-color: #fdf2f8; /* light pink background */
-  border: 2px solid #ec4899; /* pink border */
-  color: #be185d; /* dark pink text */
-  font-weight: 800; /* bold text */
-  padding: 0.4rem 1rem;
+  align-items: center;
+  justify-content: center;
+  min-width: 5.25rem;
+  background: linear-gradient(145deg, #fff7fb, #ffe7f2);
+  border: 2px solid #ec4899;
+  color: #9d174d;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 0.45rem 1rem;
   border-radius: 9999px;
-  box-shadow: 0 4px 10px rgba(236, 72, 153, 0.15);
+  box-shadow: 0 8px 18px rgba(236, 72, 153, 0.14);
   margin-top: 0.5rem;
 }
 
@@ -869,4 +873,56 @@ body {
   )::before {
     transition: none !important;
   }
+}
+
+.service-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+}
+
+.service-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.service-card-seasonal {
+  margin: 0.55rem 0 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #9f1239;
+  font-style: italic;
+}
+
+.service-season-note {
+  display: block;
+  margin-top: 0.65rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #9f1239;
+}
+
+
+/* Fix service card pricing outlines */
+.service-card-header::before,
+.service-card-meta::before,
+.service-card-seasonal::before,
+.service-card-price::before,
+.service-badge::before,
+.service-season-note::before {
+  content: none !important;
+  box-shadow: none !important;
+}
+
+.service-card-header,
+.service-card-meta,
+.service-card-seasonal,
+.service-card-price,
+.service-badge,
+.service-season-note {
+  position: static;
 }

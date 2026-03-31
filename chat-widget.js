@@ -22,21 +22,22 @@ const WEBSITE_CONTEXT = `--- NAILS BY WILMA CONTEXT ---
   
  SERVICES & PRICING: 
  (Note to Bella: If a price isn't listed here, ask the client to WhatsApp for a custom quote.) 
-  
- 1. HANDS & FEET 
-    - Gel Overlay on Natural Nails: R300  
-    - Spa Pedicures & Gel (Relaxation & Repair): R200 
-    - Tips & Gel Overlay: R350  
-    - Extensions (Build with Poly Gel): R380 
-    - Soak-off Only: R60 
-  
+ (Note to Bella: Always show the standard rate first, then the seasonal rate in this exact style: Service Name: R___, Seasonal rate: R___.) 
+ 
+ 1. NAIL SERVICES 
+    - Gel Overlay on Natural Nails: R320, Seasonal rate: R350 
+    - Spa Pedicure & Gel: R200, Seasonal rate: R250 
+    - Tips & Gel Overlay: R350, Seasonal rate: R420 
+    - Extensions (Build with Poly Gel): R380, Seasonal rate: R450 
+    - Soak-off Only: R60, Seasonal rate: R100 
+ 
  2. BEAUTY EXTRAS 
-    - Eyebrow Shaping (Waxing): R80 
-    - Eyebrow Tinting: R60 
-    - Combo (Wax & Tint): R130 
-  
- 3. Please take note that prices can differ in December because of availability [Explain this as good as possible to clients]. 
-  
+    - Eyebrow Shaping (Waxing): R80, Seasonal rate: R100 
+    - Eyebrow Tinting: R60, Seasonal rate: R100 
+    - Combo (Wax & Tint): R150, Seasonal rate: R200 
+ 
+ 3. Seasonal rates apply during the April and December holidays. Explain this clearly and warmly if a client asks why the price changes. 
+ 
  ADDITIONAL SERVICES (GUESTHOUSE): 
  We also have a guesthouse named "De Brakke" located in Stilbaai West. 
  Website: https://www.debrakke.co.za/  
@@ -53,7 +54,7 @@ const WEBSITE_CONTEXT = `--- NAILS BY WILMA CONTEXT ---
  - Persona: A sophisticated, warm, and feminine beauty assistant. 
  - Tone: Welcoming, polished, professional, and encouraging. Do not call clients pet names like "lovely" or "darling". Use emojis like 💅, ✨, 🌸, 💖. 
  - Key Phrase: "Your perfect nails are just an appointment away!" 
- - Formatting: When listing services or prices, please use commas or semicolons to separate items for better readability. Ensure perfect grammar and punctuation in all responses.
+ - Formatting: When listing services or prices, please use commas for better readability, and keep the wording aligned with the website. Ensure perfect grammar and punctuation in all responses.
   
  FAQ ANSWERS: 
  Q: Do you do acrylics? 
@@ -305,14 +306,9 @@ function setChatState(isLoading) {
 
 function initializeChatbot() {
   if (!chatContainer) return;
-  const introMessage =
-    "Hello 🌸 I’m Bella, your beauty assistant. I can help with services, prices, availability, and booking details. Your perfect nails are just an appointment away!";
-
-  appendMessage(introMessage, "ai");
-
-  const lastBubble = chatContainer.lastElementChild?.querySelector(".bella-ai-bubble");
-  if (lastBubble) {
-    lastBubble.appendChild(createQuickActionsElement());
+  const firstBubble = chatContainer.querySelector(".bella-ai-bubble");
+  if (firstBubble && !firstBubble.querySelector(".bella-quick-actions")) {
+    firstBubble.appendChild(createQuickActionsElement());
   }
 }
 
@@ -377,16 +373,6 @@ async function sendMessage() {
 }
 
 const CHAT_WIDGET_HTML = `<div id="chatbot-widget-container">
-  <div id="chat-welcome-bubble" class="fixed bottom-20 right-6 z-50 bg-white p-4 rounded-xl shadow-xl border border-gray-200 max-w-[250px] transform translate-y-4 opacity-0 transition-all duration-500 hidden">
-    <p class="text-sm font-medium text-gray-800">Hi, I’m Bella. Your personal beauty assistant. I can help with prices, bookings, services, and custom nail design ideas.</p>
-    <div class="absolute -bottom-2 right-6 w-4 h-4 bg-white transform rotate-45 border-r border-b border-gray-200"></div>
-    <button id="close-bubble-btn" class="absolute -top-2 -right-2 bg-gray-100 hover:bg-gray-200 rounded-full p-1 text-gray-500 shadow-sm transition-colors" aria-label="Close bubble">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-  </div>
   <button id="chat-toggle-button" class="fixed bottom-6 right-6 z-50 text-white p-3 rounded-full shadow-2xl transition duration-300 flex items-center justify-center group">
     <span class="absolute top-0 right-0 flex h-4 w-4 -mt-1 -mr-1">
       <span class="absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color:#ef4444;animation:ping 1s cubic-bezier(0,0,0.2,1) infinite;"></span>
@@ -477,55 +463,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     .getElementById("chat-toggle-button")
     .addEventListener("click", toggleChatWindow);
   const closeBtn=document.getElementById("chat-close-button"); if(closeBtn){closeBtn.addEventListener("click",toggleChatWindow);}
-  const bubble = document.getElementById("chat-welcome-bubble");
-  const closeBubbleBtn = document.getElementById("close-bubble-btn");
-  function hideBubble() {
-    if (bubble) {
-      bubble.classList.remove("translate-y-0", "opacity-100");
-      bubble.classList.add("translate-y-4", "opacity-0");
-      setTimeout(() => bubble.classList.add("hidden"), 500);
-    }
-  }
-  if (bubble && closeBubbleBtn) {
-    const bubbleText = bubble.querySelector("p");
-    const showBubble = (text) => {
-      if (isChatOpen) return;
-      if (bubbleText) bubbleText.textContent = text;
-      bubble.classList.remove("hidden");
-      setTimeout(() => {
-        bubble.classList.remove("translate-y-4", "opacity-0");
-        bubble.classList.add("translate-y-0", "opacity-100");
-      }, 50);
-      setTimeout(hideBubble, 6000);
-    };
-    setTimeout(() => {
-      showBubble(
-        "Hi, I’m Bella. Your personal beauty assistant. I can help with prices, bookings, services, and custom nail design ideas."
-      );
-    }, 3000);
-    setTimeout(() => {
-      showBubble(
-        "Tap the pink button to ask Bella anything about our services."
-      );
-    }, 30000);
-    closeBubbleBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      hideBubble();
-    });
-    bubble.addEventListener("click", (e) => {
-      if (e.target !== closeBubbleBtn && !closeBubbleBtn.contains(e.target)) {
-        hideBubble();
-        toggleChatWindow();
-        localStorage.setItem("chatOpened", "true");
-      }
-    });
-  }
-  document
-    .getElementById("chat-toggle-button")
-    .addEventListener("click", () => {
-      localStorage.setItem("chatOpened", "true");
-      hideBubble();
-    });
+
   if (sendButton) {
     sendButton.addEventListener("click", sendMessage);
   }
