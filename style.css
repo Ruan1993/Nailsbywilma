@@ -926,3 +926,8 @@ body {
 .service-season-note {
   position: static;
 }
+
+/* Remove the three hero feature boxes on all screen sizes */
+.hero-feature-grid {
+  display: none !important;
+}
