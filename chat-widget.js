@@ -27,8 +27,8 @@ const WEBSITE_CONTEXT = `--- NAILS BY WILMA CONTEXT ---
  1. NAIL SERVICES 
     - Gel Overlay on Natural Nails: R320, Seasonal rate: R350 
     - Spa Pedicure & Gel: R200, Seasonal rate: R250 
-    - Tips & Gel Overlay: R350, Seasonal rate: R420 
-    - Extensions (Build with Poly Gel): R380, Seasonal rate: R450 
+    - Tips & Gel Overlay: R450, Seasonal rate: R480 
+    - Extensions (Build with Poly Gel): R450, Seasonal rate: R480 
     - Soak-off Only: R60, Seasonal rate: R100 
  
  2. BEAUTY EXTRAS 

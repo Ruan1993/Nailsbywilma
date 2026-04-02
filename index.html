@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
@@ -15,7 +15,10 @@
       name="keywords"
       content="Nails by Wilma, nail salon Still Bay, nail salon Still Bay West, nails Stilbaai, gel nails Still Bay, gel nails Stilbaai, nail art Still Bay, pedicure Still Bay, brows Stilbaai"
     />
-    <meta property="og:title" content="Nails by Wilma | Luxury Nails in Still Bay" />
+    <meta
+      property="og:title"
+      content="Nails by Wilma | Luxury Nails in Still Bay"
+    />
     <meta
       property="og:description"
       content="Professional nail services and elegant nail art in Still Bay West. Book with Nails by Wilma for beautiful, long-lasting results."
@@ -60,11 +63,17 @@
           "addressRegion": "Western Cape",
           "addressCountry": "ZA"
         },
-        "priceRange": "R60-R380",
+        "priceRange": "R60-R480",
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
             "opens": "08:00",
             "closes": "17:00"
           },
@@ -85,11 +94,13 @@
     class="font-sans text-gray-800"
     style="
       background-color: var(--color-background);
-      font-family: 'Inter', sans-serif;
+      font-family: &quot;Inter&quot;, sans-serif;
     "
   >
     <canvas id="heart-canvas"></canvas>
-    <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+    <div class="scroll-progress" aria-hidden="true">
+      <span id="scroll-progress-bar"></span>
+    </div>
 
     <nav
       class="shadow-xl fixed top-0 left-0 right-0 z-50 text-white"
@@ -107,7 +118,7 @@
             />
             <h1
               class="text-3xl font-bold text-white transition-colors duration-300"
-              style="font-family: 'Playfair Display', serif"
+              style="font-family: &quot;Playfair Display&quot;, serif"
             >
               Nails by <span class="text-pink-500">Wilma</span>
             </h1>
@@ -154,31 +165,41 @@
         <a
           href="#home"
           class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800"
-          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          onclick="
+            document.querySelector('.mobile-menu').classList.add('hidden')
+          "
           >Home</a
         >
         <a
           href="#gallery"
           class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800"
-          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          onclick="
+            document.querySelector('.mobile-menu').classList.add('hidden')
+          "
           >Gallery</a
         >
         <a
           href="#reviews"
           class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800"
-          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          onclick="
+            document.querySelector('.mobile-menu').classList.add('hidden')
+          "
           >Reviews</a
         >
         <a
           href="#services"
           class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200 border-b border-pink-800"
-          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          onclick="
+            document.querySelector('.mobile-menu').classList.add('hidden')
+          "
           >Services</a
         >
         <a
           href="#contact"
           class="block py-2 text-lg text-white hover:text-pink-400 font-medium transition duration-200"
-          onclick="document.querySelector('.mobile-menu').classList.add('hidden')"
+          onclick="
+            document.querySelector('.mobile-menu').classList.add('hidden')
+          "
           >Contact</a
         >
       </div>
@@ -214,23 +235,30 @@
               class="inline-flex items-center gap-3 hero-rating-chip no-underline mb-6"
               aria-label="See client reviews"
             >
-              <span class="text-pink-500 text-lg md:text-xl animate-shimmer">★★★★★</span>
-              <span class="text-gray-800 font-semibold">5/5 rating from <span id="review-count">15+</span> happy clients</span>
+              <span class="text-pink-500 text-lg md:text-xl animate-shimmer"
+                >★★★★★</span
+              >
+              <span class="text-gray-800 font-semibold"
+                >5/5 rating from <span id="review-count">15+</span> happy
+                clients</span
+              >
             </a>
 
             <h1
               class="text-5xl md:text-6xl xl:text-7xl font-bold text-gray-900 mb-5 leading-[1.05]"
-              style="font-family: 'Playfair Display', serif"
+              style="font-family: &quot;Playfair Display&quot;, serif"
             >
               Luxury nails,
               <span class="hero-text-gradient">beautifully tailored</span>
               for you.
             </h1>
 
-            <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl hero-lead">
-              From elegant gel overlays to bespoke nail art and polished beauty extras,
-              Wilma creates a pampering experience that feels feminine, refined, and fun,
-              right here in Still Bay West.
+            <p
+              class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl hero-lead"
+            >
+              From elegant gel overlays to bespoke nail art and polished beauty
+              extras, Wilma creates a pampering experience that feels feminine,
+              refined, and fun, right here in Still Bay West.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 mb-6">
@@ -242,31 +270,98 @@
               >
                 Book on WhatsApp
               </a>
-              <a href="#gallery" class="hero-secondary-cta">Explore the Gallery</a>
+              <a href="#gallery" class="hero-secondary-cta"
+                >Explore the Gallery</a
+              >
             </div>
 
             <div class="hero-assistant-callout mb-8">
               <div>
                 <span class="hero-assistant-label">Need a quick answer?</span>
-                <p>Ask Bella about prices, bookings, treatments, or what service fits you best.</p>
+                <p>
+                  Ask Bella about prices, bookings, treatments, or what service
+                  fits you best.
+                </p>
               </div>
-              <button type="button" id="hero-open-chat" class="hero-assistant-button"><span class="flex items-center gap-2">
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22" aria-hidden="true">
-    <rect x="4" y="5" width="16" height="14" rx="4" fill="#fce7f3" stroke="#ec4899" stroke-width="1.2"/>
-    <circle cx="9" cy="11" r="1.5" fill="#374151"/>
-    <circle cx="15" cy="11" r="1.5" fill="#374151"/>
-    <path d="M7.5 9.5L6.5 8.5" stroke="#374151" stroke-width="1" stroke-linecap="round"/>
-    <path d="M9 9L9 7.5" stroke="#374151" stroke-width="1" stroke-linecap="round"/>
-    <path d="M16.5 9.5L17.5 8.5" stroke="#374151" stroke-width="1" stroke-linecap="round"/>
-    <path d="M15 9L15 7.5" stroke="#374151" stroke-width="1" stroke-linecap="round"/>
-    <circle cx="7" cy="14" r="1.5" fill="#f472b6" opacity="0.4"/>
-    <circle cx="17" cy="14" r="1.5" fill="#f472b6" opacity="0.4"/>
-    <path d="M10 15C10 15 11 16 12 16C13 16 14 15 14 15" stroke="#374151" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M12 3C12 3 10 2 9 3C8 4 9 5 10 5L12 5.5L14 5C15 5 16 4 15 3C14 2 12 3 12 3Z" fill="#ffffff"/>
-    <circle cx="12" cy="5.5" r="1" fill="#be185d"/>
-  </svg>
-  <span>Ask Bella</span>
-</span></button>
+              <button
+                type="button"
+                id="hero-open-chat"
+                class="hero-assistant-button"
+              >
+                <span class="flex items-center gap-2">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    aria-hidden="true"
+                  >
+                    <rect
+                      x="4"
+                      y="5"
+                      width="16"
+                      height="14"
+                      rx="4"
+                      fill="#fce7f3"
+                      stroke="#ec4899"
+                      stroke-width="1.2"
+                    />
+                    <circle cx="9" cy="11" r="1.5" fill="#374151" />
+                    <circle cx="15" cy="11" r="1.5" fill="#374151" />
+                    <path
+                      d="M7.5 9.5L6.5 8.5"
+                      stroke="#374151"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M9 9L9 7.5"
+                      stroke="#374151"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M16.5 9.5L17.5 8.5"
+                      stroke="#374151"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M15 9L15 7.5"
+                      stroke="#374151"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                    />
+                    <circle
+                      cx="7"
+                      cy="14"
+                      r="1.5"
+                      fill="#f472b6"
+                      opacity="0.4"
+                    />
+                    <circle
+                      cx="17"
+                      cy="14"
+                      r="1.5"
+                      fill="#f472b6"
+                      opacity="0.4"
+                    />
+                    <path
+                      d="M10 15C10 15 11 16 12 16C13 16 14 15 14 15"
+                      stroke="#374151"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M12 3C12 3 10 2 9 3C8 4 9 5 10 5L12 5.5L14 5C15 5 16 4 15 3C14 2 12 3 12 3Z"
+                      fill="#ffffff"
+                    />
+                    <circle cx="12" cy="5.5" r="1" fill="#be185d" />
+                  </svg>
+                  <span>Ask Bella</span>
+                </span>
+              </button>
             </div>
 
             <div class="hero-feature-grid">
@@ -276,7 +371,7 @@
               </div>
               <div class="hero-feature-card">
                 <span class="hero-feature-label">Popular service</span>
-                <strong>Gel Overlay on Natural Nails, R300</strong>
+                <strong>Gel Overlay on Natural Nails, R320</strong>
               </div>
               <div class="hero-feature-card">
                 <span class="hero-feature-label">Booking</span>
@@ -344,7 +439,7 @@
           </h2>
           <h3
             class="text-4xl font-bold text-pink-700"
-            style="font-family: 'Playfair Display', serif"
+            style="font-family: &quot;Playfair Display&quot;, serif"
           >
             Client Love & Reviews
           </h3>
@@ -379,14 +474,14 @@
           </h2>
           <h3
             class="text-4xl font-bold text-pink-700"
-            style="font-family: 'Playfair Display', serif"
+            style="font-family: &quot;Playfair Display&quot;, serif"
           >
             The Wilma Nail Gallery
           </h3>
           <p class="text-gray-600 max-w-2xl mx-auto mt-4">
             Browse our portfolio of stunning nail designs, crafted with care and
-            precision for delighted clients. Hover to preview, then click any image to view it
-            full-screen!
+            precision for delighted clients. Hover to preview, then click any
+            image to view it full-screen!
           </p>
         </div>
         <div class="grid grid-cols-3 md:grid-cols-5 gap-4 gallery-container">
@@ -401,12 +496,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -419,12 +516,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -437,12 +536,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -455,12 +556,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group gallery-item-wide md:col-span-2"
             data-aos="zoom-in"
@@ -472,12 +575,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -490,12 +595,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -508,12 +615,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -525,12 +634,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -543,12 +654,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group gallery-item-tall md:row-span-2"
             data-aos="zoom-in"
@@ -561,12 +674,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -579,12 +694,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -596,12 +713,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -614,12 +733,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -632,12 +753,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -650,12 +773,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -667,12 +792,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -685,12 +812,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -703,12 +832,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group gallery-item-wide md:col-span-2"
             data-aos="zoom-in"
@@ -721,12 +852,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -739,12 +872,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -757,12 +892,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -776,12 +913,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -794,12 +933,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -812,12 +953,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -830,12 +973,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -848,12 +993,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -866,12 +1013,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group gallery-item-featured md:col-span-2"
             data-aos="zoom-in"
@@ -883,12 +1032,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -901,12 +1052,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -919,12 +1072,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -937,12 +1092,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -954,12 +1111,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -971,12 +1130,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -988,12 +1149,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1005,12 +1168,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1022,12 +1187,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1039,12 +1206,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1056,12 +1225,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1073,12 +1244,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1090,12 +1263,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1107,12 +1282,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1124,12 +1301,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1141,12 +1320,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1158,12 +1339,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1175,12 +1358,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1192,12 +1377,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1209,12 +1396,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1226,12 +1415,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1243,12 +1434,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1260,12 +1453,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1277,12 +1472,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1294,12 +1491,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1311,12 +1510,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1328,12 +1529,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1345,12 +1548,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1362,12 +1567,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
           <div
             class="gallery-item rounded-xl overflow-hidden shadow-lg group"
             data-aos="zoom-in"
@@ -1379,12 +1586,14 @@
               width="400"
               height="400"
               class="w-full h-full object-cover aspect-square"
-              loading="lazy" decoding="async"
+              loading="lazy"
+              decoding="async"
             />
-          
+
             <div class="gallery-overlay" aria-hidden="true">
               <span class="gallery-overlay-pill">View Design</span>
-            </div></div>
+            </div>
+          </div>
         </div>
 
         <!-- Gallery Navigation -->
@@ -1446,12 +1655,14 @@
           </h2>
           <h3
             class="text-4xl font-bold text-pink-700"
-            style="font-family: 'Playfair Display', serif"
+            style="font-family: &quot;Playfair Display&quot;, serif"
           >
             Expert Services Menu
           </h3>
           <p class="text-gray-600 max-w-2xl mx-auto mt-4">
-            Professional nail care and beauty services, beautifully finished, clearly priced, and tailored to leave you feeling pampered and polished.
+            Professional nail care and beauty services, beautifully finished,
+            clearly priced, and tailored to leave you feeling pampered and
+            polished.
           </p>
         </div>
 
@@ -1476,14 +1687,20 @@
                     Gel Overlay on Natural Nails
                   </h4>
                   <div class="service-card-meta">
-                    <span class="service-badge service-badge-popular">Most Popular</span>
+                    <span class="service-badge service-badge-popular"
+                      >Most Popular</span
+                    >
                     <span class="service-card-price">R320</span>
                   </div>
                   <p class="service-card-seasonal">Seasonal rate: R350</p>
                 </div>
                 <p class="text-gray-600">
-                  Perfect for clients who want strong, elegant natural nails with a clean, refined finish and beautiful long wear.
-                  <span class="service-season-note">Seasonal rate applies during the April and December holidays.</span>
+                  Perfect for clients who want strong, elegant natural nails
+                  with a clean, refined finish and beautiful long wear.
+                  <span class="service-season-note"
+                    >Seasonal rate applies during the April and December
+                    holidays.</span
+                  >
                 </p>
               </div>
             </div>
@@ -1510,8 +1727,13 @@
                   <p class="service-card-seasonal">Seasonal rate: R250</p>
                 </div>
                 <p class="text-gray-600">
-                  A relaxing treatment for tired feet, finished with gel for polished, feminine toes that feel neat and beautifully put together.
-                  <span class="service-season-note">Seasonal rate applies during the April and December holidays.</span>
+                  A relaxing treatment for tired feet, finished with gel for
+                  polished, feminine toes that feel neat and beautifully put
+                  together.
+                  <span class="service-season-note"
+                    >Seasonal rate applies during the April and December
+                    holidays.</span
+                  >
                 </p>
               </div>
             </div>
@@ -1534,12 +1756,16 @@
                   <h4 class="text-xl font-bold text-gray-800 mb-2">
                     Tips & Gel Overlay
                   </h4>
-                  <span class="service-card-price">R350</span>
-                  <p class="service-card-seasonal">Seasonal rate: R420</p>
+                  <span class="service-card-price">R450</span>
+                  <p class="service-card-seasonal">Seasonal rate: R480</p>
                 </div>
                 <p class="text-gray-600">
-                  A lovely choice when you want more structure and length while still keeping your set polished, elegant, and wearable.
-                  <span class="service-season-note">Seasonal rate applies during the April and December holidays.</span>
+                  A lovely choice when you want more structure and length while
+                  still keeping your set polished, elegant, and wearable.
+                  <span class="service-season-note"
+                    >Seasonal rate applies during the April and December
+                    holidays.</span
+                  >
                 </p>
               </div>
             </div>
@@ -1563,14 +1789,20 @@
                     Extensions (Build with Poly Gel)
                   </h4>
                   <div class="service-card-meta">
-                    <span class="service-badge service-badge-value">Best Value</span>
-                    <span class="service-card-price">R380</span>
+                    <span class="service-badge service-badge-value"
+                      >Best Value</span
+                    >
+                    <span class="service-card-price">R450</span>
                   </div>
-                  <p class="service-card-seasonal">Seasonal rate: R450</p>
+                  <p class="service-card-seasonal">Seasonal rate: R480</p>
                 </div>
                 <p class="text-gray-600">
-                  Best for a fuller, longer, more sculpted look with a premium finish that feels elevated and beautifully salon-perfect.
-                  <span class="service-season-note">Seasonal rate applies during the April and December holidays.</span>
+                  Best for a fuller, longer, more sculpted look with a premium
+                  finish that feels elevated and beautifully salon-perfect.
+                  <span class="service-season-note"
+                    >Seasonal rate applies during the April and December
+                    holidays.</span
+                  >
                 </p>
               </div>
             </div>
@@ -1597,8 +1829,12 @@
                   <p class="service-card-seasonal">Seasonal rate: R100</p>
                 </div>
                 <p class="text-gray-600">
-                  A careful soak-off service when you need your existing set removed cleanly and gently.
-                  <span class="service-season-note">Seasonal rate applies during the April and December holidays.</span>
+                  A careful soak-off service when you need your existing set
+                  removed cleanly and gently.
+                  <span class="service-season-note"
+                    >Seasonal rate applies during the April and December
+                    holidays.</span
+                  >
                 </p>
               </div>
             </div>
@@ -1625,8 +1861,12 @@
                   <p class="service-card-seasonal">Seasonal rate: R100</p>
                 </div>
                 <p class="text-gray-600">
-                  Beautifully shaped brows that frame the face and instantly make your overall look feel cleaner and more polished.
-                  <span class="service-season-note">Seasonal rate applies during the April and December holidays.</span>
+                  Beautifully shaped brows that frame the face and instantly
+                  make your overall look feel cleaner and more polished.
+                  <span class="service-season-note"
+                    >Seasonal rate applies during the April and December
+                    holidays.</span
+                  >
                 </p>
               </div>
             </div>
@@ -1653,8 +1893,12 @@
                   <p class="service-card-seasonal">Seasonal rate: R100</p>
                 </div>
                 <p class="text-gray-600">
-                  Soft depth and definition for brows that look fuller, neater, and beautifully finished.
-                  <span class="service-season-note">Seasonal rate applies during the April and December holidays.</span>
+                  Soft depth and definition for brows that look fuller, neater,
+                  and beautifully finished.
+                  <span class="service-season-note"
+                    >Seasonal rate applies during the April and December
+                    holidays.</span
+                  >
                 </p>
               </div>
             </div>
@@ -1678,14 +1922,20 @@
                     Combo (Wax & Tint)
                   </h4>
                   <div class="service-card-meta">
-                    <span class="service-badge service-badge-popular">Quick Refresh</span>
+                    <span class="service-badge service-badge-popular"
+                      >Quick Refresh</span
+                    >
                     <span class="service-card-price">R150</span>
                   </div>
                   <p class="service-card-seasonal">Seasonal rate: R200</p>
                 </div>
                 <p class="text-gray-600">
-                  The perfect brow refresh, shaping and tinting together for the most finished, flattering result.
-                  <span class="service-season-note">Seasonal rate applies during the April and December holidays.</span>
+                  The perfect brow refresh, shaping and tinting together for the
+                  most finished, flattering result.
+                  <span class="service-season-note"
+                    >Seasonal rate applies during the April and December
+                    holidays.</span
+                  >
                 </p>
               </div>
             </div>
@@ -1710,7 +1960,9 @@
 
         <div class="services-pricing-note">
           <p>
-            Please note: Seasonal rates apply during the April and December holidays. For custom nail art or anything not listed here, WhatsApp Wilma for a quote.
+            Please note: Seasonal rates apply during the April and December
+            holidays. For custom nail art or anything not listed here, WhatsApp
+            Wilma for a quote.
           </p>
         </div>
       </div>
@@ -1730,7 +1982,7 @@
           </h2>
           <h3
             class="text-4xl font-bold text-pink-700"
-            style="font-family: 'Playfair Display', serif"
+            style="font-family: &quot;Playfair Display&quot;, serif"
           >
             Get In Touch
           </h3>
@@ -1747,7 +1999,7 @@
             >
               <h4
                 class="text-2xl font-bold text-pink-600 mb-6"
-                style="font-family: 'Playfair Display', serif"
+                style="font-family: &quot;Playfair Display&quot;, serif"
               >
                 Contact Information
               </h4>
@@ -1823,11 +2075,14 @@
                     src="images/nails-by-wilma-location-map.png"
                     alt="Map showing Nails by Wilma location in Still Bay West"
                     class="rounded-xl shadow-md md:shadow-lg w-full"
-                    loading="lazy" decoding="async"
+                    loading="lazy"
+                    decoding="async"
                     decoding="async"
                   />
                 </a>
-                <p class="text-xs sm:text-sm mt-3 text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 inline-block">
+                <p
+                  class="text-xs sm:text-sm mt-3 text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 inline-block"
+                >
                   ⚠️ Please park in front of the garages, not in the street.
                 </p>
               </div>
@@ -1843,22 +2098,47 @@
             >
               <h4
                 class="text-2xl font-bold text-pink-600 mb-6"
-                style="font-family: 'Playfair Display', serif"
+                style="font-family: &quot;Playfair Display&quot;, serif"
               >
                 Send Us a Message
               </h4>
-              <div class="bg-pink-50 border border-pink-100 rounded-lg p-4 mb-6 flex items-start gap-3">
+              <div
+                class="bg-pink-50 border border-pink-100 rounded-lg p-4 mb-6 flex items-start gap-3"
+              >
                 <div class="text-pink-500 mt-0.5">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                   </svg>
                 </div>
                 <div class="text-sm text-gray-700 flex flex-col sm:block">
-                  <span class="font-semibold text-pink-600 block mb-1">Looking for a price list?</span>
+                  <span class="font-semibold text-pink-600 block mb-1"
+                    >Looking for a price list?</span
+                  >
                   <span>
-                    Get an instant answer by asking our <strong>Chatbot</strong> in the bottom corner!
+                    Get an instant answer by asking our
+                    <strong>Chatbot</strong> in the bottom corner!
                     <span class="inline-flex align-middle ml-1 text-pink-500">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
                         <line x1="7" y1="7" x2="17" y2="17"></line>
                         <polyline points="17 7 17 17 7 17"></polyline>
                       </svg>
@@ -1973,7 +2253,7 @@
           <div>
             <h4
               class="text-xl font-bold text-pink-500 mb-4"
-              style="font-family: 'Playfair Display', serif"
+              style="font-family: &quot;Playfair Display&quot;, serif"
             >
               Nails by Wilma
             </h4>
